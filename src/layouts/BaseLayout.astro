@@ -9,7 +9,7 @@ interface Props {
 }
 
 const { title, description, canonical = Astro.url.pathname, keywords } = Astro.props;
-const fullTitle = title === 'Inicio' ? 'Florencia Villeneuve' : `${title} — Florencia Villeneuve`;
+const fullTitle = title === 'Inicio' ? 'Florencia Villeneuve — Mentoría · Formación · Creación' : `Florencia Villeneuve — ${title}`;
 const siteUrl = 'https://florenciavilleneuve.com';
 const ogImage = `${siteUrl}/img/og-image.png`;
 const canonicalUrl = `${siteUrl}${canonical}`;
