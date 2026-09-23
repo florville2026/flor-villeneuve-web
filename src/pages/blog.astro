@@ -1,0 +1,96 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/layout/Header.astro';
+import Footer from '../components/layout/Footer.astro';
+import Button from '../components/ui/Button.astro';
+
+const topics = [
+  {
+    tag: 'Astrología & Tránsitos',
+    title: 'Claves simbólicas para habitar los cielos del año',
+    desc: 'Interpretaciones profundas de los grandes movimientos planetarios y su resonancia en nuestra vida cotidiana.',
+  },
+  {
+    tag: 'Vínculos & Encuentro',
+    title: 'El otro como espejo: decodificar la proyección afectiva',
+    desc: 'Reflexiones sobre el amor consciente, la resolución de heridas y la construcción de acuerdos auténticos.',
+  },
+  {
+    tag: 'Psicología Simbólica',
+    title: 'Imágenes, sueños y arquetipos del inconsciente',
+    desc: 'Puentes entre el pensamiento jungiano, el arte y los procesos de transformación interior.',
+  },
+];
+---
+
+<BaseLayout
+  title="Blog"
+  description="Blog y reflexiones de Florencia Villeneuve. Artículos sobre astrología, vínculos, psicología simbólica y procesos de autoconocimiento."
+  keywords="blog astrología, psicología simbólica, reflexiones vinculares, arquetipos, transformación personal, Florencia Villeneuve"
+  canonical="/blog"
+>
+  <Header />
+  <main class="pt-24 min-h-[80vh] flex flex-col justify-between">
+    <!-- Hero con Badge Próximamente -->
+    <section class="section-padding bg-deep border-b border-gold/10">
+      <div class="container-padding max-w-3xl mx-auto text-center">
+        <span class="inline-block px-3 py-1 bg-gold/15 text-gold text-xs font-body uppercase tracking-widest rounded-full mb-6 border border-gold/30">
+          Próximamente
+        </span>
+        <h1 class="font-display text-4xl md:text-5xl lg:text-6xl text-gold font-light mb-6 tracking-wide">
+          Diario & Reflexiones
+        </h1>
+        <p class="font-body font-light text-parchment/80 text-lg md:text-xl leading-relaxed mb-8">
+          Un espacio de pensamiento, ensayo y divulgación sensible para profundizar en el lenguaje de los símbolos, la intimidad de los vínculos y los tiempos del alma.
+        </p>
+        <div class="inline-block p-1 border-b border-gold/30">
+          <p class="font-heading italic text-sm text-gold/80">
+            Muy pronto publicaremos los primeros ensayos y lecturas periódicas.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Temáticas a abordar -->
+    <section class="section-padding bg-night flex-1">
+      <div class="container-padding max-w-5xl mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {topics.map((t) => (
+            <article class="p-8 bg-deep/80 border border-gold/15 rounded-sm flex flex-col justify-between">
+              <div>
+                <span class="font-body text-xs text-gold/60 uppercase tracking-wider block mb-2">
+                  {t.tag}
+                </span>
+                <h3 class="font-heading text-xl text-gold font-normal mb-3">
+                  {t.title}
+                </h3>
+                <p class="font-body font-light text-parchment/70 text-sm leading-relaxed">
+                  {t.desc}
+                </p>
+              </div>
+              <div class="mt-6 pt-4 border-t border-gold/10 text-xs text-parchment/50 font-body">
+                Próxima publicación
+              </div>
+            </article>
+          ))}
+        </div>
+
+        <div class="mt-16 text-center max-w-xl mx-auto">
+          <h4 class="font-display text-2xl text-gold mb-3 font-light">Seguí las reflexiones en redes</h4>
+          <p class="font-body font-light text-parchment/70 text-sm mb-6 leading-relaxed">
+            Mientras preparamos los artículos extensos, podés leer escritos breves y análisis de tránsitos en Instagram.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <Button href="https://instagram.com/florencia.villeneuve" variant="primary" external>
+              Instagram @florencia.villeneuve
+            </Button>
+            <Button href="https://www.youtube.com/@florencia.villeneuve" variant="outline" external>
+              Canal de YouTube
+            </Button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</BaseLayout>

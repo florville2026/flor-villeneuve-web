@@ -1,0 +1,72 @@
+---
+import SectionTitle from '../ui/SectionTitle.astro';
+import Button from '../ui/Button.astro';
+
+interface QuestionItem {
+  number: string;
+  text: string;
+}
+
+const questions: QuestionItem[] = [
+  {
+    number: '01',
+    text: '¿Sentís que en tu pareja o familia siempre tropiezan con la misma piedra?',
+  },
+  {
+    number: '02',
+    text: '¿Se descubren actuando más como "padre o madre" de su compañero/a que como su pareja?',
+  },
+  {
+    number: '03',
+    text: '¿Les cuesta ponerse de acuerdo en los límites de la crianza y eso está desgastando su relación?',
+  },
+  {
+    number: '04',
+    text: '¿Se preguntan por qué, a pesar del amor, no logran destrabar los conflictos de comunicación?',
+  },
+  {
+    number: '05',
+    text: '¿Te gustaría entender qué pactos invisibles e historias familiares condicionan cómo te relacionás hoy?',
+  },
+];
+---
+
+<section class="section-padding bg-night relative overflow-hidden border-t border-b border-gold/10">
+  <div class="container-padding relative z-10">
+    <SectionTitle
+      title="¿Te identificás con alguna de estas situaciones?"
+      subtitle="Reconocer los patrones que se repiten en tus vínculos es el primer paso para transformarlos."
+    />
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 max-w-5xl mx-auto">
+      {questions.map((item, index) => (
+        <article
+          class:list={[
+            'group relative p-6 sm:p-8 rounded-sm bg-deep/60 border border-gold/15 transition-all duration-500 hover:border-gold/40 hover:bg-deep/90 hover:-translate-y-1 reveal',
+            index === 4 ? 'md:col-span-2 md:max-w-2xl md:mx-auto w-full' : '',
+          ]}
+        >
+          <div class="flex items-start gap-4">
+            <span class="inline-flex items-center justify-center w-8 h-8 rounded-full border border-gold/30 text-gold text-xs font-display shrink-0 mt-0.5 group-hover:border-gold group-hover:bg-gold/10 transition-colors duration-300">
+              {item.number}
+            </span>
+            <p class="font-heading font-light text-parchment text-lg sm:text-xl leading-relaxed group-hover:text-goldLight transition-colors duration-300">
+              {item.text}
+            </p>
+          </div>
+        </article>
+      ))}
+    </div>
+
+    <div class="text-center mt-12 md:mt-16 reveal reveal-delay-2">
+      <p class="font-body font-light text-parchment/70 text-base md:text-lg max-w-2xl mx-auto leading-relaxed">
+        Detrás de cada tensión o malentendido no hay una falla personal, sino historias y dinámicas que necesitan ser vistas y comprendidas.
+      </p>
+      <div class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
+        <Button href="/servicios" variant="outline">
+          Conocé las Sesiones
+        </Button>
+      </div>
+    </div>
+  </div>
+</section>

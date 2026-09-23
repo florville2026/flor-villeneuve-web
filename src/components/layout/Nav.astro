@@ -1,21 +1,48 @@
-﻿---
+---
 import type { NavItem } from '../../types';
 
 export interface Props {
   items: NavItem[];
-  mobileOpen: boolean;
 }
 
-const { items, mobileOpen } = Astro.props;
+const { items } = Astro.props;
 ---
 
-<nav class="hidden md:flex md:flex-row md:items-center md:gap-8">
+<nav class="hidden md:flex md:flex-row md:items-center md:gap-6 lg:gap-8">
   {items.map((item) => (
-    <a
-      href={item.href}
-      class="font-body font-light text-parchment/80 tracking-wide transition-colors duration-300 hover:text-gold py-0"
-    >
-      {item.label}
-    </a>
+    item.children && item.children.length > 0 ? (
+      <div class="relative group">
+        <a
+          href={item.href}
+          class="inline-flex items-center gap-1.5 font-body font-light text-parchment/80 tracking-wide transition-colors duration-300 hover:text-gold py-2 focus:outline-none"
+          aria-haspopup="true"
+        >
+          <span>{item.label}</span>
+          <svg class="w-3.5 h-3.5 transition-transform duration-300 group-hover:rotate-180 opacity-70 group-hover:opacity-100 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </a>
+
+        <div class="absolute left-0 top-full pt-2 opacity-0 pointer-events-none translate-y-1 group-hover:opacity-100 group-hover:pointer-events-auto group-hover:translate-y-0 group-focus-within:opacity-100 group-focus-within:pointer-events-auto group-focus-within:translate-y-0 transition-all duration-300 z-50 min-w-[260px]">
+          <div class="bg-night/95 backdrop-blur-md border border-gold/20 shadow-2xl rounded-sm p-2 space-y-1">
+            {item.children.map((subItem) => (
+              <a
+                href={subItem.href}
+                class="block px-3 py-2 font-body font-light text-sm text-parchment/80 hover:text-gold hover:bg-gold/5 rounded transition-colors duration-200"
+              >
+                {subItem.label}
+              </a>
+            ))}
+          </div>
+        </div>
+      </div>
+    ) : (
+      <a
+        href={item.href}
+        class="font-body font-light text-parchment/80 tracking-wide transition-colors duration-300 hover:text-gold py-2"
+      >
+        {item.label}
+      </a>
+    )
   ))}
 </nav>

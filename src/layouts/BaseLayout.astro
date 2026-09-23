@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import WhatsAppFloating from '../components/ui/WhatsAppFloating.astro';
 
 interface Props {
   title: string;
@@ -9,7 +10,7 @@ interface Props {
 }
 
 const { title, description, canonical = Astro.url.pathname, keywords } = Astro.props;
-const fullTitle = title === 'Inicio' ? 'Florencia Villeneuve — Mentoría · Formación · Creación' : `Florencia Villeneuve — ${title}`;
+const fullTitle = title === 'Inicio' ? 'Florencia Villeneuve — Acompañamiento y Sesiones para Parejas, Crianza y Dinámicas Familiares' : `Florencia Villeneuve — ${title}`;
 const siteUrl = 'https://florenciavilleneuve.com';
 const ogImage = `${siteUrl}/img/og-image.png`;
 const canonicalUrl = `${siteUrl}${canonical}`;
@@ -46,6 +47,7 @@ const canonicalUrl = `${siteUrl}${canonical}`;
   </head>
   <body>
     <slot />
+    <WhatsAppFloating />
     <script src="../scripts/reveal.ts"></script>
   </body>
 </html>
