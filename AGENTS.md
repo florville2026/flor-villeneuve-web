@@ -47,8 +47,9 @@ flor-villeneuve-web/
 │   │   ├── layout/             # Header.astro, Footer.astro, Nav.astro
 │   │   ├── sections/           # Hero.astro, Identification.astro, Services.astro,
 │   │   │                       # About.astro, Testimonials.astro, Contact.astro
-│   │   └── ui/                 # Button.astro, SectionTitle.astro, ServiceCard.astro, WhatsAppFloating.astro
+│   │   └── ui/                 # Button.astro, BlogArticleCard.astro, SectionTitle.astro, ServiceCard.astro, WhatsAppFloating.astro
 │   ├── data/
+│   │   ├── blog.ts             # Artículos del blog, categorías (Pareja, Crianza, Vínculos) y llamadas de agenda
 │   │   ├── faqs.ts             # Preguntas frecuentes estructuradas por servicio
 │   │   └── services.ts         # Contenido de servicios, intro y temáticas concretas
 │   ├── layouts/
@@ -60,8 +61,10 @@ flor-villeneuve-web/
 │   │   │   ├── pareja.astro    # Sesión de pareja
 │   │   │   ├── crianza-familia.astro # Sesión de crianza o familia
 │   │   │   └── proceso-vincular.astro # Proceso vincular individual
+│   │   ├── blog.astro          # Archivo de reflexiones con navegación por subsecciones
+│   │   ├── blog/               # Páginas individuales de lectura y permalinks para SEO
+│   │   │   └── [slug].astro    # Lectura completa de artículo con schema BlogPosting
 │   │   ├── tienda.astro        # Boutique simbólica (Próximamente)
-│   │   ├── blog.astro          # Diario y reflexiones (Próximamente)
 │   │   ├── bio.astro           # Biografía / Sobre mí
 │   │   ├── politica-de-cookies.astro # Página legal de cookies
 │   │   ├── preguntas.astro     # Preguntas frecuentes (FAQ)
@@ -71,10 +74,11 @@ flor-villeneuve-web/
 │   ├── styles/
 │   │   └── global.css          # Importación de fuentes, directivas Tailwind y clases utilitarias
 │   ├── types/
-│   │   └── index.ts            # Interfaces TypeScript compartidas (NavItem, Service, etc.)
+│   │   └── index.ts            # Interfaces TypeScript compartidas (NavItem, BlogPost, Service, etc.)
 │   └── env.d.ts                # Declaraciones de tipos para entorno Astro
 ├── tests/                      # Pruebas unitarias de regresión y SEO con Vitest
 │   ├── base-layout.test.ts     # Valida props SEO, keywords y lang="es" en BaseLayout
+│   ├── blog.test.ts            # Valida integridad de artículos, subsecciones y vinculación a servicios
 │   ├── footer-links.test.ts    # Valida links de redes y contacto en Footer
 │   ├── page-metadata.test.ts   # Valida presencia de meta keywords en páginas core
 │   └── seo-links.test.ts       # Valida enlaces a Instagram en index.astro y README.md
@@ -192,7 +196,27 @@ flor-villeneuve-web/
 
 ---
 
-## 10. Mantenimiento de este Archivo
+---
+
+## 10. Arquitectura del Blog y Reflexiones Vinculares
+
+- **Identidad:** *Reflexiones sobre la Arquitectura de los Vínculos* con indagación sobre la trama oculta de las relaciones.
+- **Subsecciones Oficiales:**
+  - `pareja` (`#pareja`): Dinámica afectiva, polaridad masculina/femenina, bucles defensivos.
+  - `crianza` (`#crianza`): Paternidad y maternidad consciente, deconstrucción del modelo ideal y límites con coherencia.
+  - `vinculos` (`#vinculos`): Amistad, autonomía, reciprocidad y espacios de autoexploración.
+- **Llamadas a la Acción de Agenda:**
+  - Todo artículo del blog se vincula a una sesión diagnóstica en `vincularServices`:
+    - Pareja $\rightarrow$ `/servicios/pareja` + WhatsApp específico de pareja.
+    - Crianza $\rightarrow$ `/servicios/crianza-familia` + WhatsApp específico de crianza.
+    - Vínculos $\rightarrow$ `/servicios/proceso-vincular` + WhatsApp específico de proceso vincular.
+- **Páginas Individuales (`src/pages/blog/[slug].astro`):**
+  - Generadas estáticamente con `getStaticPaths`.
+  - Incluyen schema JSON-LD estructurado (`BlogPosting`), canonical único y tarjetas de lecturas recomendadas.
+
+---
+
+## 11. Mantenimiento de este Archivo
 
 - Este archivo es mantenido activamente por agentes de IA.
 - Cada vez que se agregue una nueva página, componente, servicio, integración o convención arquitectónica, este documento debe actualizarse para preservar la memoria del proyecto.

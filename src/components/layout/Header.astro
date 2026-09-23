@@ -14,7 +14,15 @@ const navItems: NavItem[] = [
     ],
   },
   { label: 'Tienda', href: '/tienda' },
-  { label: 'Blog', href: '/blog' },
+  {
+    label: 'Blog',
+    href: '/blog',
+    children: [
+      { label: 'Pareja', href: '/blog#pareja' },
+      { label: 'Crianza', href: '/blog#crianza' },
+      { label: 'Vínculos', href: '/blog#vinculos' },
+    ],
+  },
   { label: 'Sobre mí', href: '/bio' },
   { label: 'Preguntas frecuentes', href: '/preguntas' },
   { label: 'Contacto', href: '/#contacto' },
