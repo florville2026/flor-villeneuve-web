@@ -43,4 +43,17 @@ describe('Blog Data Structure and Integrity', () => {
       expect(serviceIds).toContain(post.relatedService.serviceId);
     }
   });
+
+  it('includes WhatsApp Community link in blog and single post pages', async () => {
+    const { readFile } = await import('fs/promises');
+    const path = (await import('path')).default;
+    const { fileURLToPath } = await import('url');
+
+    const rootDir = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
+    const blogAstro = await readFile(path.join(rootDir, 'src/pages/blog.astro'), 'utf-8');
+    const slugAstro = await readFile(path.join(rootDir, 'src/pages/blog/[slug].astro'), 'utf-8');
+
+    expect(blogAstro).toContain('https://chat.whatsapp.com/L7jnhxhIvqb6QbwnFN1PJo');
+    expect(slugAstro).toContain('https://chat.whatsapp.com/L7jnhxhIvqb6QbwnFN1PJo');
+  });
 });

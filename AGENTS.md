@@ -10,7 +10,8 @@ Este archivo es la memoria viva y guía operativa del proyecto **flor-villeneuve
 - **Público Objetivo:** Personas interesadas en autoconocimiento, transformación personal, tarot akáshico, astrología, numerología y arteterapia en Uruguay y Argentina (Montevideo, Buenos Aires, Rosario, Córdoba, Punta del Este y modalidad online internacional).
 - **Dominio Principal:** `https://florenciavilleneuve.com` (anteriormente `florhesiendo.com`).
 - **Contacto & Canales:**
-  - WhatsApp: `https://wa.me/59892497675` (+598 92 497 675)
+  - WhatsApp (Consultas directas): `https://wa.me/59892497675` (+598 92 497 675)
+  - Comunidad de WhatsApp: `https://chat.whatsapp.com/L7jnhxhIvqb6QbwnFN1PJo` (espacio abierto con más de 70 personas para reflexiones sobre vínculos, talleres y videos de YouTube)
   - Instagram: `https://www.instagram.com/florencia.villeneuve`
   - YouTube: `https://www.youtube.com/@florencia.villeneuve`
   - Email: `mailto:florencia.villeneuve@gmail.com`
@@ -161,9 +162,10 @@ flor-villeneuve-web/
 
 ---
 
-## 7. Canales de Contacto y Botón Flotante de WhatsApp
+## 7. Canales de Contacto, Comunidad y Botón Flotante de WhatsApp
 
 - Las consultas y coordinaciones se canalizan de forma directa vía WhatsApp (+598 92 497 675) y correo electrónico (`florencia.villeneuve@gmail.com`). No se utilizan formularios de entrada de texto en la web.
+- **Comunidad de WhatsApp:** Enlace de invitación (`https://chat.whatsapp.com/L7jnhxhIvqb6QbwnFN1PJo`) disponible en el Footer (`Footer.astro`) bajo la columna "Conectá", donde Florencia comparte reflexiones breves sobre vínculos, talleres y videos de YouTube con más de 70 personas.
 - **Botón Flotante:** Implementado en [WhatsAppFloating.astro](file:///c:/Users/pablo/pablo/Documents/Coding/flor-villeneuve-web/src/components/ui/WhatsAppFloating.astro) e integrado globalmente en [BaseLayout.astro](file:///c:/Users/pablo/pablo/Documents/Coding/flor-villeneuve-web/src/layouts/BaseLayout.astro) (`fixed bottom-6 right-6 z-50`).
 - **Sección `#contacto`:** En [Contact.astro](file:///c:/Users/pablo/pablo/Documents/Coding/flor-villeneuve-web/src/components/sections/Contact.astro) se presenta la invitación directa y botones de contacto a WhatsApp y Email, preservando el ancla de navegación sin necesidad de formularios.
 
@@ -205,14 +207,15 @@ flor-villeneuve-web/
   - `pareja` (`#pareja`): Dinámica afectiva, polaridad masculina/femenina, bucles defensivos.
   - `crianza` (`#crianza`): Paternidad y maternidad consciente, deconstrucción del modelo ideal y límites con coherencia.
   - `vinculos` (`#vinculos`): Amistad, autonomía, reciprocidad y espacios de autoexploración.
-- **Llamadas a la Acción de Agenda:**
+- **Llamadas a la Acción de Agenda y Comunidad:**
   - Todo artículo del blog se vincula a una sesión diagnóstica en `vincularServices`:
     - Pareja $\rightarrow$ `/servicios/pareja` + WhatsApp específico de pareja.
     - Crianza $\rightarrow$ `/servicios/crianza-familia` + WhatsApp específico de crianza.
     - Vínculos $\rightarrow$ `/servicios/proceso-vincular` + WhatsApp específico de proceso vincular.
+  - Se integra un bloque de invitación a la **Comunidad de WhatsApp** (+70 personas de todo el mundo) para recibir reflexiones cotidianas, talleres y videos de YouTube tanto en la página principal del Blog (`/blog`) como al pie de cada artículo individual (`/blog/[slug]`).
 - **Páginas Individuales (`src/pages/blog/[slug].astro`):**
   - Generadas estáticamente con `getStaticPaths`.
-  - Incluyen schema JSON-LD estructurado (`BlogPosting`), canonical único y tarjetas de lecturas recomendadas.
+  - Incluyen schema JSON-LD estructurado (`BlogPosting`), canonical único, tarjeta de invitación a la comunidad y tarjetas de lecturas recomendadas.
 
 ---
 
