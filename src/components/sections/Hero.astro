@@ -1,9 +1,11 @@
 ---
+import Button from '../ui/Button.astro';
 
+const whatsappUrl = 'https://wa.me/59892497675';
 ---
 
 <section
-  class="relative min-h-screen flex items-center justify-center bg-deep overflow-hidden pb-8 md:pb-12 pt-20 md:pt-24"
+  class="relative min-h-screen flex items-center justify-center bg-deep overflow-hidden py-24 md:py-32"
 >
   <div class="absolute inset-0 opacity-10">
     <div
@@ -12,21 +14,42 @@
     </div>
   </div>
 
-  <div class="container-padding relative z-10 text-center">
-    <h1
-      class="font-display text-5xl md:text-6xl lg:text-7xl font-semibold text-parchment tracking-wide fade-in"
-    >
-      Florencia Villeneuve
-    </h1>
-    <p
-      class="font-heading font-light text-gold text-lg md:text-xl mt-6 tracking-widest fade-in-delay-1"
-    >
-      Mentoría · Formación · Creación
-    </p>
-    <img
-      src="/img/01.jpg"
-      alt="Florencia Villeneuve"
-      class="aspect-[3/4] max-w-sm mx-auto object-cover rounded-sm border border-gold/20 mt-12 reveal"
-    />
+  <div class="container-padding relative z-10 w-full">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+      <div class="text-center lg:text-left">
+        <span
+          class="font-heading font-light text-gold text-lg sm:text-xl tracking-wide block mb-3 fade-in"
+        >
+          Hola, soy Flor
+        </span>
+        <h1
+          class="font-display text-3xl sm:text-4xl lg:text-5xl font-semibold text-parchment tracking-wide leading-tight fade-in-delay-1"
+        >
+          Acompañamiento y Sesiones para Parejas, Crianza y Dinámicas Familiares
+        </h1>
+        <p
+          class="font-body font-light text-parchment/80 text-base lg:text-lg leading-relaxed mt-6 max-w-xl mx-auto lg:mx-0 reveal"
+        >
+          Un espacio para destrabar la comunicación, comprender la historia de tu sistema y transformar los patrones repetitivos de tus vínculos.
+        </p>
+        <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 mt-8 reveal reveal-delay-1">
+          <Button href="/servicios" variant="outline">
+            Ver Sesiones
+          </Button>
+          <Button href={whatsappUrl} variant="primary" external>
+            Agendar Sesión en WhatsApp
+          </Button>
+        </div>
+      </div>
+
+      <div class="flex justify-center lg:justify-end reveal">
+        <img
+          src="/img/01.jpg"
+          alt="Florencia Villeneuve"
+          class="aspect-[3/4] max-w-sm lg:max-w-md w-full object-cover rounded-sm border border-gold/20 shadow-2xl"
+        />
+      </div>
+    </div>
   </div>
 </section>
+

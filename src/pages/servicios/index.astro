@@ -1,0 +1,150 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/layout/Header.astro';
+import Footer from '../../components/layout/Footer.astro';
+import SectionTitle from '../../components/ui/SectionTitle.astro';
+import Button from '../../components/ui/Button.astro';
+import { servicesIntro, vincularServices } from '../../data/services';
+
+const whatsappBaseUrl = 'https://wa.me/59892497675';
+---
+
+<BaseLayout
+  title="Servicios"
+  description="Servicios y sesiones de acompañamiento vincular con Florencia Villeneuve. Sesión de pareja, crianza o familia y proceso vincular individual. Consultas online para Uruguay, Argentina e internacional."
+  keywords="servicios vinculares, sesión de pareja, terapia de pareja online, sesión de crianza, dinámica familiar, proceso vincular individual, astrología vincular, sinastría, Florencia Villeneuve, Montevideo, Buenos Aires"
+  canonical="/servicios"
+>
+  <Header />
+  <main class="pt-24">
+    <!-- Hero / Intro Servicios -->
+    <section class="section-padding bg-deep border-b border-gold/10">
+      <div class="container-padding max-w-4xl mx-auto">
+        <div class="text-center mb-10 reveal">
+          <span class="font-body text-xs uppercase tracking-widest text-gold/80 mb-3 block">
+            {servicesIntro.badge}
+          </span>
+          <h1 class="font-display text-4xl md:text-5xl lg:text-6xl text-gold font-light tracking-wide">
+            {servicesIntro.heading}
+          </h1>
+        </div>
+
+        <div class="space-y-6 text-parchment/80 font-body font-light text-base md:text-lg leading-relaxed reveal reveal-delay-1">
+          {servicesIntro.paragraphs.map((paragraph) => (
+            <p>{paragraph}</p>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Lista Detallada de Servicios -->
+    <section class="section-padding bg-night">
+      <div class="container-padding max-w-5xl mx-auto">
+        <SectionTitle
+          title="Nuestras Propuestas de Sesión"
+          subtitle="Abordaje directo y riguroso para las áreas y temáticas reales que atraviesan los vínculos."
+        />
+
+        <div class="space-y-16 mt-12">
+          {vincularServices.map((service, index) => (
+            <article class="bg-deep/80 border border-gold/15 p-8 sm:p-12 rounded-sm hover:border-gold/40 transition-all duration-300 reveal">
+              <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-gold/10 pb-6 mb-6">
+                <div>
+                  <span class="text-gold/60 font-display text-base tracking-widest block mb-1">
+                    0{index + 1} · {service.subtitle}
+                  </span>
+                  <h2 class="font-display text-3xl sm:text-4xl text-parchment font-light">
+                    {service.title}
+                  </h2>
+                </div>
+                <div class="inline-flex items-center gap-2 px-4 py-2 bg-gold/10 border border-gold/20 rounded-full text-gold text-xs font-body tracking-wide shrink-0">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  <span>Duración: {service.duration}</span>
+                </div>
+              </div>
+
+              <p class="font-body font-light text-parchment/90 text-base sm:text-lg leading-relaxed mb-8">
+                {service.description}
+              </p>
+
+              <div class="mb-8">
+                <h3 class="font-heading text-gold text-lg sm:text-xl font-light mb-4">
+                  Temáticas y áreas concretas que abordamos:
+                </h3>
+                <ul class="space-y-4">
+                  {service.topics.map((t) => (
+                    <li class="p-4 bg-night/60 border border-gold/10 rounded-sm">
+                      <strong class="font-heading text-goldLight text-base block mb-1 font-medium">
+                        {t.title}:
+                      </strong>
+                      <span class="font-body font-light text-parchment/70 text-sm leading-relaxed block">
+                        {t.desc}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div class="pt-6 border-t border-gold/10">
+                <p class="font-body font-light text-parchment/60 text-xs sm:text-sm leading-relaxed mb-6 italic">
+                  <strong>Nota:</strong> {service.note}
+                </p>
+
+                <div class="flex flex-col sm:flex-row items-center gap-4">
+                  <Button
+                    href={`${whatsappBaseUrl}?text=${encodeURIComponent(service.whatsappMessage)}`}
+                    variant="primary"
+                    external
+                    class="w-full sm:w-auto text-center"
+                  >
+                    Reservar lugar para tu primera sesión
+                  </Button>
+                  <Button
+                    href={service.slug}
+                    variant="outline"
+                    class="w-full sm:w-auto text-center"
+                  >
+                    Ver detalle completo
+                  </Button>
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Modalidad -->
+    <section class="section-padding bg-deep border-t border-gold/10">
+      <div class="container-padding max-w-4xl mx-auto text-center">
+        <SectionTitle
+          title="Cómo se desarrollan las sesiones"
+          subtitle="Un espacio confidencial, seguro y adaptado a tus tiempos."
+        />
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-left mt-8">
+          <div class="p-6 bg-night/50 border border-gold/10 rounded-sm">
+            <h4 class="font-heading text-gold text-lg mb-2">Modalidad online</h4>
+            <p class="font-body font-light text-parchment/70 text-sm leading-relaxed">
+              Encuentros virtuales por videollamada para Uruguay, Argentina y cualquier lugar del mundo.
+            </p>
+          </div>
+          <div class="p-6 bg-night/50 border border-gold/10 rounded-sm">
+            <h4 class="font-heading text-gold text-lg mb-2">Mirada integrada</h4>
+            <p class="font-body font-light text-parchment/70 text-sm leading-relaxed">
+              Combinación de escucha atenta, análisis riguroso de dinámicas y comprensión de la historia familiar.
+            </p>
+          </div>
+          <div class="p-6 bg-night/50 border border-gold/10 rounded-sm">
+            <h4 class="font-heading text-gold text-lg mb-2">Coordinación directa</h4>
+            <p class="font-body font-light text-parchment/70 text-sm leading-relaxed">
+              Agendamos de forma personalizada por WhatsApp según tu disponibilidad y necesidad.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</BaseLayout>

@@ -1,0 +1,110 @@
+---
+import type { BlogPost } from '../../types';
+import Button from './Button.astro';
+
+interface Props {
+  post: BlogPost;
+  standalone?: boolean;
+}
+
+const { post, standalone = false } = Astro.props;
+const whatsappUrl = `https://wa.me/59892497675?text=${encodeURIComponent(post.relatedService.whatsappMessage)}`;
+const permalink = `/blog/${post.slug}`;
+---
+
+<article id={post.slug} class="bg-deep/60 border border-gold/20 rounded-sm p-6 sm:p-10 md:p-12 transition-all duration-300 hover:border-gold/40 reveal">
+  <!-- Encabezado y Metadatos -->
+  <header class="mb-8">
+    <div class="flex flex-wrap items-center justify-between gap-3 text-xs font-body tracking-wider uppercase mb-4 text-gold/70">
+      <div class="flex items-center gap-2">
+        <span class="px-3 py-1 bg-gold/10 border border-gold/30 rounded-full text-gold font-medium">
+          {post.categoryLabel}
+        </span>
+        <span class="text-parchment/40">•</span>
+        <span class="text-parchment/60">{post.readingTime}</span>
+      </div>
+      {!standalone && (
+        <a href={permalink} class="text-gold/80 hover:text-gold transition-colors duration-200 lowercase italic tracking-normal text-xs flex items-center gap-1">
+          <span>permalink</span>
+          <span>↗</span>
+        </a>
+      )}
+    </div>
+
+    {standalone ? (
+      <h1 class="font-display text-3xl sm:text-4xl md:text-5xl text-gold font-light leading-snug tracking-wide mb-6">
+        {post.title}
+      </h1>
+    ) : (
+      <h2 class="font-display text-2xl sm:text-3xl md:text-4xl text-gold font-light leading-snug tracking-wide mb-6">
+        <a href={permalink} class="hover:text-goldLight transition-colors duration-200">
+          {post.title}
+        </a>
+      </h2>
+    )}
+
+    <!-- Tags -->
+    <div class="flex flex-wrap gap-2 pt-2 border-t border-gold/10">
+      {post.tags.map((tag) => (
+        <span class="text-xs font-body text-parchment/60 bg-night/80 px-2.5 py-0.5 rounded-xs border border-gold/10">
+          #{tag}
+        </span>
+      ))}
+    </div>
+  </header>
+
+  <!-- Cuerpo del Artículo -->
+  <div class="space-y-6 font-body font-light text-parchment/85 text-base sm:text-lg leading-relaxed">
+    {post.sections.map((section) => (
+      <div class="space-y-4">
+        {section.title && (
+          <h3 class="font-heading text-goldLight text-xl sm:text-2xl font-normal pt-4 tracking-wide">
+            {section.title}
+          </h3>
+        )}
+        {section.paragraphs.map((p) => {
+          // Destacar si inicia con subtítulos tipo "El repliegue del sostén:" o "La trampa de la sobrecompensación:"
+          const colonIndex = p.indexOf(':');
+          const isLeadTitle = colonIndex > 0 && colonIndex < 40 && !p.startsWith('Desde');
+          if (isLeadTitle) {
+            const lead = p.slice(0, colonIndex);
+            const rest = p.slice(colonIndex + 1);
+            return (
+              <p class="pl-4 border-l-2 border-gold/40 text-parchment/90">
+                <strong class="font-heading text-gold font-normal block sm:inline text-lg">{lead}:</strong>
+                <span class="text-parchment/80">{rest}</span>
+              </p>
+            );
+          }
+          return <p>{p}</p>;
+        })}
+      </div>
+    ))}
+  </div>
+
+  <!-- Caja de Llamada a la Acción de Agenda -->
+  <footer class="mt-10 pt-8 border-t border-gold/20">
+    <div class="bg-night/90 border border-gold/30 rounded-sm p-6 sm:p-8">
+      <div class="flex items-center gap-2 text-gold text-xs uppercase tracking-widest font-body mb-2">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+        </svg>
+        <span>Espacio de Consulta y Acompañamiento</span>
+      </div>
+      <h4 class="font-heading text-xl sm:text-2xl text-gold font-normal mb-2">
+        {post.relatedService.title}
+      </h4>
+      <p class="font-body font-light text-parchment/75 text-sm sm:text-base leading-relaxed mb-6">
+        {post.relatedService.description}
+      </p>
+      <div class="flex flex-col sm:flex-row gap-3 items-stretch sm:items-center">
+        <Button href={whatsappUrl} variant="primary" external>
+          Agendar sesión por WhatsApp
+        </Button>
+        <Button href={post.relatedService.slug} variant="outline">
+          {post.relatedService.ctaText}
+        </Button>
+      </div>
+    </div>
+  </footer>
+</article>

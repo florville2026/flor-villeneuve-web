@@ -6,8 +6,12 @@ import { describe, it, expect } from "vitest";
 const pages = [
   "src/pages/index.astro",
   "src/pages/bio.astro",
-  "src/pages/mentoria.astro",
-  "src/pages/arteterapia.astro",
+  "src/pages/servicios/index.astro",
+  "src/pages/servicios/pareja.astro",
+  "src/pages/servicios/crianza-familia.astro",
+  "src/pages/servicios/proceso-vincular.astro",
+  "src/pages/tienda.astro",
+  "src/pages/blog.astro",
   "src/pages/preguntas.astro",
 ];
 

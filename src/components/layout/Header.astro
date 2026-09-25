@@ -2,14 +2,30 @@
 import Nav from './Nav.astro';
 import type { NavItem } from '../../types';
 
-    const navItems: NavItem[] = [
-    { label: 'Inicio', href: '/' },
-    { label: 'Mentoría', href: '/mentoria' },
-    { label: 'Formación', href: '/formacion' },
-    { label: 'Arteterapia', href: '/arteterapia' },
-    { label: 'Sobre mí', href: '/bio' },
-    { label: 'Preguntas frecuentes', href: '/preguntas' },
-    { label: 'Contacto', href: '/#contacto' },
+const navItems: NavItem[] = [
+  { label: 'Inicio', href: '/' },
+  {
+    label: 'Servicios',
+    href: '/servicios',
+    children: [
+      { label: 'Sesión de pareja', href: '/servicios/pareja' },
+      { label: 'Sesión de crianza o familia', href: '/servicios/crianza-familia' },
+      { label: 'Proceso vincular individual', href: '/servicios/proceso-vincular' },
+    ],
+  },
+  { label: 'Tienda', href: '/tienda' },
+  {
+    label: 'Blog',
+    href: '/blog',
+    children: [
+      { label: 'Pareja', href: '/blog#pareja' },
+      { label: 'Crianza', href: '/blog#crianza' },
+      { label: 'Vínculos', href: '/blog#vinculos' },
+    ],
+  },
+  { label: 'Sobre mí', href: '/bio' },
+  { label: 'Preguntas frecuentes', href: '/preguntas' },
+  { label: 'Contacto', href: '/#contacto' },
 ];
 ---
 
@@ -30,17 +46,40 @@ import type { NavItem } from '../../types';
       </svg>
     </button>
 
-    <Nav items={navItems} mobileOpen={false} />
+    <Nav items={navItems} />
   </div>
 
-  <nav id="mobile-menu" class="md:hidden hidden absolute top-full left-0 right-0 bg-night px-6 py-6 border-b border-gold/10 transition-all duration-300 ease-in-out opacity-0 -translate-y-2 invisible">
+  <nav id="mobile-menu" class="md:hidden hidden absolute top-full left-0 right-0 bg-night px-6 py-6 border-b border-gold/10 transition-all duration-300 ease-in-out opacity-0 -translate-y-2 invisible max-h-[85vh] overflow-y-auto">
     {navItems.map((item) => (
-      <a
-        href={item.href}
-        class="font-body font-light text-parchment/80 tracking-wide transition-colors duration-300 hover:text-gold py-3 block"
-      >
-        {item.label}
-      </a>
+      item.children && item.children.length > 0 ? (
+        <div class="py-2 border-b border-gold/10">
+          <div class="flex items-center justify-between">
+            <a
+              href={item.href}
+              class="font-body font-normal text-parchment tracking-wide transition-colors duration-300 hover:text-gold py-1 block text-base"
+            >
+              {item.label}
+            </a>
+          </div>
+          <div class="pl-4 mt-1 space-y-2 border-l border-gold/20">
+            {item.children.map((subItem) => (
+              <a
+                href={subItem.href}
+                class="font-body font-light text-parchment/70 tracking-wide transition-colors duration-300 hover:text-gold py-1.5 block text-sm"
+              >
+                {subItem.label}
+              </a>
+            ))}
+          </div>
+        </div>
+      ) : (
+        <a
+          href={item.href}
+          class="font-body font-light text-parchment/80 tracking-wide transition-colors duration-300 hover:text-gold py-3 block border-b border-gold/5"
+        >
+          {item.label}
+        </a>
+      )
     ))}
   </nav>
 </header>

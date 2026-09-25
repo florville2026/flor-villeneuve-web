@@ -3,146 +3,116 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/layout/Header.astro';
 import Footer from '../components/layout/Footer.astro';
 import SectionTitle from '../components/ui/SectionTitle.astro';
+import Button from '../components/ui/Button.astro';
+import { bioData } from '../data/bio';
 ---
 
 <BaseLayout
-  title="Sobre mí"
-  description="Conocé a Florencia Villeneuve — mentora, astróloga y escritora. Sesiones online en Uruguay y Argentina (Montevideo, Buenos Aires, Rosario, Córdoba)."
-  keywords="Florencia Villeneuve, bio, mentora, astróloga, escritora, psicología jungiana, Jung, simbología, tarot, numerología, arte terapia, Montevideo, Uruguay, Punta del Este, Buenos Aires, CABA, Argentina, Rosario, Córdoba, transformación personal, autoconocimiento"
+  title="Sobre mí | Florencia Villeneuve"
+  description="Acompañamiento e investigación en la arquitectura viva de las relaciones. Conoce el recorrido, la mirada y el marco de trabajo de Florencia Villeneuve."
+  keywords="Florencia Villeneuve, sobre mí, biografía, acompañamiento vincular, psicología jungiana, arte terapia, sistemas familiares, Un curso de milagros, Montevideo, Buenos Aires"
   canonical="/bio"
 >
   <Header />
-  <main>
-    <section class="section-padding bg-deep pt-32">
-      <div class="container-padding">
-        <div class="max-w-3xl mx-auto">
+  <main class="bg-deep">
+    <!-- Hero / Presentación -->
+    <section class="section-padding pt-32 border-b border-gold/15">
+      <div class="container-padding max-w-4xl mx-auto">
+        <div class="text-center mb-12">
           <SectionTitle
-            title="Florencia Villeneuve"
-            subtitle="Buscadora, escritora, mentora."
+            title={bioData.title}
+            subtitle={bioData.subtitle}
           />
+        </div>
 
+        <div class="flex justify-center mb-12">
           <img
-            src="/img/02.jpeg"
+            src="/img/flor-sobre-mi.jpg"
             alt="Florencia Villeneuve"
-            class="aspect-[3/4] max-w-sm mx-auto object-cover rounded-sm border border-gold/20 mb-12 reveal"
+            class="aspect-square max-w-xs sm:max-w-sm w-full object-cover rounded-sm border border-gold/25 shadow-2xl reveal"
           />
+        </div>
 
-          <div class="space-y-8 mt-12">
-            <div class="space-y-6">
-              <p class="font-body font-light text-parchment/80 leading-relaxed reveal">
-                Soy Flor Villeneuve.
-              </p>
-              <p class="font-body font-light text-parchment/80 leading-relaxed reveal">
-                Desde muy chica sentí que había algo en la vida que no terminaba de encajar.
-                A los 9 años atravesé mi primera crisis existencial, y desde entonces comenzó una búsqueda que no se detuvo.
-              </p>
-              <p class="font-body font-light text-parchment/80 leading-relaxed reveal">
-                De niña, escribía todos los días en mi diario íntimo y encontraba refugio en el dibujo — incluso gané un concurso sobre la paz.
-                Recuerdo sentir que la vida era profundamente bella… pero el mundo, muchas veces, cruel.
-                Esa tensión fue el inicio de mis preguntas.
-              </p>
-              <p class="font-body font-light text-parchment/80 leading-relaxed reveal">
-                A los 11 años leí por primera vez <em>El alquimista</em> y <em>El caballero de la armadura oxidada</em>.
-                Esos libros abrieron una puerta simbólica que, con el tiempo, se volvió camino.
-              </p>
-              <p class="font-body font-light text-parchment/80 leading-relaxed reveal">
-                En la adolescencia atravesé una etapa escéptica y atea.
-                Buscando entender, estudié filosofía y psicología, acercándome especialmente a la mirada de Carl Gustav Jung y al universo de la simbología, el inconsciente y los procesos internos.
-              </p>
-              <p class="font-body font-light text-parchment/80 leading-relaxed reveal">
-                A los 22 años, otra crisis profunda me llevó a reconectar —no desde la creencia ciega, sino desde la experiencia directa.
-              </p>
-              <p class="font-body font-light text-parchment/80 leading-relaxed reveal">
-                Desde entonces, mi camino se volvió una integración constante entre arte, terapia y lenguaje simbólico.
-              </p>
+        <!-- Cita Inspiracional -->
+        <blockquote class="border-l-2 border-gold/50 pl-6 sm:pl-8 py-4 my-10 bg-night/80 rounded-r-sm max-w-2xl mx-auto reveal">
+          <p class="font-display text-2xl sm:text-3xl text-gold/90 italic leading-relaxed">
+            "{bioData.quote.text}"
+          </p>
+          <footer class="mt-2 text-xs sm:text-sm font-body font-light text-parchment/60 not-italic tracking-wide">
+            — {bioData.quote.author}
+          </footer>
+        </blockquote>
+      </div>
+    </section>
+
+    <!-- Contenido y Secciones Biográficas -->
+    <section class="section-padding bg-night">
+      <div class="container-padding max-w-3xl mx-auto space-y-16">
+        {bioData.sections.map((sec) => (
+          <article class="space-y-6 reveal">
+            <h2 class="font-display text-2xl sm:text-3xl text-gold font-light tracking-wide leading-snug border-b border-gold/15 pb-3">
+              {sec.title}
+            </h2>
+            <div class="space-y-4 font-body font-light text-parchment/85 text-base sm:text-lg leading-relaxed text-justify sm:text-left">
+              {sec.paragraphs.map((p) => (
+                <p>{p}</p>
+              ))}
             </div>
+          </article>
+        ))}
 
-            <div class="bg-gold/5 border border-gold/10 p-8 rounded-sm reveal">
-              <p class="font-display text-xl text-gold mb-6">Trabajo desde una mirada que entrelaza:</p>
-              <ul class="space-y-3 font-body font-light text-parchment/80">
-                <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-gold/40 rounded-full"></span> Astrología</li>
-                <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-gold/40 rounded-full"></span> Tarot</li>
-                <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-gold/40 rounded-full"></span> Numerología</li>
-                <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-gold/40 rounded-full"></span> Arte terapia</li>
-                <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-gold/40 rounded-full"></span> Psicología simbólica (inspirada en Jung)</li>
-              </ul>
-            </div>
-
-            <div class="space-y-6">
-              <p class="font-body font-light text-parchment/80 leading-relaxed reveal">
-                Pero sobre todo, trabajo desde algo más esencial:
-              </p>
-              <p class="font-body font-medium text-gold leading-relaxed reveal flex items-start gap-3">
-                <span>Llego a cada herramienta a partir de la experiencia, nunca al revés.</span>
-              </p>
-              <p class="font-body font-light text-parchment/80 leading-relaxed reveal">
-                Mi recorrido no es lineal ni académico en el sentido tradicional. Es un camino vivido.
-              </p>
-              <p class="font-body font-light text-parchment/80 leading-relaxed reveal">
-                He compartido este proceso en distintos formatos: columnas de radio, contenido en Spotify, divulgación en YouTube y también a través de la música, donde publiqué tres álbumes de autoría propia.
-              </p>
-            </div>
-
-            <div class="space-y-6 reveal">
-              <p class="font-body font-light text-parchment/80 leading-relaxed">
-                Mi trabajo es una mezcla de:
-              </p>
-              <ul class="space-y-4 font-body font-light text-parchment/80 pl-4">
-                <li class="relative pl-6 before:content-[''] before:absolute before:left-0 before:top-3 before:w-2 before:h-[1px] before:bg-gold/40">una vida atravesada por cambios y experiencias diversas</li>
-                <li class="relative pl-6 before:content-[''] before:absolute before:left-0 before:top-3 before:w-2 before:h-[1px] before:bg-gold/40">una capacidad de observación, escucha e integración</li>
-                <li class="relative pl-6 before:content-[''] before:absolute before:left-0 before:top-3 before:w-2 before:h-[1px] before:bg-gold/40">y una creatividad constante, con un profundo impulso por encontrar verdad en todo</li>
-              </ul>
-            </div>
-
-            <div class="space-y-8 pt-6">
-              <p class="font-body font-light text-parchment/80 leading-relaxed reveal">
-                Acompaño procesos personales desde una premisa que guía mi forma de mirar:
-              </p>
-
-              <blockquote class="border-l-2 border-gold/40 pl-8 py-6 my-8 reveal bg-gold/5 italic">
-                <p class="font-display text-2xl text-gold/90 leading-relaxed">
-                  "No podemos actuar correctamente si no percibimos correctamente."
+        <!-- Marco de Trabajo Metodológico -->
+        <section class="bg-deep/80 border border-gold/25 rounded-sm p-8 sm:p-12 reveal">
+          <h2 class="font-display text-2xl sm:text-3xl text-gold font-light mb-4 leading-snug">
+            {bioData.frameworkTitle}
+          </h2>
+          <p class="font-body font-light text-parchment/80 text-sm sm:text-base leading-relaxed mb-8">
+            {bioData.frameworkLead}
+          </p>
+          <div class="space-y-5">
+            {bioData.frameworkItems.map((item) => (
+              <div class="pl-4 border-l-2 border-gold/40">
+                <h3 class="font-heading text-lg sm:text-xl text-gold font-normal mb-1">
+                  {item.title}
+                </h3>
+                <p class="font-body font-light text-parchment/75 text-sm sm:text-base leading-relaxed">
+                  {item.description}
                 </p>
-                <footer class="mt-4 text-sm font-body font-light text-parchment/50 not-italic">
-                  (idea inspirada en Un curso de milagros)
-                </footer>
-              </blockquote>
-
-              <p class="font-body font-light text-parchment/80 leading-relaxed reveal">
-                No se trata solo de acompañar. Se trata también de seguir aprendiendo, sostener la mente clara y el corazón abierto para que ocurra algo más profundo:
-              </p>
-
-              <p class="font-display text-xl text-gold reveal flex items-center gap-3">
-                <span>la transformación de la percepción</span>
-              </p>
-
-              <p class="font-body font-light text-parchment/80 leading-relaxed reveal">
-                Trabajo especialmente con personas que están en momentos de búsqueda, crisis o cambio, y que sienten que necesitan comprender lo que les está pasando más allá de lo evidente.
-              </p>
-
-              <p class="font-body font-light text-parchment/80 leading-relaxed reveal">
-                Cada proceso es único. Y mi lugar es acompañar ese recorrido con sensibilidad, lectura y presencia.
-              </p>
-
-              <p class="font-body font-medium text-parchment/90 leading-relaxed reveal">
-                Si algo de esto resuena con vos, probablemente haya algo para mirar.
-              </p>
-            </div>
+              </div>
+            ))}
           </div>
+        </section>
 
-            <div class="mt-8 pt-6 border-t border-gold/20 reveal text-center">
-              <a
-                href="https://www.youtube.com/@florencia.villeneuve"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="inline-flex items-center gap-2 font-body font-light text-gold hover:text-goldLight transition-colors"
-              >
-                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
-                </svg>
-                Mi canal personal
-              </a>
-            </div>
+        <!-- Cierre y Servicio -->
+        <article class="space-y-6 reveal">
+          <h2 class="font-display text-2xl sm:text-3xl text-gold font-light tracking-wide leading-snug border-b border-gold/15 pb-3">
+            {bioData.closingTitle}
+          </h2>
+          <div class="space-y-4 font-body font-light text-parchment/85 text-base sm:text-lg leading-relaxed text-justify sm:text-left">
+            {bioData.closingParagraphs.map((p) => (
+              <p>{p}</p>
+            ))}
+          </div>
+        </article>
+
+        <!-- Bloque de Enlace a Servicios -->
+        <div class="mt-16 p-8 sm:p-12 bg-deep border border-gold/30 rounded-sm text-center reveal">
+          <span class="inline-block px-3 py-1 bg-gold/10 text-gold text-xs font-body uppercase tracking-widest rounded-full mb-4 border border-gold/20">
+            Acompañamiento Vincular
+          </span>
+          <h3 class="font-display text-2xl sm:text-3xl text-gold font-light mb-4">
+            Explorá las modalidades de trabajo y sesiones
+          </h3>
+          <p class="font-body font-light text-parchment/75 text-sm sm:text-base max-w-xl mx-auto mb-8 leading-relaxed">
+            Te invito a conocer las sesiones de Pareja, Crianza y Proceso Vincular Individual diseñadas para destrabar patrones y traer claridad a tus relaciones.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <Button href="/servicios" variant="primary">
+              Ver Servicios y Sesiones
+            </Button>
+            <Button href="https://wa.me/59892497675?text=Hola%20Flor,%20le%C3%AD%20tu%20historia%20en%20Sobre%20M%C3%AD%20y%20me%20gustar%C3%ADa%20hacerte%20una%20consulta." variant="outline" external>
+              Consultar por WhatsApp
+            </Button>
           </div>
         </div>
       </div>

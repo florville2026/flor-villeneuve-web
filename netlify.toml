@@ -1,11 +1,31 @@
 [[redirects]]
-  from = "/formaciones"
-  to = "/formacion"
+  from = "/mentoria"
+  to = "/servicios"
   status = 301
 
 [[redirects]]
   from = "/guias-y-acompanamientos"
-  to = "/mentoria"
+  to = "/servicios"
+  status = 301
+
+[[redirects]]
+  from = "/formacion"
+  to = "/servicios"
+  status = 301
+
+[[redirects]]
+  from = "/formaciones"
+  to = "/servicios"
+  status = 301
+
+[[redirects]]
+  from = "/formacion/*"
+  to = "/servicios"
+  status = 301
+
+[[redirects]]
+  from = "/arteterapia"
+  to = "/servicios"
   status = 301
 
 [[redirects]]
@@ -20,5 +40,10 @@
 
 [[redirects]]
   from = "/contact"
-  to = "/contacto"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/contacto"
+  to = "/"
   status = 301

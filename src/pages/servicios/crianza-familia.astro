@@ -1,0 +1,81 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/layout/Header.astro';
+import Footer from '../../components/layout/Footer.astro';
+import SectionTitle from '../../components/ui/SectionTitle.astro';
+import Button from '../../components/ui/Button.astro';
+import { vincularServices } from '../../data/services';
+
+const service = vincularServices.find((s) => s.id === 'crianza-familia')!;
+const whatsappUrl = `https://wa.me/59892497675?text=${encodeURIComponent(service.whatsappMessage)}`;
+---
+
+<BaseLayout
+  title={service.title}
+  description="Sesión de crianza y dinámicas familiares con Florencia Villeneuve. Un espacio de alineación para madres, padres y adultos a cargo que buscan construir un criterio unificado, descomprimir la convivencia y traer calma al sistema familiar."
+  keywords="crianza consciente, sesión de familia, dinámicas familiares, límites en la crianza, gestión emocional infantil, clima familiar, Florencia Villeneuve, Montevideo, Buenos Aires"
+  canonical="/servicios/crianza-familia"
+>
+  <Header />
+  <main class="pt-24">
+    <!-- Hero -->
+    <section class="section-padding bg-deep border-b border-gold/10">
+      <div class="container-padding max-w-4xl mx-auto text-center">
+        <a href="/servicios" class="font-body text-xs uppercase tracking-widest text-gold/80 hover:text-gold mb-3 inline-block">
+          ← Volver a Servicios
+        </a>
+        <span class="font-display text-gold/60 text-sm tracking-widest block mb-2">
+          {service.subtitle}
+        </span>
+        <h1 class="font-display text-4xl md:text-5xl lg:text-6xl text-gold font-light mb-6 tracking-wide">
+          {service.title}
+        </h1>
+        <p class="font-body font-light text-parchment/80 text-lg md:text-xl leading-relaxed max-w-2xl mx-auto mb-6">
+          {service.description}
+        </p>
+        <div class="inline-flex items-center gap-2 px-4 py-2 bg-gold/10 border border-gold/20 rounded-full text-gold text-xs font-body tracking-wide">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          <span>Duración: {service.duration}</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Temáticas y áreas -->
+    <section class="section-padding bg-night">
+      <div class="container-padding max-w-4xl mx-auto">
+        <SectionTitle
+          title="Temáticas y áreas concretas que abordamos"
+          subtitle="Alineación y herramientas prácticas para el día a día en el hogar."
+        />
+
+        <div class="space-y-4 mt-10">
+          {service.topics.map((t) => (
+            <div class="p-6 bg-deep/60 border border-gold/15 rounded-sm reveal">
+              <h3 class="font-heading text-gold text-lg sm:text-xl font-light mb-2">{t.title}</h3>
+              <p class="font-body font-light text-parchment/70 text-sm leading-relaxed">{t.desc}</p>
+            </div>
+          ))}
+        </div>
+
+        <div class="mt-12 p-8 bg-deep border border-gold/20 rounded-sm reveal">
+          <p class="font-body font-light text-parchment/80 text-sm leading-relaxed italic">
+            <strong class="text-gold">Nota importante:</strong> {service.note}
+          </p>
+        </div>
+
+        <!-- CTA -->
+        <div class="mt-12 text-center reveal">
+          <p class="font-body font-light text-parchment/70 mb-6 text-sm">
+            Las sesiones se realizan de forma online mediante videollamada para Uruguay, Argentina y el exterior.
+          </p>
+          <Button href={whatsappUrl} variant="primary" external>
+            Reservar lugar para tu primera sesión
+          </Button>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</BaseLayout>
