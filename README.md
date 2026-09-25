@@ -152,8 +152,8 @@ Configuradas en `netlify.toml` con estado HTTP 301 para mantener la equidad de e
 | `/arteterapia` | `/servicios` |
 | `/about` | `/bio` |
 | `/mi-libro` | `/bio` |
-| `/contact` | `/#contacto` |
-| `/contacto` | `/#contacto` |
+| `/contact` | `/` |
+| `/contacto` | `/` |
 
 ---
 

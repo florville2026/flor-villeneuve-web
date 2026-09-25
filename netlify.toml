@@ -40,10 +40,10 @@
 
 [[redirects]]
   from = "/contact"
-  to = "/#contacto"
+  to = "/"
   status = 301
 
 [[redirects]]
   from = "/contacto"
-  to = "/#contacto"
+  to = "/"
   status = 301
