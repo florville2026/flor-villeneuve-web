@@ -14,7 +14,7 @@ const questions: QuestionItem[] = [
   },
   {
     number: '02',
-    text: '¿Se descubren actuando más como "padre o madre" de su compañero/a que como su pareja?',
+    text: "¿Se descubren actuando más como 'padre o madre' de su compañero/a que como su pareja?",
   },
   {
     number: '03',
@@ -34,37 +34,44 @@ const questions: QuestionItem[] = [
 <section class="section-padding bg-night relative overflow-hidden border-t border-b border-gold/10">
   <div class="container-padding relative z-10">
     <SectionTitle
-      title="¿Te identificás con alguna de estas situaciones?"
-      subtitle="Reconocer los patrones que se repiten en tus vínculos es el primer paso para transformarlos."
+      title="Reconocer los patrones que se repiten en tus vínculos es el primer paso para transformarlos."
     />
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 max-w-5xl mx-auto">
-      {questions.map((item, index) => (
-        <article
-          class:list={[
-            'group relative p-6 sm:p-8 rounded-sm bg-deep/60 border border-gold/15 transition-all duration-500 hover:border-gold/40 hover:bg-deep/90 hover:-translate-y-1 reveal',
-            index === 4 ? 'md:col-span-2 md:max-w-2xl md:mx-auto w-full' : '',
-          ]}
-        >
-          <div class="flex items-start gap-4">
-            <span class="inline-flex items-center justify-center w-8 h-8 rounded-full border border-gold/30 text-gold text-xs font-display shrink-0 mt-0.5 group-hover:border-gold group-hover:bg-gold/10 transition-colors duration-300">
-              {item.number}
-            </span>
-            <p class="font-heading font-light text-parchment text-lg sm:text-xl leading-relaxed group-hover:text-goldLight transition-colors duration-300">
-              {item.text}
-            </p>
-          </div>
-        </article>
-      ))}
+    <div class="border-t border-b border-gold/15 py-10 md:py-14 my-10 md:my-12">
+      <div class="flex flex-col space-y-6 md:space-y-8 max-w-4xl mx-auto">
+        {questions.map((item, index) => {
+          const isEven = index % 2 === 0;
+          return (
+            <article
+              class:list={[
+                'group relative p-6 sm:p-8 rounded-sm bg-deep/60 border border-gold/15 transition-all duration-500 hover:border-gold/40 hover:bg-deep/90 hover:-translate-y-1 reveal',
+                isEven
+                  ? 'mr-auto text-left border-l-2 border-l-gold/40'
+                  : 'ml-auto text-left border-r-2 border-r-gold/40',
+                'w-full sm:w-[90%] md:w-[82%] max-w-2xl',
+              ]}
+            >
+              <div class="flex items-start gap-4">
+                <span class="inline-flex items-center justify-center w-8 h-8 rounded-full border border-gold/30 text-gold text-xs font-display shrink-0 mt-0.5 group-hover:border-gold group-hover:bg-gold/10 transition-colors duration-300">
+                  {item.number}
+                </span>
+                <p class="font-heading font-light text-parchment text-lg sm:text-xl leading-relaxed group-hover:text-goldLight transition-colors duration-300">
+                  “{item.text}”
+                </p>
+              </div>
+            </article>
+          );
+        })}
+      </div>
     </div>
 
     <div class="text-center mt-12 md:mt-16 reveal reveal-delay-2">
-      <p class="font-body font-light text-parchment/70 text-base md:text-lg max-w-2xl mx-auto leading-relaxed">
+      <p class="font-display font-semibold text-parchment text-3xl sm:text-4xl md:text-5xl tracking-wide max-w-4xl mx-auto leading-tight md:leading-snug">
         Detrás de cada tensión o malentendido no hay una falla personal, sino historias y dinámicas que necesitan ser vistas y comprendidas.
       </p>
-      <div class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
+      <div class="mt-8 md:mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
         <Button href="/servicios" variant="outline">
-          Conocé las Sesiones
+          Agendá tu primera sesión
         </Button>
       </div>
     </div>

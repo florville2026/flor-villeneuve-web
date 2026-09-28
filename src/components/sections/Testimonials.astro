@@ -33,8 +33,8 @@ const {
         <div class="flex transition-transform duration-500 ease-out testimonial-inner">
           {testimonials.map((t, i) => (
             <div class="testimonial-slide w-full flex-shrink-0 px-4">
-              <blockquote class="text-center">
-                <p class="font-display text-xl md:text-2xl text-parchment/80 leading-relaxed italic mb-6">
+              <blockquote class="text-center max-w-3xl mx-auto">
+                <p class="font-display text-2xl sm:text-3xl md:text-4xl text-parchment/90 leading-relaxed italic mb-8">
                   "{t}"
                 </p>
               </blockquote>
@@ -42,10 +42,10 @@ const {
           ))}
         </div>
       </div>
-      <div class="flex justify-center gap-3 mt-8">
+      <div class="flex justify-center gap-3 mt-10">
         {testimonials.map((_, i) => (
           <button
-            class="testimonial-dot w-2 h-2 rounded-full bg-gold/30 transition-colors duration-300"
+            class="testimonial-dot w-2.5 h-2.5 rounded-full bg-gold/30 transition-colors duration-300"
             data-index={i}
             aria-label={`Ver testimonio ${i + 1}`}
           />

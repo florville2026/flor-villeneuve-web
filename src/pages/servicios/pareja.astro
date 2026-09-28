@@ -52,22 +52,22 @@ const whatsappUrl = `https://wa.me/59892497675?text=${encodeURIComponent(service
 
         <div class="space-y-4 mt-10">
           {service.topics.map((t) => (
-            <div class="p-6 bg-deep/60 border border-gold/15 rounded-sm reveal">
-              <h3 class="font-heading text-gold text-lg sm:text-xl font-light mb-2">{t.title}</h3>
-              <p class="font-body font-light text-parchment/70 text-sm leading-relaxed">{t.desc}</p>
+            <div class="p-6 sm:p-7 bg-deep/60 border border-gold/15 rounded-sm reveal">
+              <h3 class="font-heading text-gold text-xl sm:text-2xl font-light mb-2">{t.title}</h3>
+              <p class="font-body font-light text-parchment/80 text-base sm:text-lg leading-relaxed">{t.desc}</p>
             </div>
           ))}
         </div>
 
         <div class="mt-12 p-8 bg-deep border border-gold/20 rounded-sm reveal">
-          <p class="font-body font-light text-parchment/80 text-sm leading-relaxed italic">
+          <p class="font-body font-light text-parchment/85 text-base sm:text-lg leading-relaxed italic">
             <strong class="text-gold">Nota importante:</strong> {service.note}
           </p>
         </div>
 
         <!-- CTA -->
         <div class="mt-12 text-center reveal">
-          <p class="font-body font-light text-parchment/70 mb-6 text-sm">
+          <p class="font-body font-light text-parchment/80 mb-6 text-base sm:text-lg">
             Las sesiones se realizan de forma online mediante videollamada para Uruguay, Argentina y el exterior.
           </p>
           <Button href={whatsappUrl} variant="primary" external>

@@ -21,15 +21,15 @@ const whatsappBaseUrl = 'https://wa.me/59892497675';
     <section class="section-padding bg-deep border-b border-gold/10">
       <div class="container-padding max-w-4xl mx-auto">
         <div class="text-center mb-10 reveal">
-          <span class="font-body text-xs uppercase tracking-widest text-gold/80 mb-3 block">
-            {servicesIntro.badge}
-          </span>
-          <h1 class="font-display text-4xl md:text-5xl lg:text-6xl text-gold font-light tracking-wide">
+          <h1 class="font-display text-4xl sm:text-5xl lg:text-6xl text-gold font-light tracking-wide mb-3">
             {servicesIntro.heading}
           </h1>
+          <span class="font-body text-xs sm:text-sm uppercase tracking-widest text-gold/80 block">
+            {servicesIntro.badge}
+          </span>
         </div>
 
-        <div class="space-y-6 text-parchment/80 font-body font-light text-base md:text-lg leading-relaxed reveal reveal-delay-1">
+        <div class="space-y-6 text-parchment/85 font-body font-light text-lg sm:text-xl leading-relaxed reveal reveal-delay-1">
           {servicesIntro.paragraphs.map((paragraph) => (
             <p>{paragraph}</p>
           ))}
@@ -41,7 +41,7 @@ const whatsappBaseUrl = 'https://wa.me/59892497675';
     <section class="section-padding bg-night">
       <div class="container-padding max-w-5xl mx-auto">
         <SectionTitle
-          title="Nuestras Propuestas de Sesión"
+          title="Propuestas de sesiones"
           subtitle="Abordaje directo y riguroso para las áreas y temáticas reales que atraviesan los vínculos."
         />
 
@@ -65,21 +65,21 @@ const whatsappBaseUrl = 'https://wa.me/59892497675';
                 </div>
               </div>
 
-              <p class="font-body font-light text-parchment/90 text-base sm:text-lg leading-relaxed mb-8">
+              <p class="font-body font-light text-parchment/90 text-lg sm:text-xl leading-relaxed mb-8">
                 {service.description}
               </p>
 
               <div class="mb-8">
-                <h3 class="font-heading text-gold text-lg sm:text-xl font-light mb-4">
+                <h3 class="font-heading text-gold text-xl sm:text-2xl font-light mb-4">
                   Temáticas y áreas concretas que abordamos:
                 </h3>
                 <ul class="space-y-4">
                   {service.topics.map((t) => (
-                    <li class="p-4 bg-night/60 border border-gold/10 rounded-sm">
-                      <strong class="font-heading text-goldLight text-base block mb-1 font-medium">
+                    <li class="p-5 bg-night/60 border border-gold/10 rounded-sm">
+                      <strong class="font-heading text-goldLight text-lg block mb-1 font-medium">
                         {t.title}:
                       </strong>
-                      <span class="font-body font-light text-parchment/70 text-sm leading-relaxed block">
+                      <span class="font-body font-light text-parchment/80 text-base sm:text-lg leading-relaxed block">
                         {t.desc}
                       </span>
                     </li>
@@ -88,7 +88,7 @@ const whatsappBaseUrl = 'https://wa.me/59892497675';
               </div>
 
               <div class="pt-6 border-t border-gold/10">
-                <p class="font-body font-light text-parchment/60 text-xs sm:text-sm leading-relaxed mb-6 italic">
+                <p class="font-body font-light text-parchment/70 text-sm sm:text-base leading-relaxed mb-6 italic">
                   <strong>Nota:</strong> {service.note}
                 </p>
 
@@ -118,27 +118,27 @@ const whatsappBaseUrl = 'https://wa.me/59892497675';
 
     <!-- Modalidad -->
     <section class="section-padding bg-deep border-t border-gold/10">
-      <div class="container-padding max-w-4xl mx-auto text-center">
+      <div class="container-padding max-w-5xl mx-auto text-center">
         <SectionTitle
           title="Cómo se desarrollan las sesiones"
           subtitle="Un espacio confidencial, seguro y adaptado a tus tiempos."
         />
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-left mt-8">
-          <div class="p-6 bg-night/50 border border-gold/10 rounded-sm">
-            <h4 class="font-heading text-gold text-lg mb-2">Modalidad online</h4>
-            <p class="font-body font-light text-parchment/70 text-sm leading-relaxed">
+          <div class="p-6 sm:p-8 bg-night/50 border border-gold/10 rounded-sm">
+            <h4 class="font-heading text-gold text-xl sm:text-2xl mb-3">Modalidad online</h4>
+            <p class="font-body font-light text-parchment/80 text-base sm:text-lg leading-relaxed">
               Encuentros virtuales por videollamada para Uruguay, Argentina y cualquier lugar del mundo.
             </p>
           </div>
-          <div class="p-6 bg-night/50 border border-gold/10 rounded-sm">
-            <h4 class="font-heading text-gold text-lg mb-2">Mirada integrada</h4>
-            <p class="font-body font-light text-parchment/70 text-sm leading-relaxed">
+          <div class="p-6 sm:p-8 bg-night/50 border border-gold/10 rounded-sm">
+            <h4 class="font-heading text-gold text-xl sm:text-2xl mb-3">Mirada integrada</h4>
+            <p class="font-body font-light text-parchment/80 text-base sm:text-lg leading-relaxed">
               Combinación de escucha atenta, análisis riguroso de dinámicas y comprensión de la historia familiar.
             </p>
           </div>
-          <div class="p-6 bg-night/50 border border-gold/10 rounded-sm">
-            <h4 class="font-heading text-gold text-lg mb-2">Coordinación directa</h4>
-            <p class="font-body font-light text-parchment/70 text-sm leading-relaxed">
+          <div class="p-6 sm:p-8 bg-night/50 border border-gold/10 rounded-sm">
+            <h4 class="font-heading text-gold text-xl sm:text-2xl mb-3">Coordinación directa</h4>
+            <p class="font-body font-light text-parchment/80 text-base sm:text-lg leading-relaxed">
               Agendamos de forma personalizada por WhatsApp según tu disponibilidad y necesidad.
             </p>
           </div>

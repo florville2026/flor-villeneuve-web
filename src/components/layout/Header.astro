@@ -31,7 +31,7 @@ const navItems: NavItem[] = [
 
 <header class="fixed top-0 left-0 right-0 z-50 bg-deep/95 backdrop-blur-sm border-b border-gold/10">
   <div class="container-padding flex items-center justify-between py-4">
-    <a href="/" class="font-display text-lg md:text-xl lg:text-2xl font-semibold text-gold tracking-wide">
+    <a href="/" class="font-display text-xl sm:text-2xl lg:text-3xl font-semibold text-gold tracking-wide">
       Florencia Villeneuve
     </a>
 
@@ -52,20 +52,20 @@ const navItems: NavItem[] = [
   <nav id="mobile-menu" class="md:hidden hidden absolute top-full left-0 right-0 bg-night px-6 py-6 border-b border-gold/10 transition-all duration-300 ease-in-out opacity-0 -translate-y-2 invisible max-h-[85vh] overflow-y-auto">
     {navItems.map((item) => (
       item.children && item.children.length > 0 ? (
-        <div class="py-2 border-b border-gold/10">
+        <div class="py-2.5 border-b border-gold/10">
           <div class="flex items-center justify-between">
             <a
               href={item.href}
-              class="font-body font-normal text-parchment tracking-wide transition-colors duration-300 hover:text-gold py-1 block text-base"
+              class="font-body font-normal text-parchment tracking-wide transition-colors duration-300 hover:text-gold py-1 block text-lg"
             >
               {item.label}
             </a>
           </div>
-          <div class="pl-4 mt-1 space-y-2 border-l border-gold/20">
+          <div class="pl-4 mt-1.5 space-y-2.5 border-l border-gold/20">
             {item.children.map((subItem) => (
               <a
                 href={subItem.href}
-                class="font-body font-light text-parchment/70 tracking-wide transition-colors duration-300 hover:text-gold py-1.5 block text-sm"
+                class="font-body font-light text-parchment/80 tracking-wide transition-colors duration-300 hover:text-gold py-1.5 block text-base"
               >
                 {subItem.label}
               </a>
@@ -75,7 +75,7 @@ const navItems: NavItem[] = [
       ) : (
         <a
           href={item.href}
-          class="font-body font-light text-parchment/80 tracking-wide transition-colors duration-300 hover:text-gold py-3 block border-b border-gold/5"
+          class="font-body font-normal text-parchment/90 tracking-wide transition-colors duration-300 hover:text-gold py-3 block border-b border-gold/5 text-lg"
         >
           {item.label}
         </a>

@@ -20,28 +20,28 @@ const currentYear = new Date().getFullYear();
       <div>
         <a
           href="/"
-          class="font-display text-2xl font-semibold text-gold tracking-wide"
+          class="font-display text-2xl sm:text-3xl font-semibold text-gold tracking-wide"
         >
           Florencia Villeneuve
         </a>
         <p
-          class="font-body font-light text-parchment/60 mt-3 text-sm leading-relaxed"
+          class="font-body font-light text-parchment/70 mt-3.5 text-base leading-relaxed"
         >
           Acompañamiento y Sesiones para Parejas, Crianza y Dinámicas Familiares
         </p>
       </div>
 
       <div>
-        <h3 class="font-heading font-light text-gold tracking-wide mb-4">
+        <h3 class="font-heading text-lg sm:text-xl font-normal text-gold tracking-wide mb-5">
           Navegación
         </h3>
-        <ul class="space-y-2">
+        <ul class="space-y-2.5">
           {
             navItems.map((item) => (
               <li>
                 <a
                   href={item.href}
-                  class="font-body font-light text-parchment/60 text-sm hover:text-gold transition-colors duration-300"
+                  class="font-body font-light text-parchment/75 text-base hover:text-gold transition-colors duration-300"
                 >
                   {item.label}
                 </a>
@@ -52,7 +52,7 @@ const currentYear = new Date().getFullYear();
       </div>
 
       <div>
-        <h3 class="font-heading font-light text-gold tracking-wide mb-4">
+        <h3 class="font-heading text-lg sm:text-xl font-normal text-gold tracking-wide mb-5">
           Conectá
         </h3>
         <ul class="space-y-3">
@@ -61,7 +61,7 @@ const currentYear = new Date().getFullYear();
               href="https://wa.me/59892497675"
               target="_blank"
               rel="noopener noreferrer"
-              class="font-body font-light text-parchment/60 text-sm hover:text-gold transition-colors duration-300"
+              class="font-body font-light text-parchment/75 text-base hover:text-gold transition-colors duration-300"
             >
               WhatsApp
             </a>
@@ -71,7 +71,7 @@ const currentYear = new Date().getFullYear();
               href="https://chat.whatsapp.com/L7jnhxhIvqb6QbwnFN1PJo"
               target="_blank"
               rel="noopener noreferrer"
-              class="font-body font-light text-parchment/60 text-sm hover:text-gold transition-colors duration-300"
+              class="font-body font-light text-parchment/75 text-base hover:text-gold transition-colors duration-300"
             >
               Comunidad de WhatsApp
             </a>
@@ -79,7 +79,7 @@ const currentYear = new Date().getFullYear();
           <li>
             <a
               href="mailto:florencia.villeneuve@gmail.com"
-              class="font-body font-light text-parchment/60 text-sm hover:text-gold transition-colors duration-300"
+              class="font-body font-light text-parchment/75 text-base hover:text-gold transition-colors duration-300"
             >
               florencia.villeneuve@gmail.com
             </a>
@@ -89,7 +89,7 @@ const currentYear = new Date().getFullYear();
               href="https://www.instagram.com/florencia.villeneuve"
               target="_blank"
               rel="noopener noreferrer"
-              class="font-body font-light text-parchment/60 text-sm hover:text-gold transition-colors duration-300"
+              class="font-body font-light text-parchment/75 text-base hover:text-gold transition-colors duration-300"
             >
               Instagram
             </a>
@@ -99,7 +99,7 @@ const currentYear = new Date().getFullYear();
               href="https://www.youtube.com/@florencia.villeneuve"
               target="_blank"
               rel="noopener noreferrer"
-              class="font-body font-light text-parchment/60 text-sm hover:text-gold transition-colors duration-300"
+              class="font-body font-light text-parchment/75 text-base hover:text-gold transition-colors duration-300"
             >
               YouTube
             </a>
@@ -108,14 +108,14 @@ const currentYear = new Date().getFullYear();
       </div>
 
       <div>
-        <h3 class="font-heading font-light text-gold tracking-wide mb-4">
+        <h3 class="font-heading text-lg sm:text-xl font-normal text-gold tracking-wide mb-5">
           Términos
         </h3>
         <ul class="space-y-3">
           <li>
             <a
               href="/terminos-y-condiciones"
-              class="font-body font-light text-parchment/60 text-sm hover:text-gold transition-colors duration-300"
+              class="font-body font-light text-parchment/75 text-base hover:text-gold transition-colors duration-300"
             >
               Términos y condiciones
             </a>
@@ -123,7 +123,7 @@ const currentYear = new Date().getFullYear();
           <li>
             <a
               href="/politica-de-cookies"
-              class="font-body font-light text-parchment/60 text-sm hover:text-gold transition-colors duration-300"
+              class="font-body font-light text-parchment/75 text-base hover:text-gold transition-colors duration-300"
             >
               Política de Cookies
             </a>
@@ -135,12 +135,12 @@ const currentYear = new Date().getFullYear();
     <div
       class="gold-divider mt-12 pt-8 flex flex-col md:flex-row justify-between items-center gap-4"
     >
-      <p class="font-body font-light text-parchment/40 text-xs">
+      <p class="font-body font-light text-parchment/50 text-sm">
         &copy; {currentYear} Florencia Villeneuve. Todos los derechos reservados.
       </p>
-      <p class="font-body font-light text-parchment/40 text-xs">
+      <p class="font-body font-light text-parchment/50 text-sm">
         Desarrollado por <a
-          href="https://pablomgdev.lat/"
+          href="https://pablomgdev.xyz/"
           target="_blank"
           rel="noopener noreferrer"
           class="hover:text-gold transition-colors duration-300">Pablo MG</a

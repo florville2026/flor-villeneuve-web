@@ -40,17 +40,17 @@ const whatsappUrl = 'https://wa.me/59892497675';
               <div class="space-y-6">
                 {category.items.map((item) => (
                   <article class="p-6 md:p-8 border border-gold/15 rounded-sm bg-night/70 backdrop-blur-sm hover:border-gold/35 transition-colors duration-300 reveal">
-                    <h3 class="font-heading font-normal text-gold text-lg md:text-xl mb-4 leading-snug">
+                    <h3 class="font-heading font-normal text-gold text-xl md:text-2xl mb-4 leading-snug">
                       {item.question}
                     </h3>
-                    <div class="space-y-3 font-body font-light text-parchment/80 leading-relaxed">
+                    <div class="space-y-3 font-body font-light text-parchment/85 text-base sm:text-lg leading-relaxed">
                       {item.paragraphs.map((paragraph) => (
                         <p>{paragraph}</p>
                       ))}
                       {item.bullets && item.bullets.length > 0 && (
                         <ul class="space-y-2.5 my-3 pl-1">
                           {item.bullets.map((bullet) => (
-                            <li class="flex items-start gap-3 text-parchment/90">
+                            <li class="flex items-start gap-3 text-parchment/90 text-base sm:text-lg">
                               <span class="text-gold font-normal select-none leading-relaxed">—</span>
                               <span>{bullet}</span>
                             </li>

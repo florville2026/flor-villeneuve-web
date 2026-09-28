@@ -1,8 +1,8 @@
 import type { VincularService } from '../types';
 
 export const servicesIntro = {
-  heading: 'Servicios y Sesiones',
-  badge: 'Acompañamiento Vincular',
+  heading: 'Acompañamiento Vincular',
+  badge: 'Servicios y Sesiones',
   paragraphs: [
     'Entiendo que nuestras relaciones más cercanas —la pareja, la familia, la crianza— son el escenario donde se manifiestan nuestras mayores luces y también nuestras heridas más profundas. A menudo, nos encontramos repitiendo patrones de comunicación, asumiendo roles rígidos o sintiendo nudos que parecen imposibles de desatar, sin comprender de dónde vienen.',
     'Mi enfoque combina la escucha atenta, la comprensión profunda de la historia que habita tu sistema familiar y un análisis riguroso de las dinámicas de tus vínculos actuales.',

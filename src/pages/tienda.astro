@@ -9,26 +9,26 @@ const whatsappUrl = 'https://wa.me/59892497675';
 const upcomingItems = [
   {
     category: 'Material Editorial',
-    title: 'Guías y Cuadernos Simbólicos',
-    desc: 'Publicaciones digitales e impresas diseñadas para el trabajo personal, la exploración de arquetipos y el registro de procesos internos.',
+    title: 'Ebooks y Cuadernos en PDF',
+    desc: 'Publicaciones digitales descargables diseñadas para el trabajo personal, la exploración vincular y el registro de procesos internos.',
   },
   {
-    category: 'Herramientas',
-    title: 'Oráculos y Barajas Temáticas',
-    desc: 'Objetos rituales y mazos de inspiración visual para habilitar el diálogo con el inconsciente y la sincronía.',
+    category: 'Formación y Talleres',
+    title: 'Workshops y Espacios Vivos',
+    desc: 'Instancias formativas y experiencias prácticas para profundizar en la comprensión y dinámica de los vínculos.',
   },
   {
     category: 'Recursos Digitales',
-    title: 'Clases Magistrales y Audios',
-    desc: 'Meditaciones guiadas, mapas de tránsitos y cápsulas de estudio para profundizar a tu propio ritmo.',
+    title: 'Clases Magistrales y Guías',
+    desc: 'Materiales en PDF, cápsulas de estudio y herramientas para profundizar a tu propio ritmo.',
   },
 ];
 ---
 
 <BaseLayout
-  title="Tienda"
-  description="Tienda de Florencia Villeneuve. Próximamente: oráculos, guías simbólicas, libros y recursos de autoconocimiento y arte."
-  keywords="tienda esotérica, oráculos simbólicos, libros de astrología, guías de autoconocimiento, Florencia Villeneuve, Montevideo, Uruguay"
+  title="Tienda Online"
+  description="Tienda Online de Florencia Villeneuve. Próximamente: workshops, ebooks, PDFs y recursos de autoconocimiento y acompañamiento vincular."
+  keywords="tienda online, workshops, ebooks, PDFs, guías de autoconocimiento, Florencia Villeneuve, acompañamiento vincular, Uruguay, Argentina"
   canonical="/tienda"
 >
   <Header />
@@ -39,15 +39,15 @@ const upcomingItems = [
         <span class="inline-block px-3 py-1 bg-gold/15 text-gold text-xs font-body uppercase tracking-widest rounded-full mb-6 border border-gold/30">
           Próximamente
         </span>
-        <h1 class="font-display text-4xl md:text-5xl lg:text-6xl text-gold font-light mb-6 tracking-wide">
-          Tienda Simbólica
+        <h1 class="font-display text-4xl sm:text-5xl lg:text-6xl text-gold font-light mb-6 tracking-wide">
+          Tienda Online
         </h1>
-        <p class="font-body font-light text-parchment/80 text-lg md:text-xl leading-relaxed mb-8">
-          Un espacio en preparación dedicado a herramientas, publicaciones y objetos creados para acompañar tus prácticas cotidianas y tu camino de autodescubrimiento.
+        <p class="font-body font-light text-parchment/85 text-lg sm:text-xl lg:text-2xl leading-relaxed mb-8">
+          Un espacio en preparación dedicado a workshops, ebooks, PDFs y herramientas creadas para acompañar tus prácticas cotidianas y tu camino de autodescubrimiento.
         </p>
         <div class="inline-block p-1 border-b border-gold/30">
-          <p class="font-heading italic text-sm text-gold/80">
-            Estamos seleccionando y diseñando cada pieza con cuidado artesanal y sentido místico.
+          <p class="font-heading italic text-base sm:text-lg text-gold/85">
+            Estamos seleccionando y diseñando cada propuesta con cuidado y conocimiento de cada área.
           </p>
         </div>
       </div>
@@ -63,10 +63,10 @@ const upcomingItems = [
                 <span class="font-body text-xs text-gold/60 uppercase tracking-wider block mb-2">
                   {item.category}
                 </span>
-                <h3 class="font-heading text-xl text-gold font-normal mb-3">
+                <h3 class="font-heading text-xl sm:text-2xl text-gold font-normal mb-3">
                   {item.title}
                 </h3>
-                <p class="font-body font-light text-parchment/70 text-sm leading-relaxed">
+                <p class="font-body font-light text-parchment/80 text-base leading-relaxed">
                   {item.desc}
                 </p>
               </div>
@@ -78,8 +78,8 @@ const upcomingItems = [
         </div>
 
         <div class="mt-16 text-center max-w-xl mx-auto">
-          <h4 class="font-display text-2xl text-gold mb-3 font-light">¿Buscás algún material o lectura específica?</h4>
-          <p class="font-body font-light text-parchment/70 text-sm mb-6 leading-relaxed">
+          <h4 class="font-display text-2xl sm:text-3xl text-gold mb-3 font-light">¿Buscás algún material o lectura específica?</h4>
+          <p class="font-body font-light text-parchment/80 text-base mb-6 leading-relaxed">
             Podés escribir directamente para consultar por recomendaciones bibliográficas o recursos personalizados.
           </p>
           <Button href={whatsappUrl} variant="primary" external>

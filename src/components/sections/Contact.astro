@@ -20,23 +20,19 @@ const {
   <div class="container-padding">
     <SectionTitle title={title} subtitle={subtitle} />
     <div
-      class="max-w-xl mx-auto reveal bg-deep/60 border border-gold/15 p-8 sm:p-12 rounded-sm shadow-2xl text-center space-y-8"
+      class="max-w-2xl mx-auto reveal bg-deep/60 border border-gold/15 p-8 sm:p-12 md:p-14 rounded-sm shadow-2xl text-center space-y-8"
     >
-      <p class="font-body font-light text-parchment/80 text-base md:text-lg leading-relaxed">
-        Las consultas y coordinaciones de sesiones se canalizan directamente por WhatsApp o vía correo electrónico.
+      <p class="font-body font-light text-parchment/90 text-lg sm:text-xl md:text-2xl leading-relaxed">
+        Las consultas y coordinaciones de sesiones se hacen directamente por WhatsApp o vía correo electrónico.
       </p>
 
-      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-5">
         <Button href={whatsappUrl} variant="primary" external>
           Escribime por WhatsApp
         </Button>
         <Button href={emailUrl} variant="outline" external>
           Enviar un correo
         </Button>
-      </div>
-
-      <div class="pt-4 border-t border-gold/10 text-xs font-body font-light text-parchment/60">
-        Respondo personalmente de lunes a viernes.
       </div>
     </div>
   </div>

@@ -65,7 +65,7 @@ flor-villeneuve-web/
 │   │   ├── blog.astro          # Archivo de reflexiones con navegación por subsecciones
 │   │   ├── blog/               # Páginas individuales de lectura y permalinks para SEO
 │   │   │   └── [slug].astro    # Lectura completa de artículo con schema BlogPosting
-│   │   ├── tienda.astro        # Boutique simbólica (Próximamente)
+│   │   ├── tienda.astro        # Tienda Online (Workshops, Ebooks, PDFs)
 │   │   ├── bio.astro           # Biografía / Sobre mí
 │   │   ├── politica-de-cookies.astro # Página legal de cookies
 │   │   ├── preguntas.astro     # Preguntas frecuentes (FAQ)
@@ -151,8 +151,8 @@ flor-villeneuve-web/
 ## 6. Convenciones de SEO y Metadatos
 
 - **BaseLayout:** Toda página debe utilizar [BaseLayout.astro](file:///c:/Users/pablo/pablo/Documents/Coding/flor-villeneuve-web/src/layouts/BaseLayout.astro) proporcionando:
-  - `title`: Título conciso (se le añade automáticamente el prefijo `Florencia Villeneuve — `).
-  - `description`: Meta descripción clara y persuasiva.
+  - `title`: Título conciso (se le añade automáticamente el prefijo `Florencia Villeneuve — `; para la Home `title="Inicio"` genera `Florencia Villeneuve — Parejas · Crianza · Vínculos`).
+  - `description`: Meta descripción clara y persuasiva centrada en parejas, crianza y vínculos.
   - `keywords`: Lista de palabras clave separadas por comas (validado en `page-metadata.test.ts`).
   - `canonical`: Ruta relativa canónica (ej. `/servicios`).
 - **Datos Estructurados (JSON-LD):**
@@ -216,6 +216,9 @@ flor-villeneuve-web/
 - **Páginas Individuales (`src/pages/blog/[slug].astro`):**
   - Generadas estáticamente con `getStaticPaths`.
   - Incluyen schema JSON-LD estructurado (`BlogPosting`), canonical único, tarjeta de invitación a la comunidad y tarjetas de lecturas recomendadas.
+- **Tarjetas de Listado (`BlogArticleCard.astro`):**
+  - En la vista de archivo/listado (`/blog`), se presenta un extracto ágil con el párrafo introductorio y un enlace directo `Leer más →` para invitar a la lectura completa.
+  - Se eliminó el texto técnico *"permalink"* para simplificar la comprensión del usuario final.
 
 ---
 

@@ -1,5 +1,4 @@
 ---
-import SectionTitle from '../ui/SectionTitle.astro';
 ---
 
 <section class="section-padding bg-mist">
@@ -13,21 +12,29 @@ import SectionTitle from '../ui/SectionTitle.astro';
         />
       </div>
       <div>
-        <SectionTitle
-          title="Sobre mí"
-          subtitle="Acompañamiento e investigación en la arquitectura viva de las relaciones."
-          light={true}
-        />
-        <div class="space-y-4 mt-6">
-          <p class="font-body font-light text-earth/80 leading-relaxed reveal reveal-delay-1">
+        <div class="text-center mb-8 reveal">
+          <h2 class="font-display font-semibold tracking-wide text-ink text-4xl sm:text-5xl lg:text-6xl">
+            Sobre mí
+          </h2>
+          <p class="font-body font-light text-earth/75 text-lg sm:text-xl lg:text-2xl mt-4 max-w-xl mx-auto leading-relaxed">
+            Acompañamiento e investigación en la arquitectura viva de las relaciones.
+          </p>
+          <div class="flex justify-center mt-6">
+            <span class="block w-16 h-px bg-gold/40"></span>
+          </div>
+        </div>
+
+        <div class="space-y-6 mt-8">
+          <p class="font-body font-light text-earth/85 text-lg sm:text-xl leading-relaxed reveal reveal-delay-1">
             Si algo he aprendido a lo largo de mi camino, es que las relaciones no son estructuras estáticas ni fórmulas que se resuelven una vez y para siempre. El territorio de los vínculos está profundamente vivo: se mueve, muta, nos confronta y se reorganiza constantemente.
           </p>
-          <p class="font-body font-light text-earth/80 leading-relaxed reveal reveal-delay-2">
+          <p class="font-body font-light text-earth/85 text-lg sm:text-xl leading-relaxed reveal reveal-delay-2">
             No existimos en el aislamiento; todas las relaciones de nuestra vida están interconectadas por una misma trama invisible. Acompañar la arquitectura de tus relaciones es, para mí, un acto de presencia viva: un espacio riguroso, cálido y profundo para dejar de reaccionar desde el dolor heredado y habitar tus vínculos con verdadera conciencia, solidez y libertad.
           </p>
         </div>
-        <div class="mt-8 reveal">
-          <a href="/bio" class="inline-block font-body font-medium text-gold text-sm tracking-wide border-b border-gold/30 pb-0.5 hover:border-gold transition-colors duration-300">
+
+        <div class="mt-8 md:mt-10 reveal text-center md:text-left">
+          <a href="/bio" class="inline-block font-body font-medium text-gold text-base sm:text-lg tracking-wide border-b border-gold/40 pb-1 hover:border-gold hover:text-goldLight transition-colors duration-300">
             Conocer mi historia y recorrido →
           </a>
         </div>

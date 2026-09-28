@@ -10,7 +10,7 @@ import { bioData } from '../data/bio';
 <BaseLayout
   title="Sobre mí | Florencia Villeneuve"
   description="Acompañamiento e investigación en la arquitectura viva de las relaciones. Conoce el recorrido, la mirada y el marco de trabajo de Florencia Villeneuve."
-  keywords="Florencia Villeneuve, sobre mí, biografía, acompañamiento vincular, psicología jungiana, arte terapia, sistemas familiares, Un curso de milagros, Montevideo, Buenos Aires"
+  keywords="Florencia Villeneuve, sobre mí, biografía, acompañamiento vincular, psicología jungiana, parejas, crianza, vinculos, sistemas familiares, Un curso de milagros, Montevideo, Buenos Aires"
   canonical="/bio"
 >
   <Header />
@@ -35,10 +35,10 @@ import { bioData } from '../data/bio';
 
         <!-- Cita Inspiracional -->
         <blockquote class="border-l-2 border-gold/50 pl-6 sm:pl-8 py-4 my-10 bg-night/80 rounded-r-sm max-w-2xl mx-auto reveal">
-          <p class="font-display text-2xl sm:text-3xl text-gold/90 italic leading-relaxed">
+          <p class="font-display text-2xl sm:text-3xl md:text-4xl text-gold/90 italic leading-relaxed">
             "{bioData.quote.text}"
           </p>
-          <footer class="mt-2 text-xs sm:text-sm font-body font-light text-parchment/60 not-italic tracking-wide">
+          <footer class="mt-2 text-sm sm:text-base font-body font-light text-parchment/60 not-italic tracking-wide">
             — {bioData.quote.author}
           </footer>
         </blockquote>
@@ -53,7 +53,7 @@ import { bioData } from '../data/bio';
             <h2 class="font-display text-2xl sm:text-3xl text-gold font-light tracking-wide leading-snug border-b border-gold/15 pb-3">
               {sec.title}
             </h2>
-            <div class="space-y-4 font-body font-light text-parchment/85 text-base sm:text-lg leading-relaxed text-justify sm:text-left">
+            <div class="space-y-4 font-body font-light text-parchment/85 text-lg sm:text-xl leading-relaxed text-justify sm:text-left">
               {sec.paragraphs.map((p) => (
                 <p>{p}</p>
               ))}
@@ -66,7 +66,7 @@ import { bioData } from '../data/bio';
           <h2 class="font-display text-2xl sm:text-3xl text-gold font-light mb-4 leading-snug">
             {bioData.frameworkTitle}
           </h2>
-          <p class="font-body font-light text-parchment/80 text-sm sm:text-base leading-relaxed mb-8">
+          <p class="font-body font-light text-parchment/85 text-base sm:text-lg leading-relaxed mb-8">
             {bioData.frameworkLead}
           </p>
           <div class="space-y-5">
@@ -75,7 +75,7 @@ import { bioData } from '../data/bio';
                 <h3 class="font-heading text-lg sm:text-xl text-gold font-normal mb-1">
                   {item.title}
                 </h3>
-                <p class="font-body font-light text-parchment/75 text-sm sm:text-base leading-relaxed">
+                <p class="font-body font-light text-parchment/80 text-base sm:text-lg leading-relaxed">
                   {item.description}
                 </p>
               </div>
@@ -88,7 +88,7 @@ import { bioData } from '../data/bio';
           <h2 class="font-display text-2xl sm:text-3xl text-gold font-light tracking-wide leading-snug border-b border-gold/15 pb-3">
             {bioData.closingTitle}
           </h2>
-          <div class="space-y-4 font-body font-light text-parchment/85 text-base sm:text-lg leading-relaxed text-justify sm:text-left">
+          <div class="space-y-4 font-body font-light text-parchment/85 text-lg sm:text-xl leading-relaxed text-justify sm:text-left">
             {bioData.closingParagraphs.map((p) => (
               <p>{p}</p>
             ))}
@@ -103,7 +103,7 @@ import { bioData } from '../data/bio';
           <h3 class="font-display text-2xl sm:text-3xl text-gold font-light mb-4">
             Explorá las modalidades de trabajo y sesiones
           </h3>
-          <p class="font-body font-light text-parchment/75 text-sm sm:text-base max-w-xl mx-auto mb-8 leading-relaxed">
+          <p class="font-body font-light text-parchment/80 text-base sm:text-lg max-w-xl mx-auto mb-8 leading-relaxed">
             Te invito a conocer las sesiones de Pareja, Crianza y Proceso Vincular Individual diseñadas para destrabar patrones y traer claridad a tus relaciones.
           </p>
           <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">

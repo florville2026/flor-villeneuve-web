@@ -1,4 +1,4 @@
-﻿---
+---
 interface Props {
   title: string;
   subtitle?: string;
@@ -12,14 +12,14 @@ const { title, subtitle, light = false } = Astro.props;
   <h2 class:list={[
     'font-display font-semibold tracking-wide',
     light ? 'text-ink' : 'text-parchment',
-    'text-4xl md:text-5xl',
+    'text-4xl sm:text-5xl lg:text-6xl',
   ]}>
     {title}
   </h2>
   {subtitle && (
     <p class:list={[
-      'font-body font-light mt-4 max-w-2xl mx-auto leading-relaxed',
-      light ? 'text-earth/70' : 'text-parchment/60',
+      'font-body font-light mt-4 sm:mt-5 text-lg sm:text-xl lg:text-2xl max-w-3xl mx-auto leading-relaxed',
+      light ? 'text-earth/80' : 'text-parchment/75',
     ]}>
       {subtitle}
     </p>
