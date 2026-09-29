@@ -31,6 +31,7 @@ export interface VincularService {
   subtitle: string;
   slug: string;
   description: string;
+  introParagraphs?: string[];
   duration: string;
   note: string;
   whatsappMessage: string;

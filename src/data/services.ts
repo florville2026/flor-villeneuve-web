@@ -18,7 +18,13 @@ export const vincularServices: VincularService[] = [
     subtitle: 'Acompañamiento para Parejas',
     slug: '/servicios/pareja',
     description:
-      'Un espacio de análisis y abordaje directo para detener la inercia del conflicto, comprender la arquitectura del vínculo y destrabar la dinámica de a dos.',
+      'Un espacio de pausa y claridad para comprender la trama viva de la relación, desarmar los bucles reactivos y recuperar la verdadera escucha.',
+    introParagraphs: [
+      'Un espacio de pausa y claridad para comprender la trama viva de la relación, desarmar los bucles reactivos y recuperar la verdadera escucha.',
+      'La vida en pareja suele confrontarnos con nuestras capas más profundas. Con el paso del tiempo, el desgaste cotidiano, la rigidez en los roles o las heridas no expresadas pueden transformar el encuentro en un territorio de tensión, distancia o silencio. Muchas veces no falla el amor, sino la manera en que procesamos el conflicto.',
+      'En este espacio no venimos a arbitrar discusiones ni a determinar quién tiene la razón. Trabajamos abordando la arquitectura del vínculo: mapeamos los patrones invisibles, las necesidades de apego y las lealtades inconscientes que condicionan la convivencia.',
+      'Es una instancia diagnóstica y profundamente terapéutica diseñada para detener la inercia del distanciamiento, devolverle la serenidad a la comunicación y brindarles herramientas concretas para tomar decisiones con mayor conciencia y libertad.',
+    ],
     duration: '1 hora y 30 minutos',
     note: 'Luego de esta primera sesión diagnóstica, la continuidad de los encuentros se coordina y agendan de forma directa a través de WhatsApp según las necesidades del proceso.',
     whatsappMessage:

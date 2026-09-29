@@ -30,9 +30,25 @@ const whatsappUrl = `https://wa.me/59892497675?text=${encodeURIComponent(service
         <h1 class="font-display text-4xl md:text-5xl lg:text-6xl text-gold font-light mb-6 tracking-wide">
           {service.title}
         </h1>
-        <p class="font-body font-light text-parchment/80 text-lg md:text-xl leading-relaxed max-w-2xl mx-auto mb-6">
-          {service.description}
-        </p>
+        {service.introParagraphs && service.introParagraphs.length > 0 ? (
+          <div class="space-y-4 max-w-3xl mx-auto mb-8 text-center">
+            {service.introParagraphs.map((paragraph, pIdx) => (
+              <p
+                class:list={[
+                  pIdx === 0
+                    ? 'font-body font-normal text-goldLight text-lg md:text-xl leading-relaxed'
+                    : 'font-body font-light text-parchment/80 text-base md:text-lg leading-relaxed',
+                ]}
+              >
+                {paragraph}
+              </p>
+            ))}
+          </div>
+        ) : (
+          <p class="font-body font-light text-parchment/80 text-lg md:text-xl leading-relaxed max-w-2xl mx-auto mb-6">
+            {service.description}
+          </p>
+        )}
         <div class="inline-flex items-center gap-2 px-4 py-2 bg-gold/10 border border-gold/20 rounded-full text-gold text-xs font-body tracking-wide">
           <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />

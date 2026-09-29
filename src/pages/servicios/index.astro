@@ -65,9 +65,25 @@ const whatsappBaseUrl = 'https://wa.me/59892497675';
                 </div>
               </div>
 
-              <p class="font-body font-light text-parchment/90 text-lg sm:text-xl leading-relaxed mb-8">
-                {service.description}
-              </p>
+              {service.introParagraphs && service.introParagraphs.length > 0 ? (
+                <div class="space-y-4 mb-8">
+                  {service.introParagraphs.map((paragraph, pIdx) => (
+                    <p
+                      class:list={[
+                        pIdx === 0
+                          ? 'font-body font-normal text-parchment text-lg sm:text-xl leading-relaxed'
+                          : 'font-body font-light text-parchment/80 text-base sm:text-lg leading-relaxed',
+                      ]}
+                    >
+                      {paragraph}
+                    </p>
+                  ))}
+                </div>
+              ) : (
+                <p class="font-body font-light text-parchment/90 text-lg sm:text-xl leading-relaxed mb-8">
+                  {service.description}
+                </p>
+              )}
 
               <div class="mb-8">
                 <h3 class="font-heading text-gold text-xl sm:text-2xl font-light mb-4">
