@@ -158,7 +158,7 @@ export const blogPosts: BlogPost[] = [
       title: 'Proceso Vincular Individual',
       slug: '/servicios/proceso-vincular',
       description:
-        'Si descubrís patrones de complacencia, miedo al conflicto o dificultad para poner límites en tus relaciones, este proceso individual es tu espacio.',
+        'Un espacio de inmersión y soberanía personal para descifrar tu matriz relacional, desarticular lealtades invisibles y habitar tus vínculos desde tu verdadera autonomía.',
       ctaText: 'Ver detalles del Proceso Vincular',
       whatsappMessage:
         'Hola Flor, leí el artículo sobre reciprocidad y amistad y me gustaría iniciar un Proceso Vincular Individual.',

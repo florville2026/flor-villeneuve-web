@@ -98,7 +98,13 @@ export const vincularServices: VincularService[] = [
     subtitle: 'Acompañamiento Vincular Individual',
     slug: '/servicios/proceso-vincular',
     description:
-      'Un trabajo en profundidad sobre tu matriz relacional para comprender tus patrones de elección, sanar tu historia familiar y transformar la manera en que te entregas al amor.',
+      'Un espacio de inmersión y soberanía personal para descifrar tu matriz relacional, desarticular lealtades invisibles y habitar tus vínculos desde tu verdadera autonomía.',
+    introParagraphs: [
+      'Un espacio de inmersión y soberanía personal para descifrar tu matriz relacional, desarticular lealtades invisibles y habitar tus vínculos desde tu verdadera autonomía.',
+      'Nuestra forma de amar, de elegir y de poner límites no es casual. Está moldeada por nuestras primeras experiencias de pertenencia, la historia de nuestro árbol familiar y las estrategias de defensa que fuimos construyendo para no ser heridos. A menudo, nos encontramos repitiendo el mismo tipo de conflicto, atrayendo dinámicas similares o sintiendo una brecha insalvable entre lo que deseamos y lo que logramos construir en nuestras relaciones.',
+      'Este espacio está diseñado para cuando querés mirar hacia adentro con honestidad y rigor. No trabajamos sobre el síntoma aislado ni desde el juicio hacia el afuera, sino sobre la arquitectura de tu mundo vincular: exploramos tus estilos de apego, le damos luz a las lealtades transgeneracionales inconscientes y reconocemos los roles que asumís frente a los demás.',
+      'Es una instancia de diagnóstico profundo y transformación personal que te permite dejar de reaccionar desde la herida heredada, recuperar la confianza en tu propia voz y construir una base de valor propio para entregarte al encuentro con el otro desde la libertad y la conciencia.',
+    ],
     duration: '1 hora y 30 minutos',
     note: 'Luego de esta primera sesión diagnóstica, la continuidad de los encuentros se coordina y agendan de forma directa a través de WhatsApp según las necesidades del proceso.',
     whatsappMessage:
