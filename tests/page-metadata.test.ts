@@ -31,4 +31,14 @@ describe("Page metadata", () => {
       expect(content).toContain('keywords="');
     });
   }
+
+  it("verifies home page title and description", async () => {
+    const content = await readProjectFile("src/pages/index.astro");
+    expect(content).toContain(
+      'title="Florencia Villeneuve | Parejas, Crianza y Familia"',
+    );
+    expect(content).toContain(
+      'description="Acompañamiento y sesiones online para parejas, crianza y familia. Herramientas para destrabar la comunicación y la dinámica de tus vínculos. Reserva online."',
+    );
+  });
 });

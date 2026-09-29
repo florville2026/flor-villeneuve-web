@@ -151,7 +151,7 @@ flor-villeneuve-web/
 ## 6. Convenciones de SEO y Metadatos
 
 - **BaseLayout:** Toda página debe utilizar [BaseLayout.astro](file:///c:/Users/pablo/pablo/Documents/Coding/flor-villeneuve-web/src/layouts/BaseLayout.astro) proporcionando:
-  - `title`: Título conciso (se le añade automáticamente el prefijo `Florencia Villeneuve — `; para la Home `title="Inicio"` genera `Florencia Villeneuve — Parejas · Crianza · Vínculos`).
+  - `title`: Título conciso (se le añade automáticamente el prefijo `Florencia Villeneuve — `; para la Home genera `Florencia Villeneuve | Parejas, Crianza y Familia`).
   - `description`: Meta descripción clara y persuasiva centrada en parejas, crianza y vínculos.
   - `keywords`: Lista de palabras clave separadas por comas (validado en `page-metadata.test.ts`).
   - `canonical`: Ruta relativa canónica (ej. `/servicios`).

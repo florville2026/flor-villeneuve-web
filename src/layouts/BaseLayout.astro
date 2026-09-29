@@ -10,7 +10,12 @@ interface Props {
 }
 
 const { title, description, canonical = Astro.url.pathname, keywords } = Astro.props;
-const fullTitle = title === 'Inicio' ? 'Florencia Villeneuve — Parejas · Crianza · Vínculos' : `Florencia Villeneuve — ${title}`;
+const fullTitle =
+  title === 'Inicio' || title === 'Florencia Villeneuve | Parejas, Crianza y Familia'
+    ? 'Florencia Villeneuve | Parejas, Crianza y Familia'
+    : title.startsWith('Florencia Villeneuve')
+      ? title
+      : `Florencia Villeneuve — ${title}`;
 const siteUrl = 'https://florenciavilleneuve.com';
 const ogImage = `${siteUrl}/img/og-image.png`;
 const canonicalUrl = `${siteUrl}${canonical}`;
