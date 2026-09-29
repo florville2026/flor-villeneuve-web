@@ -14,7 +14,7 @@ export const servicesIntro = {
 export const vincularServices: VincularService[] = [
   {
     id: 'pareja',
-    title: 'Sesión de Acompañamiento de Pareja',
+    title: 'Sesión de Acompañamiento para la Pareja',
     subtitle: 'Acompañamiento para Parejas',
     slug: '/servicios/pareja',
     description:
@@ -22,7 +22,7 @@ export const vincularServices: VincularService[] = [
     duration: '1 hora y 30 minutos',
     note: 'Luego de esta primera sesión diagnóstica, la continuidad de los encuentros se coordina y agendan de forma directa a través de WhatsApp según las necesidades del proceso.',
     whatsappMessage:
-      'Hola Flor, me gustaría reservar lugar para la primera Sesión de Acompañamiento de Pareja.',
+      'Hola Flor, me gustaría reservar lugar para la primera Sesión de Acompañamiento para la Pareja.',
     topics: [
       {
         title: 'Comunicación y Dinámica de Discusión',

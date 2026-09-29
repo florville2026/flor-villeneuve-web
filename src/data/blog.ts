@@ -70,13 +70,13 @@ export const blogPosts: BlogPost[] = [
     ],
     relatedService: {
       serviceId: 'pareja',
-      title: 'Sesión de Acompañamiento de Pareja',
+      title: 'Sesión de Acompañamiento para la Pareja',
       slug: '/servicios/pareja',
       description:
         'Si reconocés este bucle de invisibilidad o reclamo en tu relación, podemos desarmar la dinámica de origen y reconfigurar la comunicación de a dos.',
       ctaText: 'Ver detalles de la Sesión de Pareja',
       whatsappMessage:
-        'Hola Flor, leí el artículo sobre polaridades en la pareja y me gustaría agendar la primera Sesión de Acompañamiento de Pareja.',
+        'Hola Flor, leí el artículo sobre polaridades en la pareja y me gustaría agendar la primera Sesión de Acompañamiento para la Pareja.',
     },
   },
   {
