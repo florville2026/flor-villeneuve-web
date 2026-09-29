@@ -7,6 +7,30 @@ import Button from '../../components/ui/Button.astro';
 import { servicesIntro, vincularServices } from '../../data/services';
 
 const whatsappBaseUrl = 'https://wa.me/59892497675';
+
+interface CalServiceConfig {
+  namespace: string;
+  calLink: string;
+  elementId: string;
+}
+
+const calConfigs: Record<string, CalServiceConfig> = {
+  pareja: {
+    namespace: 'sesiondepareja',
+    calLink: 'florencia-villeneuve/sesiondepareja',
+    elementId: 'my-cal-inline-sesiondepareja',
+  },
+  'crianza-familia': {
+    namespace: 'sesiondecrianza',
+    calLink: 'florencia-villeneuve/sesiondecrianza',
+    elementId: 'my-cal-inline-sesiondecrianza',
+  },
+  'proceso-vincular': {
+    namespace: 'sesionindividualvincular',
+    calLink: 'florencia-villeneuve/sesionindividualvincular',
+    elementId: 'my-cal-inline-sesionindividualvincular',
+  },
+};
 ---
 
 <BaseLayout
@@ -46,88 +70,154 @@ const whatsappBaseUrl = 'https://wa.me/59892497675';
         />
 
         <div class="space-y-16 mt-12">
-          {vincularServices.map((service, index) => (
-            <article class="bg-deep/80 border border-gold/15 p-8 sm:p-12 rounded-sm hover:border-gold/40 transition-all duration-300 reveal">
-              <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-gold/10 pb-6 mb-6">
-                <div>
-                  <span class="text-gold/60 font-display text-base tracking-widest block mb-1">
-                    0{index + 1} · {service.subtitle}
-                  </span>
-                  <h2 class="font-display text-3xl sm:text-4xl text-parchment font-light">
-                    {service.title}
-                  </h2>
+          {vincularServices.map((service, index) => {
+            const cal = calConfigs[service.id];
+            return (
+              <article class="bg-deep/80 border border-gold/15 p-8 sm:p-12 rounded-sm hover:border-gold/40 transition-all duration-300 reveal">
+                <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-gold/10 pb-6 mb-6">
+                  <div>
+                    <span class="text-gold/60 font-display text-base tracking-widest block mb-1">
+                      0{index + 1} · {service.subtitle}
+                    </span>
+                    <h2 class="font-display text-3xl sm:text-4xl text-parchment font-light">
+                      {service.title}
+                    </h2>
+                  </div>
+                  <div class="inline-flex items-center gap-2 px-4 py-2 bg-gold/10 border border-gold/20 rounded-full text-gold text-xs font-body tracking-wide shrink-0">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <span>Duración: {service.duration}</span>
+                  </div>
                 </div>
-                <div class="inline-flex items-center gap-2 px-4 py-2 bg-gold/10 border border-gold/20 rounded-full text-gold text-xs font-body tracking-wide shrink-0">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                  <span>Duración: {service.duration}</span>
-                </div>
-              </div>
 
-              {service.introParagraphs && service.introParagraphs.length > 0 ? (
-                <div class="space-y-4 mb-8">
-                  {service.introParagraphs.map((paragraph, pIdx) => (
-                    <p
-                      class:list={[
-                        pIdx === 0
-                          ? 'font-body font-normal text-parchment text-lg sm:text-xl leading-relaxed'
-                          : 'font-body font-light text-parchment/80 text-base sm:text-lg leading-relaxed',
-                      ]}
+                {service.introParagraphs && service.introParagraphs.length > 0 ? (
+                  <div class="space-y-4 mb-8">
+                    {service.introParagraphs.map((paragraph, pIdx) => (
+                      <p
+                        class:list={[
+                          pIdx === 0
+                            ? 'font-body font-normal text-parchment text-lg sm:text-xl leading-relaxed'
+                            : 'font-body font-light text-parchment/80 text-base sm:text-lg leading-relaxed',
+                        ]}
+                      >
+                        {paragraph}
+                      </p>
+                    ))}
+                  </div>
+                ) : (
+                  <p class="font-body font-light text-parchment/90 text-lg sm:text-xl leading-relaxed mb-8">
+                    {service.description}
+                  </p>
+                )}
+
+                <div class="mb-8">
+                  <h3 class="font-heading text-gold text-xl sm:text-2xl font-light mb-4">
+                    Temáticas y áreas concretas que abordamos:
+                  </h3>
+                  <ul class="space-y-4">
+                    {service.topics.map((t) => (
+                      <li class="p-5 bg-night/60 border border-gold/10 rounded-sm">
+                        <strong class="font-heading text-goldLight text-lg block mb-1 font-medium">
+                          {t.title}:
+                        </strong>
+                        <span class="font-body font-light text-parchment/80 text-base sm:text-lg leading-relaxed block">
+                          {t.desc}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div class="pt-6 border-t border-gold/10">
+                  <p class="font-body font-light text-parchment/70 text-sm sm:text-base leading-relaxed mb-6 italic">
+                    <strong>Nota:</strong> {service.note}
+                  </p>
+
+                  <div class="flex flex-col sm:flex-row items-center gap-4">
+                    {cal ? (
+                      <button
+                        type="button"
+                        class="cta-button w-full sm:w-auto text-center cursor-pointer inline-flex items-center justify-center gap-2 group"
+                        data-cal-toggle={service.id}
+                        aria-controls={`cal-container-${service.id}`}
+                        aria-expanded="false"
+                      >
+                        <span>Reservar lugar para tu primera sesión</span>
+                        <svg
+                          class="w-4 h-4 transition-transform duration-300 transform shrink-0 group-hover:translate-y-0.5"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                        >
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                        </svg>
+                      </button>
+                    ) : (
+                      <Button
+                        href={`${whatsappBaseUrl}?text=${encodeURIComponent(service.whatsappMessage)}`}
+                        variant="primary"
+                        external
+                        class="w-full sm:w-auto text-center"
+                      >
+                        Reservar lugar para tu primera sesión
+                      </Button>
+                    )}
+                    <Button
+                      href={service.slug}
+                      variant="primary"
+                      class="w-full sm:w-auto text-center"
                     >
-                      {paragraph}
-                    </p>
-                  ))}
+                      Ver detalle completo
+                    </Button>
+                  </div>
+
+                  {cal && (
+                    <div
+                      id={`cal-container-${service.id}`}
+                      class="cal-container hidden mt-8 pt-8 border-t border-gold/20"
+                      data-cal-namespace={cal.namespace}
+                      data-cal-link={cal.calLink}
+                      data-cal-target={cal.elementId}
+                    >
+                      <div class="flex items-center justify-between mb-4 flex-wrap gap-3">
+                        <div class="flex items-center gap-2">
+                          <span class="w-2.5 h-2.5 rounded-full bg-gold animate-pulse"></span>
+                          <h4 class="font-heading text-lg sm:text-xl text-gold font-normal">
+                            Agenda tu primera sesión online · {service.title}
+                          </h4>
+                        </div>
+                        <div class="flex items-center gap-4">
+                          <a
+                            href={`${whatsappBaseUrl}?text=${encodeURIComponent(service.whatsappMessage)}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="text-xs text-parchment/70 hover:text-gold transition-colors inline-flex items-center gap-1 font-body"
+                          >
+                            ¿Dudas? Consultar por WhatsApp →
+                          </a>
+                          <button
+                            type="button"
+                            class="cal-close-btn text-xs font-body text-parchment/70 hover:text-gold uppercase tracking-wider cursor-pointer border border-gold/30 hover:border-gold px-3 py-1 rounded-sm transition-colors"
+                            data-cal-close={service.id}
+                          >
+                            ✕ Cerrar
+                          </button>
+                        </div>
+                      </div>
+
+                      <div class="bg-night/95 rounded-sm border border-gold/20 p-2 sm:p-4 overflow-hidden shadow-2xl min-h-[620px]">
+                        <div
+                          id={cal.elementId}
+                          style="width:100%;height:100%;min-height:600px;overflow:scroll"
+                        ></div>
+                      </div>
+                    </div>
+                  )}
                 </div>
-              ) : (
-                <p class="font-body font-light text-parchment/90 text-lg sm:text-xl leading-relaxed mb-8">
-                  {service.description}
-                </p>
-              )}
-
-              <div class="mb-8">
-                <h3 class="font-heading text-gold text-xl sm:text-2xl font-light mb-4">
-                  Temáticas y áreas concretas que abordamos:
-                </h3>
-                <ul class="space-y-4">
-                  {service.topics.map((t) => (
-                    <li class="p-5 bg-night/60 border border-gold/10 rounded-sm">
-                      <strong class="font-heading text-goldLight text-lg block mb-1 font-medium">
-                        {t.title}:
-                      </strong>
-                      <span class="font-body font-light text-parchment/80 text-base sm:text-lg leading-relaxed block">
-                        {t.desc}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              <div class="pt-6 border-t border-gold/10">
-                <p class="font-body font-light text-parchment/70 text-sm sm:text-base leading-relaxed mb-6 italic">
-                  <strong>Nota:</strong> {service.note}
-                </p>
-
-                <div class="flex flex-col sm:flex-row items-center gap-4">
-                  <Button
-                    href={`${whatsappBaseUrl}?text=${encodeURIComponent(service.whatsappMessage)}`}
-                    variant="primary"
-                    external
-                    class="w-full sm:w-auto text-center"
-                  >
-                    Reservar lugar para tu primera sesión
-                  </Button>
-                  <Button
-                    href={service.slug}
-                    variant="primary"
-                    class="w-full sm:w-auto text-center"
-                  >
-                    Ver detalle completo
-                  </Button>
-                </div>
-              </div>
-            </article>
-          ))}
+              </article>
+            );
+          })}
         </div>
       </div>
     </section>
@@ -163,4 +253,114 @@ const whatsappBaseUrl = 'https://wa.me/59892497675';
     </section>
   </main>
   <Footer />
+
+  <script is:inline>
+    (function (C, A, L) {
+      let p = function (a, ar) { a.q.push(ar); };
+      let d = C.document;
+      C.Cal = C.Cal || function () {
+        let cal = C.Cal;
+        let ar = arguments;
+        if (!cal.loaded) {
+          cal.ns = {};
+          cal.q = cal.q || [];
+          d.head.appendChild(d.createElement("script")).src = A;
+          cal.loaded = true;
+        }
+        if (ar[0] === L) {
+          const api = function () { p(api, arguments); };
+          const namespace = ar[1];
+          api.q = api.q || [];
+          if (typeof namespace === "string") {
+            cal.ns[namespace] = cal.ns[namespace] || api;
+            p(cal.ns[namespace], ar);
+            p(cal, ["initNamespace", namespace]);
+          } else p(cal, ar);
+          return;
+        }
+        p(cal, ar);
+      };
+    })(window, "https://app.cal.com/embed/embed.js", "init");
+
+    Cal.config = Cal.config || {};
+    Cal.config.forwardQueryParams = true;
+
+    const initializedNamespaces = new Set();
+
+    function initCalForService(namespace, elementId, calLink) {
+      if (initializedNamespaces.has(namespace)) return;
+      initializedNamespaces.add(namespace);
+
+      Cal("init", namespace, { origin: "https://app.cal.com" });
+      if (Cal.ns && Cal.ns[namespace]) {
+        Cal.ns[namespace]("inline", {
+          elementOrSelector: `#${elementId}`,
+          config: { layout: "month_view", useSlotsViewOnSmallScreen: "true", theme: "light" },
+          calLink: calLink,
+        });
+        Cal.ns[namespace]("ui", {
+          theme: "light",
+          cssVarsPerTheme: { light: { "cal-brand": "#262646" } },
+          hideEventTypeDetails: false,
+          layout: "month_view",
+        });
+      }
+    }
+
+    function setupCalButtons() {
+      const toggleButtons = document.querySelectorAll('[data-cal-toggle]');
+      toggleButtons.forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const serviceId = btn.getAttribute('data-cal-toggle');
+          const container = document.getElementById(`cal-container-${serviceId}`);
+          if (!container) return;
+
+          const isCurrentlyHidden = container.classList.contains('hidden');
+          const arrow = btn.querySelector('svg');
+
+          if (isCurrentlyHidden) {
+            container.classList.remove('hidden');
+            btn.setAttribute('aria-expanded', 'true');
+            if (arrow) arrow.classList.add('rotate-180');
+
+            const namespace = container.getAttribute('data-cal-namespace');
+            const calLink = container.getAttribute('data-cal-link');
+            const elementId = container.getAttribute('data-cal-target');
+            if (namespace && elementId && calLink) {
+              initCalForService(namespace, elementId, calLink);
+            }
+
+            setTimeout(() => {
+              container.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }, 100);
+          } else {
+            container.classList.add('hidden');
+            btn.setAttribute('aria-expanded', 'false');
+            if (arrow) arrow.classList.remove('rotate-180');
+          }
+        });
+      });
+
+      const closeButtons = document.querySelectorAll('[data-cal-close]');
+      closeButtons.forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const serviceId = btn.getAttribute('data-cal-close');
+          const container = document.getElementById(`cal-container-${serviceId}`);
+          const toggleBtn = document.querySelector(`[data-cal-toggle="${serviceId}"]`);
+          if (container) container.classList.add('hidden');
+          if (toggleBtn) {
+            toggleBtn.setAttribute('aria-expanded', 'false');
+            const arrow = toggleBtn.querySelector('svg');
+            if (arrow) arrow.classList.remove('rotate-180');
+          }
+        });
+      });
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', setupCalButtons);
+    } else {
+      setupCalButtons();
+    }
+  </script>
 </BaseLayout>
