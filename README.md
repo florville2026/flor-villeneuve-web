@@ -31,19 +31,25 @@ flor-villeneuve-web/
 ├── src/
 │   ├── components/
 │   │   ├── layout/          # Header, Footer, Nav
-│   │   ├── sections/        # Hero, Services, About, Mentoria, Testimonials, Contact
-│   │   └── ui/              # Button, SectionTitle, ServiceCard
+│   │   ├── sections/        # Hero, Identification, Services, About, Testimonials, Contact
+│   │   └── ui/              # Button, BlogArticleCard, SectionTitle, ServiceCard, WhatsAppFloating
+│   ├── data/
+│   │   ├── blog.ts          # Artículos y reflexiones vinculares
+│   │   ├── faqs.ts          # Preguntas frecuentes estructuradas por servicio
+│   │   └── services.ts      # Contenido de servicios vinculares
 │   ├── layouts/
 │   │   └── BaseLayout.astro # Layout base con SEO, metadatos y OpenGraph
 │   ├── pages/
-│   │   ├── index.astro          # Home principal con formulario en #contacto
+│   │   ├── index.astro          # Home principal con canales directos en #contacto
 │   │   ├── servicios/           # Servicios y acompañamiento vincular
 │   │   │   ├── index.astro      # Visión general de los servicios
 │   │   │   ├── pareja.astro     # Sesión de pareja
 │   │   │   ├── crianza-familia.astro # Sesión de crianza o familia
 │   │   │   └── proceso-vincular.astro# Proceso vincular individual
-│   │   ├── tienda.astro         # Tienda mística (Próximamente)
-│   │   ├── blog.astro           # Diario y reflexiones (Próximamente)
+│   │   ├── blog.astro           # Reflexiones sobre la arquitectura de los vínculos
+│   │   ├── blog/
+│   │   │   └── [slug].astro     # Lectura completa de artículo con schema BlogPosting
+│   │   ├── tienda.astro         # Recursos, workshops, ebooks y PDFs
 │   │   ├── bio.astro            # Biografía / Sobre mí
 │   │   ├── preguntas.astro      # Preguntas frecuentes (FAQ)
 │   │   ├── terminos-y-condiciones.astro # Términos legales
@@ -56,6 +62,7 @@ flor-villeneuve-web/
 │       └── index.ts         # Tipos e interfaces TypeScript
 └── tests/
     ├── base-layout.test.ts  # Pruebas de BaseLayout y SEO
+    ├── blog.test.ts         # Pruebas de artículos y vinculación a servicios
     ├── footer-links.test.ts # Pruebas de enlaces de contacto en el Footer
     ├── page-metadata.test.ts# Pruebas de keywords en páginas principales
     └── seo-links.test.ts    # Validación de enlaces de Instagram y metadata
@@ -69,11 +76,11 @@ flor-villeneuve-web/
 |---|---|---|---|
 | 1 | Inicio | `/` | Presentación general, servicios, bio breve, testimonios y contacto |
 | 2 | Servicios | `/servicios` | Acompañamiento vincular (Pareja, Crianza/Familia, Proceso Individual) |
-| 3 | Tienda | `/tienda` | Boutique de recursos y objetos simbólicos (Próximamente) |
-| 4 | Blog | `/blog` | Diario de reflexiones, astrología y psicología simbólica (Próximamente) |
+| 3 | Tienda | `/tienda` | Recursos formativos, workshops, ebooks y PDFs |
+| 4 | Blog | `/blog` | Reflexiones sobre la arquitectura de los vínculos |
 | 5 | Sobre mí | `/bio` | Historia de Florencia Villeneuve y trayectoria |
 | 6 | Preguntas frecuentes | `/preguntas` | Respuestas a dudas frecuentes sobre sesiones y metodología |
-| 7 | Contacto | `/#contacto` | Formulario de contacto directo |
+| 7 | Contacto | `/#contacto` | Canales directos de consulta por WhatsApp y correo electrónico |
 
 ---
 
@@ -157,20 +164,21 @@ Configuradas en `netlify.toml` con estado HTTP 301 para mantener la equidad de e
 
 ---
 
-## Formularios
+## Contacto y Coordinación
 
-El formulario de contacto utiliza **Netlify Forms** sin necesidad de API routes ni servicios de terceros:
+Las consultas y coordinaciones se canalizan de forma directa y personalizada a través de WhatsApp y correo electrónico, priorizando una atención cercana sin fricción:
 
-- **Ubicación:** Sección `/#contacto` en la Home ([Contact.astro](file:///c:/Users/pablo/pablo/Documents/Coding/flor-villeneuve-web/src/components/sections/Contact.astro)).
-- **Protección contra spam:** Campo honeypot oculto (`bot-field`).
-- **Envío asíncrono:** Gestión de estados en el frontend mediante `fetch` (estados de envío, éxito y error con accesibilidad ARIA).
+- **Ubicación:** Sección `/#contacto` en la Home ([Contact.astro](src/components/sections/Contact.astro)) con accesos directos por servicio.
+- **Botón Flotante:** Acceso inmediato a WhatsApp desde cualquier página vía `WhatsAppFloating.astro`.
+- **Comunidad:** Espacio abierto en WhatsApp para compartir reflexiones vinculares y avisos de talleres.
 
 ---
 
 ## Canales y Enlaces Oficiales
 
 - **Sitio web:** [florenciavilleneuve.com](https://florenciavilleneuve.com)
-- **WhatsApp:** [+598 92 497 675](https://wa.me/59892497675)
+- **WhatsApp (Consultas directas):** [+598 92 497 675](https://wa.me/59892497675)
+- **Comunidad de WhatsApp:** [Unirse a la Comunidad](https://chat.whatsapp.com/L7jnhxhIvqb6QbwnFN1PJo) (+70 personas para reflexiones y talleres)
 - **Instagram:** [@florencia.villeneuve](https://instagram.com/florencia.villeneuve)
 - **YouTube:** [@florencia.villeneuve](https://www.youtube.com/@florencia.villeneuve)
 - **Email:** [florencia.villeneuve@gmail.com](mailto:florencia.villeneuve@gmail.com)
