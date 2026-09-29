@@ -28,7 +28,7 @@ export const blogCategories: BlogCategory[] = [
     id: 'vinculos',
     label: 'Vínculos',
     description:
-      'Exploración, autonomía y la matriz relacional como espejo de libertad frente a las propias necesidades no resueltas.',
+      'Exploración de la matriz relacional individual desde todas sus perspectivas y vínculos.',
     anchor: '#vinculos',
   },
 ];
