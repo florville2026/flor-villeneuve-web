@@ -115,7 +115,7 @@ export const blogPosts: BlogPost[] = [
       title: 'Sesión de Crianza y Dinámicas Familiares',
       slug: '/servicios/crianza-familia',
       description:
-        'Un espacio de alineación para padres y cuidadores que buscan construir un criterio unificado, descomprimir la culpa y traer calma al hogar.',
+        'Un espacio de alineación y sostén para construir un criterio compartido, comprender los síntomas del hogar y devolverle la calma al sistema familiar.',
       ctaText: 'Ver detalles de la Sesión de Crianza',
       whatsappMessage:
         'Hola Flor, leí el artículo sobre crianza consciente y me gustaría agendar la primera Sesión de Crianza y Dinámicas Familiares.',

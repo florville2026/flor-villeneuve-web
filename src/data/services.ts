@@ -58,7 +58,13 @@ export const vincularServices: VincularService[] = [
     subtitle: 'Acompañamiento en Crianza y Familia',
     slug: '/servicios/crianza-familia',
     description:
-      'Un espacio de alineación para madres, padres y adultos a cargo que buscan construir un criterio unificado, descomprimir la convivencia y traer calma al sistema familiar.',
+      'Un espacio de alineación y sostén para construir un criterio compartido, comprender los síntomas del hogar y devolverle la calma al sistema familiar.',
+    introParagraphs: [
+      'Un espacio de alineación y sostén para construir un criterio compartido, comprender los síntomas del hogar y devolverle la calma al sistema familiar.',
+      'Criar nos expone a nuestras mayores certezas y, al mismo tiempo, a nuestras contradicciones más profundas. Entre la sobrecarga cotidiana, la presión de los mandatos externos y el choque de estilos entre los adultos a cargo, es muy habitual que la convivencia se vuelva un terreno de tensión, culpa o cansancio acumulado. Muchas veces, los desbordes en el hogar no son falta de amor, sino el reflejo de un sistema sin bordes claros.',
+      'En este espacio no trabajamos desde manuales rígidos ni recetas enlatadas de conducta. Abordamos la matriz de la crianza: miramos la historia familiar que cada adulto trae consigo, alineamos los criterios de autoridad y descodificamos la función que cumple el comportamiento de los hijos en la dinámica del hogar.',
+      'Es una instancia de diagnóstico y ordenamiento diseñada para descomprimir la carga mental, fortalecer la alianza parental y brindarles herramientas concretas para acompañar el desarrollo de sus hijos desde la presencia, la firmeza amorosa y la serenidad.',
+    ],
     duration: '1 hora y 30 minutos',
     note: 'Luego de esta primera sesión diagnóstica, la continuidad de los encuentros se coordina y agendan de forma directa a través de WhatsApp según las necesidades del proceso.',
     whatsappMessage:
