@@ -36,6 +36,8 @@ export interface VincularService {
   note: string;
   whatsappMessage: string;
   topics: ServiceTopic[];
+  calLink?: string;
+  calNamespace?: string;
 }
 
 export interface Pack {

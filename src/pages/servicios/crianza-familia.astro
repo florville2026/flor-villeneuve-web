@@ -4,6 +4,7 @@ import Header from '../../components/layout/Header.astro';
 import Footer from '../../components/layout/Footer.astro';
 import SectionTitle from '../../components/ui/SectionTitle.astro';
 import Button from '../../components/ui/Button.astro';
+import CalEmbed from '../../components/ui/CalEmbed.astro';
 import { vincularServices } from '../../data/services';
 
 const service = vincularServices.find((s) => s.id === 'crianza-familia')!;
@@ -86,12 +87,24 @@ const whatsappUrl = `https://wa.me/59892497675?text=${encodeURIComponent(service
           <p class="font-body font-light text-parchment/80 mb-6 text-base sm:text-lg">
             Las sesiones se realizan de forma online mediante videollamada para Uruguay, Argentina y el exterior.
           </p>
-          <Button href={whatsappUrl} variant="primary" external>
-            Reservar lugar para tu primera sesión
-          </Button>
+          <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <button
+              type="button"
+              class="cta-button w-full sm:w-auto text-center cursor-pointer inline-flex items-center justify-center gap-2"
+              data-cal-link={service.calLink}
+              data-cal-namespace={service.calNamespace}
+              data-cal-config='{"layout":"month_view"}'
+            >
+              Reservar lugar para tu primera sesión
+            </button>
+            <Button href={whatsappUrl} variant="outline" external class="w-full sm:w-auto text-center">
+              Consultar por WhatsApp
+            </Button>
+          </div>
         </div>
       </div>
     </section>
   </main>
   <Footer />
+  <CalEmbed namespaces={[service.calNamespace!]} />
 </BaseLayout>

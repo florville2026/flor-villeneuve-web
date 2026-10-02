@@ -151,7 +151,7 @@ flor-villeneuve-web/
 ## 6. Convenciones de SEO y Metadatos
 
 - **BaseLayout:** Toda página debe utilizar [BaseLayout.astro](file:///c:/Users/pablo/pablo/Documents/Coding/flor-villeneuve-web/src/layouts/BaseLayout.astro) proporcionando:
-  - `title`: Título conciso (se le añade automáticamente el prefijo `Florencia Villeneuve — `; para la Home genera `Florencia Villeneuve | Parejas, Crianza y Familia`).
+  - `title`: Título conciso (se le añade automáticamente el prefijo `Florencia Villeneuve — `; para la Home genera `Florencia Villeneuve | Pareja, Crianza y Vínculo`).
   - `description`: Meta descripción clara y persuasiva centrada en parejas, crianza y vínculos.
   - `keywords`: Lista de palabras clave separadas por comas (validado en `page-metadata.test.ts`).
   - `canonical`: Ruta relativa canónica (ej. `/servicios`).
@@ -164,7 +164,8 @@ flor-villeneuve-web/
 
 ## 7. Canales de Contacto, Comunidad y Botón Flotante de WhatsApp
 
-- Las consultas y coordinaciones se canalizan de forma directa vía WhatsApp (+598 92 497 675) y correo electrónico (`florencia.villeneuve@gmail.com`). No se utilizan formularios de entrada de texto en la web.
+- Las consultas y coordinaciones se canalizan de forma directa vía WhatsApp (+598 92 497 675), correo electrónico (`florencia.villeneuve@gmail.com`) y agendamiento online con Cal.com. No se utilizan formularios de entrada de texto en la web.
+- **Integración con Cal.com (Popup Modal):** Para la reserva directa de sesiones online en las 3 terapias (Pareja, Crianza y Proceso Vincular), se utiliza la integración oficial de Cal.com en modo ventana emergente/popup modal mediante [CalEmbed.astro](file:///c:/Users/pablo/pablo/Documents/Coding/flor-villeneuve-web/src/components/ui/CalEmbed.astro) con atributos `data-cal-link`, `data-cal-namespace` y `data-cal-config`. Se prescinde de contenedores o acordeones inline para evitar ventanas emergentes duplicadas al finalizar una reserva.
 - **Comunidad de WhatsApp:** Enlace de invitación (`https://chat.whatsapp.com/L7jnhxhIvqb6QbwnFN1PJo`) disponible en el Footer (`Footer.astro`) bajo la columna "Conectá", donde Florencia comparte reflexiones breves sobre vínculos, talleres y videos de YouTube con más de 70 personas.
 - **Botón Flotante:** Implementado en [WhatsAppFloating.astro](file:///c:/Users/pablo/pablo/Documents/Coding/flor-villeneuve-web/src/components/ui/WhatsAppFloating.astro) e integrado globalmente en [BaseLayout.astro](file:///c:/Users/pablo/pablo/Documents/Coding/flor-villeneuve-web/src/layouts/BaseLayout.astro) (`fixed bottom-6 right-6 z-50`).
 - **Sección `#contacto`:** En [Contact.astro](file:///c:/Users/pablo/pablo/Documents/Coding/flor-villeneuve-web/src/components/sections/Contact.astro) se presenta la invitación directa y botones de contacto a WhatsApp y Email, preservando el ancla de navegación sin necesidad de formularios.

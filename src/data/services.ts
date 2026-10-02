@@ -29,6 +29,8 @@ export const vincularServices: VincularService[] = [
     note: 'Luego de esta primera sesión diagnóstica, la continuidad de los encuentros se coordina y agendan de forma directa a través de WhatsApp según las necesidades del proceso.',
     whatsappMessage:
       'Hola Flor, me gustaría reservar lugar para la primera Sesión de Acompañamiento para la Pareja.',
+    calLink: 'florencia-villeneuve/sesiondepareja',
+    calNamespace: 'sesiondepareja',
     topics: [
       {
         title: 'Comunicación y Dinámica de Discusión',
@@ -69,6 +71,8 @@ export const vincularServices: VincularService[] = [
     note: 'Luego de esta primera sesión diagnóstica, la continuidad de los encuentros se coordina y agendan de forma directa a través de WhatsApp según las necesidades del proceso.',
     whatsappMessage:
       'Hola Flor, me gustaría reservar lugar para la primera Sesión de Crianza y Dinámicas Familiares.',
+    calLink: 'florencia-villeneuve/sesiondecrianza',
+    calNamespace: 'sesiondecrianza',
     topics: [
       {
         title: 'Autoridad, Límites y Reglas',
@@ -109,6 +113,8 @@ export const vincularServices: VincularService[] = [
     note: 'Luego de esta primera sesión diagnóstica, la continuidad de los encuentros se coordina y agendan de forma directa a través de WhatsApp según las necesidades del proceso.',
     whatsappMessage:
       'Hola Flor, me gustaría reservar lugar para el Proceso Vincular Individual.',
+    calLink: 'florencia-villeneuve/sesionindividualvincular',
+    calNamespace: 'sesionindividualvincular',
     topics: [
       {
         title: 'Estilos de Apego y Elección de Pareja',
