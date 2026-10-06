@@ -35,10 +35,10 @@ describe("Page metadata", () => {
   it("verifies home page title and description", async () => {
     const content = await readProjectFile("src/pages/index.astro");
     expect(content).toContain(
-      'title="Florencia Villeneuve | Pareja, Crianza y Vínculo"',
+      'title="Florencia Villeneuve | Pareja, Crianza y Vínculos"',
     );
     expect(content).toContain(
-      'description="Acompañamiento y sesiones online para parejas, crianza y familia. Herramientas para destrabar la comunicación y la dinámica de tus vínculos. Reserva online."',
+      'description="Acompañamiento y sesiones online para parejas, crianza y vínculos. Herramientas para destrabar la comunicación y la dinámica de tus relaciones. Reserva online."',
     );
   });
 });

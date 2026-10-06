@@ -56,4 +56,15 @@ describe('Blog Data Structure and Integrity', () => {
     expect(blogAstro).toContain('https://chat.whatsapp.com/L7jnhxhIvqb6QbwnFN1PJo');
     expect(slugAstro).toContain('https://chat.whatsapp.com/L7jnhxhIvqb6QbwnFN1PJo');
   });
+
+  it('nav menu links each blog category directly to its article', async () => {
+    const { readFile } = await import('fs/promises');
+    const path = (await import('path')).default;
+    const { fileURLToPath } = await import('url');
+
+    const rootDir = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
+    const headerAstro = await readFile(path.join(rootDir, 'src/components/layout/Header.astro'), 'utf-8');
+
+    expect(headerAstro).toContain('/blog/${posts[0].slug}');
+  });
 });

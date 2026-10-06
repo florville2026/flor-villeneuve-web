@@ -10,23 +10,23 @@ interface QuestionItem {
 const questions: QuestionItem[] = [
   {
     number: '01',
-    text: '¿Sentís que en tu pareja o familia siempre tropiezan con la misma piedra?',
+    text: '¿Sientes que en tu pareja o familia siempre tropezáis con la misma piedra?',
   },
   {
     number: '02',
-    text: "¿Se descubren actuando más como 'padre o madre' de su compañero/a que como su pareja?",
+    text: '¿Te descubres actuando más como "padre o madre" de tu compañero/a que como su pareja?',
   },
   {
     number: '03',
-    text: '¿Les cuesta ponerse de acuerdo en los límites de la crianza y eso está desgastando su relación?',
+    text: '¿Os cuesta poneros de acuerdo en los límites de la crianza y sientes que eso desgasta la relación?',
   },
   {
     number: '04',
-    text: '¿Se preguntan por qué, a pesar del amor, no logran destrabar los conflictos de comunicación?',
+    text: '¿Te preguntas por qué, a pesar del amor, no lográis destrabar los problemas de comunicación?',
   },
   {
     number: '05',
-    text: '¿Te gustaría entender qué pactos invisibles e historias familiares condicionan cómo te relacionás hoy?',
+    text: '¿Te gustaría entender qué pactos invisibles e historias familiares condicionan cómo te relacionas hoy?',
   },
 ];
 ---
@@ -38,30 +38,21 @@ const questions: QuestionItem[] = [
     />
 
     <div class="border-t border-b border-gold/15 py-10 md:py-14 my-10 md:my-12">
-      <div class="flex flex-col space-y-6 md:space-y-8 max-w-4xl mx-auto">
-        {questions.map((item, index) => {
-          const isEven = index % 2 === 0;
-          return (
-            <article
-              class:list={[
-                'group relative p-6 sm:p-8 rounded-sm bg-deep/60 border border-gold/15 transition-all duration-500 hover:border-gold/40 hover:bg-deep/90 hover:-translate-y-1 reveal',
-                isEven
-                  ? 'mr-auto text-left border-l-2 border-l-gold/40'
-                  : 'ml-auto text-left border-r-2 border-r-gold/40',
-                'w-full sm:w-[90%] md:w-[82%] max-w-2xl',
-              ]}
-            >
-              <div class="flex items-start gap-4">
-                <span class="inline-flex items-center justify-center w-8 h-8 rounded-full border border-gold/30 text-gold text-xs font-display shrink-0 mt-0.5 group-hover:border-gold group-hover:bg-gold/10 transition-colors duration-300">
-                  {item.number}
-                </span>
-                <p class="font-heading font-light text-parchment text-lg sm:text-xl leading-relaxed group-hover:text-goldLight transition-colors duration-300">
-                  “{item.text}”
-                </p>
-              </div>
-            </article>
-          );
-        })}
+      <div class="flex flex-col space-y-4 sm:space-y-5 max-w-5xl xl:max-w-6xl mx-auto">
+        {questions.map((item) => (
+          <article
+            class="group relative py-4 sm:py-5 px-6 sm:px-8 rounded-sm bg-deep/60 border border-gold/15 transition-all duration-300 hover:border-gold/40 hover:bg-deep/90 hover:-translate-y-0.5 reveal w-full border-l-2 border-l-gold/40"
+          >
+            <div class="flex items-center gap-4 sm:gap-6">
+              <span class="inline-flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-gold/40 text-gold text-base sm:text-lg font-display font-medium shrink-0 group-hover:border-gold group-hover:bg-gold/15 transition-all duration-300">
+                {item.number}
+              </span>
+              <p class="font-heading font-light text-parchment text-lg sm:text-xl md:text-[1.35rem] lg:text-[1.45rem] leading-snug group-hover:text-goldLight transition-colors duration-300">
+                “{item.text}”
+              </p>
+            </div>
+          </article>
+        ))}
       </div>
     </div>
 

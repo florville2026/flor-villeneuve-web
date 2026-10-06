@@ -12,7 +12,7 @@ interface Props {
 
 const {
   title = 'Contacto',
-  subtitle = 'Escribime. Toda consulta se responde con calma y atención.',
+  subtitle = 'Escribeme. Toda consulta se responde con calma y atención.',
 } = Astro.props;
 ---
 
@@ -20,15 +20,11 @@ const {
   <div class="container-padding">
     <SectionTitle title={title} subtitle={subtitle} />
     <div
-      class="max-w-2xl mx-auto reveal bg-deep/60 border border-gold/15 p-8 sm:p-12 md:p-14 rounded-sm shadow-2xl text-center space-y-8"
+      class="max-w-xl mx-auto reveal bg-deep/60 border border-gold/15 p-8 sm:p-10 rounded-sm shadow-2xl text-center"
     >
-      <p class="font-body font-light text-parchment/90 text-lg sm:text-xl md:text-2xl leading-relaxed">
-        Las consultas y coordinaciones de sesiones se hacen directamente por WhatsApp o vía correo electrónico.
-      </p>
-
       <div class="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-5">
         <Button href={whatsappUrl} variant="primary" external>
-          Escribime por WhatsApp
+          Escribeme por WhatsApp
         </Button>
         <Button href={emailUrl} variant="primary" external>
           Enviar un correo

@@ -1,7 +1,5 @@
 ---
 import Button from '../ui/Button.astro';
-
-const whatsappUrl = 'https://wa.me/59892497675';
 ---
 
 <section
@@ -26,20 +24,21 @@ const whatsappUrl = 'https://wa.me/59892497675';
           <h1
             class="font-display text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-semibold text-parchment tracking-wide leading-tight lg:leading-[1.12] fade-in-delay-1"
           >
-            Acompañamiento y Sesiones para Parejas, Crianza y Dinámicas Familiares
+            Acompañamiento y Sesiones para Parejas, Crianza y Dinámicas Vinculares
           </h1>
           <p
             class="font-body font-light text-parchment/80 text-base sm:text-lg lg:text-xl xl:text-2xl leading-relaxed mt-6 lg:mt-8 max-w-xl mx-auto lg:mx-0 reveal"
           >
-            Un espacio para destrabar la comunicación, comprender la historia de tu sistema y transformar los patrones repetitivos de tus vínculos.
+            Un espacio para destrabar la comunicación en pareja, criar con mayor presencia y transformar los patrones que se repiten en tus vínculos.
           </p>
         </div>
-        <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 lg:gap-5 mt-8 lg:mt-10 reveal reveal-delay-1">
-          <Button href="/servicios" variant="primary">
-            Ver Sesiones
-          </Button>
-          <Button href={whatsappUrl} variant="primary" external>
-            Agendar Sesión en WhatsApp
+        <div class="flex justify-center lg:justify-start mt-8 lg:mt-10 reveal reveal-delay-1">
+          <Button
+            href="/servicios"
+            variant="primary"
+            class="px-10 py-3.5 sm:py-4 text-base sm:text-lg font-medium shadow-md shadow-gold/15"
+          >
+            Agendá tu primera sesión
           </Button>
         </div>
       </div>

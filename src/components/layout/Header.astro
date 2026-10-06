@@ -1,6 +1,21 @@
 ---
 import Nav from './Nav.astro';
 import type { NavItem } from '../../types';
+import { blogCategories, blogPosts } from '../../data/blog';
+
+const blogNavChildren: NavItem[] = blogCategories.flatMap((cat) => {
+  const posts = blogPosts.filter((p) => p.category === cat.id);
+  if (posts.length === 1) {
+    return [{ label: cat.label, href: `/blog/${posts[0].slug}` }];
+  }
+  if (posts.length > 1) {
+    return posts.map((p) => ({
+      label: p.title.length > 40 ? `${cat.label}: ${p.title.slice(0, 37)}...` : `${cat.label}: ${p.title}`,
+      href: `/blog/${p.slug}`,
+    }));
+  }
+  return [{ label: cat.label, href: `/blog#${cat.id}` }];
+});
 
 const navItems: NavItem[] = [
   { label: 'Inicio', href: '/' },
@@ -17,11 +32,7 @@ const navItems: NavItem[] = [
   {
     label: 'Blog',
     href: '/blog',
-    children: [
-      { label: 'Pareja', href: '/blog#pareja' },
-      { label: 'Crianza', href: '/blog#crianza' },
-      { label: 'Vínculos', href: '/blog#vinculos' },
-    ],
+    children: blogNavChildren,
   },
   { label: 'Sobre mí', href: '/bio' },
   { label: 'Preguntas frecuentes', href: '/preguntas' },

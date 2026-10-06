@@ -151,7 +151,7 @@ flor-villeneuve-web/
 ## 6. Convenciones de SEO y Metadatos
 
 - **BaseLayout:** Toda página debe utilizar [BaseLayout.astro](file:///c:/Users/pablo/pablo/Documents/Coding/flor-villeneuve-web/src/layouts/BaseLayout.astro) proporcionando:
-  - `title`: Título conciso (se le añade automáticamente el prefijo `Florencia Villeneuve — `; para la Home genera `Florencia Villeneuve | Pareja, Crianza y Vínculo`).
+  - `title`: Título conciso (se le añade automáticamente el prefijo `Florencia Villeneuve — `; para la Home genera `Florencia Villeneuve | Pareja, Crianza y Vínculos`).
   - `description`: Meta descripción clara y persuasiva centrada en parejas, crianza y vínculos.
   - `keywords`: Lista de palabras clave separadas por comas (validado en `page-metadata.test.ts`).
   - `canonical`: Ruta relativa canónica (ej. `/servicios`).
@@ -208,6 +208,9 @@ flor-villeneuve-web/
   - `pareja` (`#pareja`): Dinámica afectiva, polaridad masculina/femenina, bucles defensivos.
   - `crianza` (`#crianza`): Paternidad y maternidad consciente, deconstrucción del modelo ideal y límites con coherencia.
   - `vinculos` (`#vinculos`): Amistad, autonomía, reciprocidad y espacios de autoexploración.
+- **Navegación en Menú Superior (`Header.astro`):**
+  - En el dropdown de "Blog", cada tema (Pareja, Crianza, Vínculos) enlaza directamente a su artículo individual (`/blog/[slug]`) en vez de a la página de archivo general `#ancla`.
+  - Si una categoría cuenta con múltiples artículos, el menú escala de manera dinámica mostrando los artículos específicos.
 - **Llamadas a la Acción de Agenda y Comunidad:**
   - Todo artículo del blog se vincula a una sesión diagnóstica en `vincularServices`:
     - Pareja $\rightarrow$ `/servicios/pareja` + WhatsApp específico de pareja.

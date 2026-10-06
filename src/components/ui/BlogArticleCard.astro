@@ -8,7 +8,6 @@ interface Props {
 }
 
 const { post, standalone = false } = Astro.props;
-const whatsappUrl = `https://wa.me/59892497675?text=${encodeURIComponent(post.relatedService.whatsappMessage)}`;
 const postUrl = `/blog/${post.slug}`;
 const summaryParagraph = post.sections[0]?.paragraphs[0] ?? post.excerpt;
 ---
@@ -61,7 +60,7 @@ const summaryParagraph = post.sections[0]?.paragraphs[0] ?? post.excerpt;
           {section.paragraphs.map((p) => {
             // Destacar si inicia con subtítulos tipo "El repliegue del sostén:" o "La trampa de la sobrecompensación:"
             const colonIndex = p.indexOf(':');
-            const isLeadTitle = colonIndex > 0 && colonIndex < 40 && !p.startsWith('Desde');
+            const isLeadTitle = colonIndex > 0 && colonIndex < 55 && !p.startsWith('Desde') && p.slice(colonIndex + 1).trim().length > 0;
             if (isLeadTitle) {
               const lead = p.slice(0, colonIndex);
               const rest = p.slice(colonIndex + 1);
@@ -108,10 +107,7 @@ const summaryParagraph = post.sections[0]?.paragraphs[0] ?? post.excerpt;
         <p class="font-body font-light text-parchment/80 text-base sm:text-lg leading-relaxed mb-6">
           {post.relatedService.description}
         </p>
-        <div class="flex flex-col sm:flex-row gap-3 items-stretch sm:items-center">
-          <Button href={whatsappUrl} variant="primary" external>
-            Agendar sesión por WhatsApp
-          </Button>
+        <div class="flex justify-center items-center">
           <Button href={post.relatedService.slug} variant="primary">
             {post.relatedService.ctaText}
           </Button>

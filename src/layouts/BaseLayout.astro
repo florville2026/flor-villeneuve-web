@@ -11,8 +11,8 @@ interface Props {
 
 const { title, description, canonical = Astro.url.pathname, keywords } = Astro.props;
 const fullTitle =
-  title === 'Inicio' || title === 'Florencia Villeneuve | Pareja, Crianza y Vínculo'
-    ? 'Florencia Villeneuve | Pareja, Crianza y Vínculo'
+  title === 'Inicio' || title === 'Florencia Villeneuve | Pareja, Crianza y Vínculos'
+    ? 'Florencia Villeneuve | Pareja, Crianza y Vínculos'
     : title.startsWith('Florencia Villeneuve')
       ? title
       : `Florencia Villeneuve — ${title}`;

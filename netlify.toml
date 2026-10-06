@@ -47,3 +47,18 @@
   from = "/contacto"
   to = "/"
   status = 301
+
+[[redirects]]
+  from = "/blog/polaridad-masculina-femenina-pareja"
+  to = "/blog/pareja-se-aisla-vivir-reclamando"
+  status = 301
+
+[[redirects]]
+  from = "/blog/padres-reales-crianza-consciente"
+  to = "/blog/crianza-agota-dejar-reaccionar-culpa"
+  status = 301
+
+[[redirects]]
+  from = "/blog/reciprocidad-amistad-libertad-vinculos"
+  to = "/blog/doy-mas-de-lo-que-recibo-reciprocidad-limites"
+  status = 301
