@@ -98,7 +98,7 @@ const whatsappBaseUrl = 'https://wa.me/59892497675';
                       class="cta-button w-full sm:w-auto text-center cursor-pointer inline-flex items-center justify-center gap-2"
                       data-cal-link={service.calLink}
                       data-cal-namespace={service.calNamespace}
-                      data-cal-config='{"layout":"month_view"}'
+                      data-cal-config='{"layout":"month_view","theme":"light"}'
                     >
                       Reservar lugar para tu primera sesión
                     </button>
@@ -119,6 +119,15 @@ const whatsappBaseUrl = 'https://wa.me/59892497675';
                   >
                     Ver detalle completo
                   </Button>
+                </div>
+                <div class="mt-4">
+                  <a
+                    href="/como-reservar-y-pagar"
+                    class="inline-flex items-center gap-1.5 text-xs sm:text-sm font-body text-parchment/80 hover:text-gold transition-colors duration-200 group"
+                  >
+                    <span>¿Es tu primera reserva? Mirá cómo elegir tu horario y pagar con PayPal o tarjeta</span>
+                    <span class="text-gold transition-transform duration-200 group-hover:translate-x-1">→</span>
+                  </a>
                 </div>
               </div>
             </article>

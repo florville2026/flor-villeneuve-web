@@ -41,22 +41,26 @@ flor-villeneuve-web/
 ├── public/                     # Archivos estáticos directos
 │   ├── .well-known/            # Verificaciones y configuraciones de dominio
 │   ├── img/                    # Imágenes estáticas optimizadas
+│   │   └── guia/               # Capturas responsive para la guía de reserva y pago
 │   ├── favicon.svg             # Favicon SVG principal
 │   └── robots.txt              # Configuración de rastreo y sitemap index
 ├── src/
 │   ├── components/
 │   │   ├── layout/             # Header.astro, Footer.astro, Nav.astro
 │   │   ├── sections/           # Hero.astro, Identification.astro, Services.astro,
-│   │   │                       # About.astro, Testimonials.astro, Contact.astro
+│   │   │                       # About.astro, Testimonials.astro, Contact.astro,
+│   │   │                       # BookingStepsList.astro
 │   │   └── ui/                 # Button.astro, BlogArticleCard.astro, SectionTitle.astro, ServiceCard.astro, WhatsAppFloating.astro
 │   ├── data/
 │   │   ├── blog.ts             # Artículos del blog, categorías (Pareja, Crianza, Vínculos) y llamadas de agenda
+│   │   ├── bookingGuide.ts     # Pasos estructurados, aclaraciones y opciones de pago
 │   │   ├── faqs.ts             # Preguntas frecuentes estructuradas por servicio
 │   │   └── services.ts         # Contenido de servicios, intro y temáticas concretas
 │   ├── layouts/
 │   │   └── BaseLayout.astro    # Layout HTML raíz, SEO, OpenGraph y tags de script
 │   ├── pages/
 │   │   ├── index.astro         # Home principal (con canales directos en /#contacto)
+│   │   ├── como-reservar-y-pagar.astro # Guía informativa paso a paso de reserva y métodos de pago
 │   │   ├── servicios/          # Servicios y acompañamiento vincular
 │   │   │   ├── index.astro     # Resumen general de servicios
 │   │   │   ├── pareja.astro    # Sesión de pareja
@@ -80,6 +84,7 @@ flor-villeneuve-web/
 ├── tests/                      # Pruebas unitarias de regresión y SEO con Vitest
 │   ├── base-layout.test.ts     # Valida props SEO, keywords y lang="es" en BaseLayout
 │   ├── blog.test.ts            # Valida integridad de artículos, subsecciones y vinculación a servicios
+│   ├── booking-guide.test.ts   # Valida integridad de pasos, imágenes, FAQ y opciones de pago
 │   ├── footer-links.test.ts    # Valida links de redes y contacto en Footer
 │   ├── page-metadata.test.ts   # Valida presencia de meta keywords en páginas core
 │   └── seo-links.test.ts       # Valida enlaces a Instagram en index.astro y README.md
@@ -166,6 +171,11 @@ flor-villeneuve-web/
 
 - Las consultas y coordinaciones se canalizan de forma directa vía WhatsApp (+598 92 497 675), correo electrónico (`florencia.villeneuve@gmail.com`) y agendamiento online con Cal.com. No se utilizan formularios de entrada de texto en la web.
 - **Integración con Cal.com (Popup Modal):** Para la reserva directa de sesiones online en las 3 terapias (Pareja, Crianza y Proceso Vincular), se utiliza la integración oficial de Cal.com en modo ventana emergente/popup modal mediante [CalEmbed.astro](file:///c:/Users/pablo/pablo/Documents/Coding/flor-villeneuve-web/src/components/ui/CalEmbed.astro) con atributos `data-cal-link`, `data-cal-namespace` y `data-cal-config`. Se prescinde de contenedores o acordeones inline para evitar ventanas emergentes duplicadas al finalizar una reserva.
+  - **Comportamiento Responsive por Dispositivo:**
+    - *Móvil (< 640px):* Modal full-width al 100% nativo de pantalla completa, sin desborde horizontal y con scroll vertical continuo.
+    - *Tablet (~640px – 1023px, ej. 768x1024, 800x1280, 820x1180):* El modal y su iframe se acotan de forma compacta y centrada (`width: calc(100vw - 32px)`, `max-width: 660px`, `margin-inline: auto`, `max-height: calc(100vh - 40px)` y `overflow-y: auto`), eliminando el espacio vacío en blanco lateral derecho. Se aplica tanto en Light DOM (`global.css`) como en Shadow DOM (`CalEmbed.astro` inyectando estilos en el `shadowRoot` de `cal-modal-box` mediante `MutationObserver`).
+    - *Desktop (> 1024px, ej. 1440x900):* Mantiene el ancho nativo amplio de Cal.com para su distribución cómoda en dos columnas (calendario y horarios).
+  - **Unificación Visual de Tema Claro (`theme: "light"`):** Todos los botones disparadores de reserva configuran de manera estricta `data-cal-config='{"layout":"month_view","theme":"light"}'`. Además, en `CalEmbed.astro` se inicializa `Cal.config.theme = "light"` y cada namespace (`sesiondepareja`, `sesiondecrianza`, `sesionindividualvincular`) ejecuta `Cal("ui", { theme: "light" })`. Se fuerzan reglas en Light DOM y Shadow DOM con `color-scheme: light !important` y fondo blanco `#ffffff` para impedir que `prefers-color-scheme`, dark mode del navegador o temas del sistema generen fondos oscuros inconsistentes.
 - **Comunidad de WhatsApp:** Enlace de invitación (`https://chat.whatsapp.com/L7jnhxhIvqb6QbwnFN1PJo`) disponible en el Footer (`Footer.astro`) bajo la columna "Conectá", donde Florencia comparte reflexiones breves sobre vínculos, talleres y videos de YouTube con más de 70 personas.
 - **Botón Flotante:** Implementado en [WhatsAppFloating.astro](file:///c:/Users/pablo/pablo/Documents/Coding/flor-villeneuve-web/src/components/ui/WhatsAppFloating.astro) e integrado globalmente en [BaseLayout.astro](file:///c:/Users/pablo/pablo/Documents/Coding/flor-villeneuve-web/src/layouts/BaseLayout.astro) (`fixed bottom-6 right-6 z-50`).
 - **Sección `#contacto`:** En [Contact.astro](file:///c:/Users/pablo/pablo/Documents/Coding/flor-villeneuve-web/src/components/sections/Contact.astro) se presenta la invitación directa y botones de contacto a WhatsApp y Email, preservando el ancla de navegación sin necesidad de formularios.
@@ -226,7 +236,28 @@ flor-villeneuve-web/
 
 ---
 
-## 11. Mantenimiento de este Archivo
+## 11. Guía Informativa de Reserva y Métodos de Pago
+
+- **Propósito:** Responder y desarmar la fricción de reservas online en Cal.com, clarificando que los usuarios pueden abonar tanto con cuenta de PayPal como de forma directa con tarjeta de crédito/débito internacional sin necesidad de registrarse previamente en PayPal.
+- **Ruta Principal:** `/como-reservar-y-pagar` ([como-reservar-y-pagar.astro](file:///c:/Users/pablo/pablo/Documents/Coding/flor-villeneuve-web/src/pages/como-reservar-y-pagar.astro)).
+- **Estructura y Componentes:**
+  - `src/data/bookingGuide.ts`: Modelo de datos tipado con pasos del 01 al 06, notas importantes, opciones de pago explicadas, aclaraciones de moneda (USD y condiciones de conversión según PayPal/banco) y mensaje de WhatsApp de soporte.
+  - `src/components/sections/BookingStepsList.astro`: Componente modular para el renderizado del paso a paso visual y responsive con capturas de Cal.com, callout para destacar la opción de tarjeta y bloque de aclaración de moneda en el Paso 05.
+  - Capturas responsive alojadas en `public/img/guia/` (`pantalla-pago-metodos.png`, `pantalla-datos-reserva.png`, `pantalla-seleccion-horario.png`).
+- **Puntos de Integración Contextual:**
+  - Menú Header: Sub-ítem accesible dentro del dropdown de "Servicios".
+  - Footer: Enlace directo en la columna de "Navegación".
+  - Páginas de servicios (`/servicios`, `/servicios/pareja`, `/servicios/crianza-familia`, `/servicios/proceso-vincular`): Enlace contextual *"¿Es tu primera reserva? Mirá cómo elegir tu horario y pagar con PayPal o tarjeta →"* al pie de los botones de reserva.
+  - FAQ (`/preguntas` y `src/data/faqs.ts`): Dos preguntas en la categoría "Dinámica General":
+    - *"¿Cómo se realiza el pago?"* (con enlace directo a la guía).
+    - *"¿En qué moneda se realizan los pagos?"* (detallando precios en USD y conversión por PayPal/entidad bancaria).
+- **Validación y Tests:**
+  - `tests/booking-guide.test.ts` valida la presencia de la ruta, consistencia de textos, existencia de capturas, moneda USD, y enlaces en FAQ, Servicios, Header y Footer.
+  - `tests/page-metadata.test.ts` asegura la inclusión obligatoria de `keywords`.
+
+---
+
+## 12. Mantenimiento de este Archivo
 
 - Este archivo es mantenido activamente por agentes de IA.
 - Cada vez que se agregue una nueva página, componente, servicio, integración o convención arquitectónica, este documento debe actualizarse para preservar la memoria del proyecto.

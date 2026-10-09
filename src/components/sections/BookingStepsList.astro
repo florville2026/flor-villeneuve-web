@@ -1,0 +1,124 @@
+---
+import type { GuideStep, PaymentOption } from '../../data/bookingGuide';
+
+export interface Props {
+  steps: GuideStep[];
+  paymentOptions: PaymentOption[];
+  currencyNotice?: {
+    title: string;
+    badge: string;
+    description: string;
+  };
+  cardCalloutText?: string;
+}
+
+const {
+  steps,
+  paymentOptions,
+  currencyNotice,
+  cardCalloutText = '¿No tenés PayPal? Elegí esta opción para pagar con tarjeta.',
+} = Astro.props;
+---
+
+<div class="space-y-10 sm:space-y-14 mt-10 sm:mt-12">
+  {steps.map((step) => (
+    <article class="p-5 sm:p-8 md:p-10 bg-deep/80 border border-gold/15 rounded-sm reveal transition-colors duration-300 hover:border-gold/35">
+      <div class="flex items-center gap-4 mb-4 border-b border-gold/10 pb-4">
+        <span class="font-display text-2xl sm:text-3xl text-gold font-light tracking-wider">
+          Paso {step.number}
+        </span>
+        <div class="h-px bg-gold/20 flex-1"></div>
+      </div>
+
+      <h3 class="font-heading text-goldLight text-xl sm:text-2xl font-normal mb-3">
+        {step.title}
+      </h3>
+      <p class="font-body font-light text-parchment/85 text-base sm:text-lg leading-relaxed mb-4">
+        {step.description}
+      </p>
+
+      {step.bullets && (
+        <ul class="space-y-2 mb-6 pl-1 font-body font-light text-parchment/80 text-base sm:text-lg">
+          {step.bullets.map((bullet) => (
+            <li class="flex items-start gap-2.5">
+              <span class="text-gold select-none">—</span>
+              <span>{bullet}</span>
+            </li>
+          ))}
+        </ul>
+      )}
+
+      {/* Aclaración de moneda justo en el Paso 05 antes de la captura */}
+      {step.number === '05' && currencyNotice && (
+        <div class="mb-6 p-4 sm:p-5 bg-gold/10 border border-gold/30 rounded-sm">
+          <div class="flex items-center gap-2 mb-1.5">
+            <span class="text-xs uppercase tracking-widest font-body text-gold font-medium">
+              {currencyNotice.badge}
+            </span>
+          </div>
+          <p class="font-body font-light text-parchment/90 text-sm sm:text-base leading-relaxed">
+            {currencyNotice.description}
+          </p>
+        </div>
+      )}
+
+      {step.imageSrc && (
+        <div class="mt-6 space-y-3">
+          <div class="overflow-hidden rounded-md border border-gold/25 shadow-xl bg-deep max-w-full sm:max-w-xl md:max-w-2xl mx-auto">
+            <img
+              src={step.imageSrc}
+              alt={step.imageAlt ?? ''}
+              loading="lazy"
+              class="w-full h-auto object-contain block mx-auto"
+            />
+          </div>
+
+          {/* Indicación visual discreta destacando la opción de tarjeta en el Paso 05 */}
+          {step.number === '05' && (
+            <div class="max-w-full sm:max-w-xl md:max-w-2xl mx-auto p-3.5 sm:p-4 bg-night/95 border border-gold/30 rounded-sm flex items-center justify-between gap-3 text-left">
+              <div class="flex items-center gap-3">
+                <span class="text-xl select-none text-gold" aria-hidden="true">💳</span>
+                <span class="font-body text-sm sm:text-base text-parchment font-normal">
+                  {cardCalloutText}
+                </span>
+              </div>
+              <span class="hidden sm:inline-block text-xs uppercase tracking-wider text-gold/80 border border-gold/25 px-2.5 py-1 rounded-sm shrink-0">
+                Sin cuenta previa
+              </span>
+            </div>
+          )}
+
+          {step.imageCaption && (
+            <p class="text-xs sm:text-sm font-body text-parchment/60 text-center italic pt-1">
+              {step.imageCaption}
+            </p>
+          )}
+        </div>
+      )}
+
+      {/* Diferenciación clara de las dos alternativas en el Paso 05 */}
+      {step.number === '05' && (
+        <div class="mt-8 pt-6 border-t border-gold/15">
+          <h4 class="font-heading text-lg sm:text-xl text-gold mb-4 font-normal">
+            Opciones de pago disponibles en la pantalla:
+          </h4>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {paymentOptions.map((opt) => (
+              <div class="p-5 bg-night/90 border border-gold/20 rounded-sm space-y-2">
+                <span class="inline-block px-2.5 py-0.5 rounded-full border border-gold/30 text-xs font-body tracking-wider uppercase text-gold">
+                  {opt.badge}
+                </span>
+                <h5 class="font-heading text-goldLight text-lg font-normal">
+                  {opt.title}
+                </h5>
+                <p class="font-body font-light text-parchment/80 text-sm sm:text-base leading-relaxed">
+                  {opt.description}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+    </article>
+  ))}
+</div>

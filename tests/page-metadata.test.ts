@@ -13,6 +13,7 @@ const pages = [
   "src/pages/tienda.astro",
   "src/pages/blog.astro",
   "src/pages/preguntas.astro",
+  "src/pages/como-reservar-y-pagar.astro",
 ];
 
 const rootDir = path.resolve(

@@ -10,9 +10,16 @@ const {
     'sesionindividualvincular',
   ],
 } = Astro.props;
+
+const defaultNamespaces = [
+  'sesiondepareja',
+  'sesiondecrianza',
+  'sesionindividualvincular',
+];
+const allNamespaces = Array.from(new Set([...defaultNamespaces, ...namespaces]));
 ---
 
-<script is:inline define:vars={{ namespaces }}>
+<script is:inline define:vars={{ allNamespaces }}>
   (function (C, A, L) {
     let p = function (a, ar) { a.q.push(ar); };
     let d = C.document;
@@ -42,16 +49,90 @@ const {
 
   Cal.config = Cal.config || {};
   Cal.config.forwardQueryParams = true;
+  Cal.config.theme = "light";
 
-  namespaces.forEach(function (ns) {
+  // Force global Cal UI configuration to light theme
+  Cal("ui", {
+    theme: "light",
+    cssVarsPerTheme: {
+      light: { "cal-brand": "#262646" },
+      dark: { "cal-brand": "#262646" },
+    },
+    hideEventTypeDetails: false,
+    layout: "month_view",
+  });
+
+  allNamespaces.forEach(function (ns) {
     Cal("init", ns, { origin: "https://app.cal.com" });
     if (Cal.ns && Cal.ns[ns]) {
       Cal.ns[ns]("ui", {
         theme: "light",
-        cssVarsPerTheme: { light: { "cal-brand": "#262646" } },
+        cssVarsPerTheme: {
+          light: { "cal-brand": "#262646" },
+          dark: { "cal-brand": "#262646" },
+        },
         hideEventTypeDetails: false,
         layout: "month_view",
       });
     }
   });
+
+  const modalStyleId = "cal-modal-light-theme-style";
+  const modalCss = `
+    :host {
+      color-scheme: light !important;
+    }
+    .modal-box,
+    #skeleton-container,
+    .body {
+      background-color: #ffffff !important;
+      color: #111827 !important;
+      color-scheme: light !important;
+    }
+    @media (min-width: 640px) and (max-width: 1023px) {
+      .modal-box {
+        width: calc(100vw - 32px) !important;
+        max-width: 660px !important;
+        margin-inline: auto !important;
+        max-height: calc(100vh - 40px) !important;
+        overflow-y: auto !important;
+      }
+      #skeleton-container {
+        max-width: 660px !important;
+        margin-inline: auto !important;
+      }
+    }
+  `;
+
+  function applyModalStyles(modalEl) {
+    if (!modalEl) return;
+    modalEl.setAttribute("data-theme", "light");
+    modalEl.dataset.theme = "light";
+    const shadow = modalEl.shadowRoot;
+    if (!shadow || shadow.querySelector(`#${modalStyleId}`)) return;
+    const styleEl = document.createElement("style");
+    styleEl.id = modalStyleId;
+    styleEl.textContent = modalCss;
+    shadow.appendChild(styleEl);
+  }
+
+  function initCalModalObserver() {
+    document.querySelectorAll("cal-modal-box").forEach(applyModalStyles);
+    const observer = new MutationObserver(function (mutations) {
+      mutations.forEach(function (mutation) {
+        mutation.addedNodes.forEach(function (node) {
+          if (node.nodeType === 1 && node.tagName && node.tagName.toLowerCase() === "cal-modal-box") {
+            applyModalStyles(node);
+          }
+        });
+      });
+    });
+    observer.observe(document.body, { childList: true, subtree: true });
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initCalModalObserver);
+  } else {
+    initCalModalObserver();
+  }
 </script>

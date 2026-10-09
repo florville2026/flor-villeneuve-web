@@ -48,3 +48,31 @@
   .reveal-delay-2 { transition-delay: 0.30s; }
   .reveal-delay-3 { transition-delay: 0.45s; }
 }
+
+/* Cal.com Modal - Unified Light Theme & Tablet Responsiveness */
+cal-modal-box {
+  color-scheme: light !important;
+}
+
+cal-modal-box iframe,
+cal-modal-box iframe.cal-embed,
+iframe[name^="cal-embed"] {
+  color-scheme: light !important;
+  background-color: #ffffff !important;
+}
+
+@media (min-width: 640px) and (max-width: 1023px) {
+  cal-modal-box {
+    width: 100% !important;
+  }
+
+  cal-modal-box iframe,
+  cal-modal-box iframe.cal-embed,
+  iframe[name^="cal-embed"] {
+    width: calc(100vw - 32px) !important;
+    max-width: 660px !important;
+    margin-inline: auto !important;
+    display: block !important;
+    box-sizing: border-box !important;
+  }
+}

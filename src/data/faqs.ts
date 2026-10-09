@@ -97,6 +97,19 @@ export const faqCategories: FaqCategory[] = [
     icon: '🔄',
     items: [
       {
+        question: '¿Cómo se realiza el pago?',
+        paragraphs: [
+          'El pago se realiza de forma online y segura al momento de reservar. Podés pagar con tu cuenta de PayPal o con tarjeta.',
+          'Si querés ver el paso a paso completo, <a href="/como-reservar-y-pagar" class="text-gold underline hover:text-goldLight transition-colors">consultá la guía de reserva y pago</a>.',
+        ],
+      },
+      {
+        question: '¿En qué moneda se realizan los pagos?',
+        paragraphs: [
+          'Los precios están expresados en dólares estadounidenses (USD). Si tu tarjeta o medio de pago utiliza otra moneda, el importe puede convertirse a tu moneda local al momento del pago. El tipo de cambio y cualquier posible cargo por conversión dependen de PayPal o de la entidad emisora de tu medio de pago. Podrás revisar el importe antes de confirmar.',
+        ],
+      },
+      {
         question: '¿Cuántas sesiones necesitamos para ver un cambio?',
         paragraphs: [
           'Cada persona y cada vínculo tiene sus propios ritmos. La primera sesión de 1h 30m es diagnóstica y reveladora en sí misma: te llevás un mapa claro de la dinámica oculta y comprensiones profundas para empezar a aplicar. A partir de allí no hay paquetes cerrados; la continuidad del proceso la vamos evaluando juntos y los encuentros siguientes se agendan de forma directa a través de WhatsApp según las necesidades del proceso.',

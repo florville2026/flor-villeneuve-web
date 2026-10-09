@@ -45,7 +45,7 @@ const whatsappUrl = 'https://wa.me/59892497675';
                     </h3>
                     <div class="space-y-3 font-body font-light text-parchment/85 text-base sm:text-lg leading-relaxed">
                       {item.paragraphs.map((paragraph) => (
-                        <p>{paragraph}</p>
+                        <p set:html={paragraph} />
                       ))}
                       {item.bullets && item.bullets.length > 0 && (
                         <ul class="space-y-2.5 my-3 pl-1">

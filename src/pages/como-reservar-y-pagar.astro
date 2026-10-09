@@ -1,0 +1,144 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/layout/Header.astro';
+import Footer from '../components/layout/Footer.astro';
+import SectionTitle from '../components/ui/SectionTitle.astro';
+import BookingStepsList from '../components/sections/BookingStepsList.astro';
+import { bookingGuideData } from '../data/bookingGuide';
+import { vincularServices } from '../data/services';
+
+const whatsappHelpUrl = `https://wa.me/59892497675?text=${encodeURIComponent(bookingGuideData.help.whatsappMessage)}`;
+---
+
+<BaseLayout
+  title={bookingGuideData.title}
+  description="Guía paso a paso para reservar tu sesión y abonar con PayPal o tarjeta desde la pantalla de pago, sin necesidad de iniciar sesión en PayPal."
+  keywords="cómo reservar sesión, cómo pagar sesión, métodos de pago, pagar con tarjeta, PayPal, Cal.com, reserva online, Florencia Villeneuve"
+  canonical="/como-reservar-y-pagar"
+>
+  <Header />
+  <main class="pt-24">
+    <!-- Hero / Intro -->
+    <section class="section-padding bg-deep border-b border-gold/10">
+      <div class="container-padding max-w-4xl mx-auto text-center">
+        <a
+          href="/servicios"
+          class="font-body text-xs uppercase tracking-widest text-gold/80 hover:text-gold mb-3 inline-block transition-colors"
+        >
+          ← Volver a Servicios
+        </a>
+        <span class="font-display text-gold/70 text-sm tracking-widest block mb-2">
+          {bookingGuideData.subtitle}
+        </span>
+        <h1 class="font-display text-4xl sm:text-5xl lg:text-6xl text-gold font-light mb-6 tracking-wide">
+          {bookingGuideData.title}
+        </h1>
+        <p class="font-body font-light text-parchment/90 text-lg sm:text-xl leading-relaxed max-w-2xl mx-auto">
+          {bookingGuideData.intro}
+        </p>
+
+        <!-- Bloque destacado aclaratorio -->
+        <div class="mt-10 p-6 sm:p-8 bg-gold/10 border border-gold/30 rounded-sm text-left reveal max-w-3xl mx-auto shadow-lg backdrop-blur-sm">
+          <div class="flex items-start gap-4">
+            <span class="text-3xl select-none" aria-hidden="true">💳</span>
+            <div class="space-y-3">
+              <h2 class="font-heading text-xl sm:text-2xl text-goldLight font-normal">
+                {bookingGuideData.importantNote.title}
+              </h2>
+              <p class="font-body font-normal text-parchment text-base sm:text-lg leading-relaxed">
+                <strong class="text-gold font-semibold">Importante:</strong> {bookingGuideData.importantNote.highlight}
+              </p>
+              <ul class="space-y-1.5 pt-1 text-sm sm:text-base font-body text-parchment/80 font-light">
+                {bookingGuideData.importantNote.details.map((detail) => (
+                  <li class="flex items-center gap-2">
+                    <span class="text-gold font-bold select-none text-xs">✓</span>
+                    <span>{detail}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Paso a paso detallado -->
+    <section class="section-padding bg-night">
+      <div class="container-padding max-w-4xl mx-auto">
+        <SectionTitle
+          title="Paso a paso para reservar"
+          subtitle="Una guía visual para que realices tu reserva con total tranquilidad y claridad."
+        />
+
+        <BookingStepsList
+          steps={bookingGuideData.steps}
+          paymentOptions={bookingGuideData.paymentOptions}
+          currencyNotice={bookingGuideData.currencyNotice}
+          cardCalloutText={bookingGuideData.cardCallout.text}
+        />
+      </div>
+    </section>
+
+    <!-- Opciones directas de reserva (Retorno a sesiones) -->
+    <section class="section-padding bg-deep border-t border-gold/10">
+      <div class="container-padding max-w-4xl mx-auto text-center">
+        <SectionTitle
+          title="Elegí tu sesión y reservá tu lugar"
+          subtitle="Explorá los espacios de encuentro disponibles para comenzar."
+        />
+
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 mt-10 text-left">
+          {vincularServices.map((service) => (
+            <div class="p-6 bg-night/70 border border-gold/15 rounded-sm flex flex-col justify-between hover:border-gold/35 transition-colors">
+              <div>
+                <span class="font-display text-gold/60 text-xs tracking-widest block mb-1">
+                  {service.subtitle}
+                </span>
+                <h3 class="font-heading text-xl text-parchment font-light mb-2">
+                  {service.title}
+                </h3>
+                <p class="font-body font-light text-parchment/75 text-sm line-clamp-3 mb-4">
+                  {service.description}
+                </p>
+              </div>
+              <a
+                href={service.slug}
+                class="cta-button-outline w-full text-center text-sm py-2 block"
+              >
+                Ver sesión y reservar
+              </a>
+            </div>
+          ))}
+        </div>
+
+        <div class="mt-8 text-center">
+          <a href="/servicios" class="cta-button inline-block text-base">
+            Ver todas las sesiones en detalle
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sección final de ayuda -->
+    <section class="section-padding bg-night border-t border-gold/10 text-center">
+      <div class="container-padding max-w-2xl mx-auto reveal">
+        <span class="text-3xl select-none mb-3 block" aria-hidden="true">💬</span>
+        <h3 class="font-display text-2xl sm:text-3xl text-gold mb-3 font-normal">
+          {bookingGuideData.help.title}
+        </h3>
+        <p class="font-body font-light text-parchment/80 text-base sm:text-lg mb-8 leading-relaxed">
+          {bookingGuideData.help.text}
+        </p>
+        <a
+          href={whatsappHelpUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="cta-button inline-flex items-center gap-2 text-base"
+        >
+          <span>Escribirme por WhatsApp</span>
+        </a>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</BaseLayout>
