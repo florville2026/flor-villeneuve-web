@@ -12,7 +12,6 @@ Este archivo es la memoria viva y guía operativa del proyecto **flor-villeneuve
 - **Contacto & Canales:**
   - WhatsApp (Consultas directas): `https://wa.me/59892497675` (+598 92 497 675)
   - Comunidad de WhatsApp: `https://chat.whatsapp.com/L7jnhxhIvqb6QbwnFN1PJo` (espacio abierto con más de 70 personas para reflexiones sobre vínculos, talleres y videos de YouTube)
-  - Instagram: `https://www.instagram.com/florencia.villeneuve`
   - YouTube: `https://www.youtube.com/@florencia.villeneuve`
   - Email: `mailto:florencia.villeneuve@gmail.com`
   - No se publican precios directos en la web; las consultas se canalizan por WhatsApp o formulario.
@@ -87,7 +86,7 @@ flor-villeneuve-web/
 │   ├── booking-guide.test.ts   # Valida integridad de pasos, imágenes, FAQ y opciones de pago
 │   ├── footer-links.test.ts    # Valida links de redes y contacto en Footer
 │   ├── page-metadata.test.ts   # Valida presencia de meta keywords en páginas core
-│   └── seo-links.test.ts       # Valida enlaces a Instagram en index.astro y README.md
+│   └── seo-links.test.ts       # Valida metadata y ausencia de enlaces de Instagram
 ├── astro.config.mjs            # Configuración de Astro, adapter Netlify y sitemap
 ├── netlify.toml                # Redirects 301 para preservar SEO del sitio anterior
 ├── package.json                # Scripts y dependencias
@@ -161,7 +160,7 @@ flor-villeneuve-web/
   - `keywords`: Lista de palabras clave separadas por comas (validado en `page-metadata.test.ts`).
   - `canonical`: Ruta relativa canónica (ej. `/servicios`).
 - **Datos Estructurados (JSON-LD):**
-  - La página de inicio incluye el schema `Person` para Florencia Villeneuve indicando áreas servidas (Uruguay y Argentina) y redes sociales verificadas.
+  - La página de inicio incluye el schema `Person` para Florencia Villeneuve indicando áreas servidas (Uruguay y Argentina).
   - Asegurarse de agregar el atributo `is:inline` en scripts `<script type="application/ld+json" is:inline>` para evitar advertencias del compilador de Astro.
 - **Redirecciones 301:** Configuradas en `netlify.toml` para preservar el SEO de URLs previas (`/mentoria` $\rightarrow$ `/servicios`, `/guias-y-acompanamientos` $\rightarrow$ `/servicios`, `/arteterapia` $\rightarrow$ `/servicios`, `/formacion` y `/formaciones` $\rightarrow$ `/servicios`, `/about` y `/mi-libro` $\rightarrow$ `/bio`, y enlaces heredados de WordPress).
 
@@ -189,7 +188,7 @@ flor-villeneuve-web/
   pnpm test
   ```
 - **Nota Crítica sobre Tests:**
-  - `tests/seo-links.test.ts` verifica explícitamente que tanto `src/pages/index.astro` como `README.md` contengan el link `https://instagram.com/florencia.villeneuve`. **No modificar ni remover este enlace en ningún documento sin actualizar el test correspondiente.**
+  - `tests/seo-links.test.ts` verifica que las páginas principales y la documentación no publiquen enlaces de Instagram.
   - `tests/page-metadata.test.ts` valida que las páginas esenciales (`index.astro`, `bio.astro`, `servicios/index.astro`, `servicios/pareja.astro`, `servicios/crianza-familia.astro`, `servicios/proceso-vincular.astro`, `tienda.astro`, `blog.astro`, `preguntas.astro`) incluyan la prop `keywords`.
   - El script `prebuild` en `package.json` ejecuta automáticamente `pnpm test` antes de `astro build`.
 

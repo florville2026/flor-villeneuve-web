@@ -65,7 +65,7 @@ flor-villeneuve-web/
     ├── blog.test.ts         # Pruebas de artículos y vinculación a servicios
     ├── footer-links.test.ts # Pruebas de enlaces de contacto en el Footer
     ├── page-metadata.test.ts# Pruebas de keywords en páginas principales
-    └── seo-links.test.ts    # Validación de enlaces de Instagram y metadata
+    └── seo-links.test.ts    # Validación de metadata y enlaces oficiales
 ```
 
 ---
@@ -179,7 +179,6 @@ Las consultas y coordinaciones se canalizan de forma directa y personalizada a t
 - **Sitio web:** [florenciavilleneuve.com](https://florenciavilleneuve.com)
 - **WhatsApp (Consultas directas):** [+598 92 497 675](https://wa.me/59892497675)
 - **Comunidad de WhatsApp:** [Unirse a la Comunidad](https://chat.whatsapp.com/L7jnhxhIvqb6QbwnFN1PJo) (+70 personas para reflexiones y talleres)
-- **Instagram:** [@florencia.villeneuve](https://instagram.com/florencia.villeneuve)
 - **YouTube:** [@florencia.villeneuve](https://www.youtube.com/@florencia.villeneuve)
 - **Email:** [florencia.villeneuve@gmail.com](mailto:florencia.villeneuve@gmail.com)
 

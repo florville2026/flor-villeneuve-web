@@ -12,15 +12,18 @@ const readProjectFile = async (relativePath: string) => {
   return readFile(fullPath, "utf-8");
 };
 
-describe("SEO and social links", () => {
-  it("uses the correct Instagram handle in structured data", async () => {
-    const content = await readProjectFile("src/pages/index.astro");
-    expect(content).toContain("https://instagram.com/florencia.villeneuve");
-    expect(content).not.toContain("https://instagram.com/florhesiendo");
-  });
+describe("SEO and official links", () => {
+  it("does not publish Instagram links", async () => {
+    const filePaths = [
+      "src/pages/index.astro",
+      "src/pages/blog.astro",
+      "src/components/layout/Footer.astro",
+      "README.md",
+    ];
 
-  it("includes the correct Instagram link in README", async () => {
-    const readme = await readProjectFile("README.md");
-    expect(readme).toContain("https://instagram.com/florencia.villeneuve");
+    for (const filePath of filePaths) {
+      const content = await readProjectFile(filePath);
+      expect(content).not.toMatch(/instagram\.com/i);
+    }
   });
 });
