@@ -5,7 +5,10 @@ import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
   site: 'https://florenciavilleneuve.com',
-  integrations: [tailwind(), sitemap()],
+  integrations: [
+    tailwind(),
+    sitemap({ filter: (page) => !page.endsWith('/gracias/') }),
+  ],
   adapter: netlify(),
   devToolbar: {
     enabled: false,

@@ -17,14 +17,14 @@ describe("BaseLayout SEO metadata", () => {
     const content = await readProjectFile("src/layouts/BaseLayout.astro");
 
     expect(content).toContain("keywords?: string;");
-    expect(content).toContain(
-      "const { title, description, canonical = Astro.url.pathname, keywords } = Astro.props;",
-    );
+    expect(content).toContain("noIndex = false,");
     expect(content).toContain('<meta name="keywords" content={keywords} />');
     expect(content).toContain(
       '<meta name="author" content="Florencia Villeneuve" />',
     );
-    expect(content).toContain('<meta name="robots" content="index, follow" />');
+    expect(content).toContain(
+      "<meta name=\"robots\" content={noIndex ? 'noindex, follow' : 'index, follow'} />",
+    );
   });
 
   it("uses Spanish language attribute in the HTML tag", async () => {

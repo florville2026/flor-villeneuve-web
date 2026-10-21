@@ -7,9 +7,16 @@ interface Props {
   description: string;
   canonical?: string;
   keywords?: string;
+  noIndex?: boolean;
 }
 
-const { title, description, canonical = Astro.url.pathname, keywords } = Astro.props;
+const {
+  title,
+  description,
+  canonical = Astro.url.pathname,
+  keywords,
+  noIndex = false,
+} = Astro.props;
 const fullTitle =
   title === 'Inicio' || title === 'Florencia Villeneuve | Pareja, Crianza y Vínculos'
     ? 'Florencia Villeneuve | Pareja, Crianza y Vínculos'
@@ -29,7 +36,7 @@ const canonicalUrl = `${siteUrl}${canonical}`;
     <meta name="description" content={description} />
     {keywords && <meta name="keywords" content={keywords} />}
     <meta name="author" content="Florencia Villeneuve" />
-    <meta name="robots" content="index, follow" />
+    <meta name="robots" content={noIndex ? 'noindex, follow' : 'index, follow'} />
     <meta name="google-site-verification" content="AyG_PME1rAD9TdavHI2WcqiI4h53Pzr9E1-3-vnX2a0" />
 
     <!-- Open Graph -->

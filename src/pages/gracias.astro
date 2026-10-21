@@ -1,0 +1,38 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/layout/Header.astro';
+import Footer from '../components/layout/Footer.astro';
+---
+
+<BaseLayout
+  title="Gracias por tu reserva"
+  description="Gracias por reservar una sesión con Florencia Villeneuve."
+  keywords="reserva confirmada, sesión online, Florencia Villeneuve"
+  canonical="/gracias/"
+  noIndex={true}
+>
+  <Header />
+  <main class="section-padding min-h-[65vh] pt-32 flex items-center">
+    <div class="container-padding w-full">
+      <section class="max-w-3xl mx-auto p-8 sm:p-12 md:p-16 text-center bg-night/80 border border-gold/25 rounded-sm shadow-xl">
+        <span
+          class="mx-auto mb-7 flex h-14 w-14 items-center justify-center rounded-full border border-gold/40 bg-gold/10 text-gold"
+          aria-hidden="true"
+        >
+          <svg viewBox="0 0 24 24" fill="none" class="h-7 w-7" stroke="currentColor" stroke-width="1.7">
+            <path d="m5 12.5 4.2 4.2L19 7" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </span>
+        <p class="mb-3 font-body text-xs uppercase tracking-[0.24em] text-gold/80">Florencia Villeneuve</p>
+        <h1 class="mb-6 font-display text-4xl font-light leading-tight text-gold sm:text-5xl md:text-6xl">
+          ¡Gracias por tu reserva!
+        </h1>
+        <p class="mx-auto max-w-2xl font-body text-lg font-light leading-relaxed text-parchment/85 sm:text-xl">
+          Recibirás un correo electrónico con la confirmación y los detalles de tu sesión.
+        </p>
+        <a href="/" class="cta-button mt-9">Volver al inicio</a>
+      </section>
+    </div>
+  </main>
+  <Footer />
+</BaseLayout>
