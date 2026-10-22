@@ -1,4 +1,6 @@
 ---
+import { googleAdsBookingClickSendTo } from '../../config/googleAds';
+
 interface Props {
   namespaces?: string[];
 }
@@ -19,7 +21,7 @@ const defaultNamespaces = [
 const allNamespaces = Array.from(new Set([...defaultNamespaces, ...namespaces]));
 ---
 
-<script is:inline define:vars={{ allNamespaces }}>
+<script is:inline define:vars={{ allNamespaces, googleAdsBookingClickSendTo }}>
   (function (C, A, L) {
     let p = function (a, ar) { a.q.push(ar); };
     let d = C.document;
@@ -76,6 +78,13 @@ const allNamespaces = Array.from(new Set([...defaultNamespaces, ...namespaces]))
       });
     }
   });
+
+  document.addEventListener("click", function (event) {
+    if (!event.isTrusted || !googleAdsBookingClickSendTo) return;
+    const target = event.target instanceof Element ? event.target.closest("[data-cal-link]") : null;
+    if (!target || typeof window.gtag !== "function") return;
+    window.gtag("event", "conversion", { send_to: googleAdsBookingClickSendTo });
+  }, true);
 
   const modalStyleId = "cal-modal-light-theme-style";
   const modalCss = `
