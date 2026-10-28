@@ -35,7 +35,13 @@ describe("Booking and Payment Guide", () => {
     expect(bookingGuideData.currencyNotice.description).toContain(
       "Los montos se muestran en USD y EUR, o su equivalente en tu moneda al momento de la conversión.",
     );
-    expect(bookingGuideData.currencyNotice.title).toContain("Montos expresados en euros");
+    expect(bookingGuideData.currencyNotice.description).toContain(
+      "Antes de confirmar, revisá el importe que informa la pantalla de pago.",
+    );
+    expect(bookingGuideData.currencyNotice.title).toContain("Montos en USD y EUR");
+    expect(bookingGuideData.currencyNotice.description).not.toContain(
+      "El pago se procesa en euros.",
+    );
     expect(bookingGuideData.cardCallout.text).toContain(
       "¿No tenés PayPal? Elegí esta opción para abonar con tarjeta.",
     );
@@ -44,9 +50,16 @@ describe("Booking and Payment Guide", () => {
     expect(bookingGuideData.steps[5].description).toContain(
       "recibirás por email la confirmación de tu reserva",
     );
+    expect(bookingGuideData.screenshotsVisible).toBe(false);
   });
 
-  it("verifies screenshots exist in public/img/guia", async () => {
+  it("keeps screenshot files but does not publish them while they show dollars", async () => {
+    const list = await readProjectFile("src/components/sections/BookingStepsList.astro");
+    const page = await readProjectFile("src/pages/como-reservar-y-pagar.astro");
+
+    expect(list).toContain("screenshotsVisible && step.imageSrc");
+    expect(page).toContain("screenshotsVisible={bookingGuideData.screenshotsVisible}");
+    expect(bookingGuideData.steps.filter((step) => step.imageSrc)).toHaveLength(3);
     const requiredImages = [
       "public/img/guia/pantalla-pago-metodos.png",
       "public/img/guia/pantalla-datos-reserva.png",
@@ -56,6 +69,7 @@ describe("Booking and Payment Guide", () => {
     for (const imgPath of requiredImages) {
       const fullPath = path.join(rootDir, imgPath);
       await expect(access(fullPath)).resolves.toBeUndefined();
+      expect(bookingGuideData.steps.some((step) => step.imageSrc === `/${imgPath.replace(/^public\//, "")}`)).toBe(true);
     }
   });
 
@@ -78,6 +92,7 @@ describe("Booking and Payment Guide", () => {
     expect(currencyFaq?.paragraphs.join(" ")).toContain(
       "Los montos se muestran en USD y EUR, o su equivalente en tu moneda al momento de la conversión.",
     );
+    expect(currencyFaq?.paragraphs.join(" ")).not.toContain("El pago se procesa en euros.");
   });
 
   it("includes updated guide link in service pages", async () => {

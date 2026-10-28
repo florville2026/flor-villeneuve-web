@@ -67,7 +67,7 @@ const whatsappHelpUrl = `https://wa.me/59892497675?text=${encodeURIComponent(boo
       <div class="container-padding max-w-4xl mx-auto">
         <SectionTitle
           title="Paso a paso para reservar"
-          subtitle="Una guía visual para que realices tu reserva con total tranquilidad y claridad."
+          subtitle="Una guía clara para que realices tu reserva con tranquilidad."
         />
 
         <BookingStepsList
@@ -75,6 +75,7 @@ const whatsappHelpUrl = `https://wa.me/59892497675?text=${encodeURIComponent(boo
           paymentOptions={bookingGuideData.paymentOptions}
           currencyNotice={bookingGuideData.currencyNotice}
           cardCalloutText={bookingGuideData.cardCallout.text}
+          screenshotsVisible={bookingGuideData.screenshotsVisible}
         />
       </div>
     </section>

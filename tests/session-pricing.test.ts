@@ -13,10 +13,10 @@ const bookingPages = [
 ];
 
 describe("Session pricing presentation", () => {
-  it("keeps the confirmed USD amounts and leaves euro prices unconfirmed", () => {
-    expect(sessionPricing.pareja).toMatchObject({ amountUsd: 110, amountEur: null });
-    expect(sessionPricing["crianza-familia"]).toMatchObject({ amountUsd: 125, amountEur: null });
-    expect(sessionPricing["proceso-vincular"]).toMatchObject({ amountUsd: 95, amountEur: null });
+  it("keeps the visible USD amounts separate from the PayPal euro charge", () => {
+    expect(sessionPricing.pareja).toMatchObject({ amountUsd: 110, amountEur: 110 });
+    expect(sessionPricing["crianza-familia"]).toMatchObject({ amountUsd: 125, amountEur: 130 });
+    expect(sessionPricing["proceso-vincular"]).toMatchObject({ amountUsd: 95, amountEur: 95 });
   });
 
   it.each(bookingPages)("shows pricing above and directly below the Cal.com button in %s", async (pagePath) => {
@@ -27,18 +27,20 @@ describe("Session pricing presentation", () => {
     expect(page).toContain("data-cal-link={service.calLink}");
   });
 
-  it("keeps the pricing note readable across responsive widths", async () => {
+  it("shows the USD amount and the agreed currency note", async () => {
     const component = await readFile(
       path.join(rootDir, "src/components/ui/SessionPricing.astro"),
       "utf-8",
     );
 
-    expect(component).toContain("max-w-[30rem]");
-    expect(component).toContain("text-xs sm:text-sm");
     expect(component).toContain("text-center");
-    expect(component).toContain("Montos expresados en euros.");
+    expect(component).toContain("US$ ${pricing.amountUsd}");
+    expect(component).toContain("max-w-[30rem]");
+    expect(component).toContain("Montos expresados en USD y EUR.");
     expect(component).toContain(
       "Los montos se muestran en USD y EUR, o su equivalente en tu moneda al momento de la conversión.",
     );
+    expect(component).not.toContain("amountEur");
+    expect(component).not.toContain("Precio en euros pendiente de confirmar");
   });
 });

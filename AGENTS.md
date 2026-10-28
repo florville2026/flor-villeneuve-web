@@ -14,7 +14,7 @@ Este archivo es la memoria viva y guía operativa del proyecto **flor-villeneuve
   - Comunidad de WhatsApp: `https://chat.whatsapp.com/L7jnhxhIvqb6QbwnFN1PJo` (espacio abierto con más de 70 personas para reflexiones sobre vínculos, talleres y videos de YouTube)
   - YouTube: `https://www.youtube.com/@florencia.villeneuve`
   - Email: `mailto:florencia.villeneuve@gmail.com`
-  - Las páginas de sesiones presentan los montos en euros y su equivalente en USD, con una nota de que el importe es orientativo y se convierte a la moneda del usuario. Los precios en euros requieren confirmación comercial antes de publicar.
+  - Las páginas de sesiones muestran el monto en USD (pareja US$ 110, crianza US$ 125, proceso vincular US$ 95) y la nota acordada sobre montos en USD y EUR. El cobro de PayPal en Cal.com es una configuración distinta y no se publica como conversión de esos dólares.
 
 ---
 
@@ -52,7 +52,7 @@ flor-villeneuve-web/
 │   │   └── ui/                 # Button.astro, BlogArticleCard.astro, SectionTitle.astro, ServiceCard.astro, SessionPricing.astro, WhatsAppFloating.astro
 │   ├── config/
 │   │   ├── googleAds.ts        # Configuración de seguimiento de Google Ads
-│   │   └── sessionPricing.ts   # Importes confirmados en USD y precios EUR pendientes
+│   │   └── sessionPricing.ts   # Visibles: US$ 110, US$ 125 y US$ 95; el cobro de Cal.com queda aparte
 │   ├── data/
 │   │   ├── blog.ts             # Artículos del blog, categorías (Pareja, Crianza, Vínculos) y llamadas de agenda
 │   │   ├── bookingGuide.ts     # Pasos estructurados, aclaraciones y opciones de pago
@@ -243,21 +243,21 @@ flor-villeneuve-web/
 - **Propósito:** Responder y desarmar la fricción de reservas online en Cal.com, clarificando que los usuarios pueden abonar tanto con cuenta de PayPal como de forma directa con tarjeta de crédito/débito internacional sin necesidad de registrarse previamente en PayPal.
 - **Ruta Principal:** `/como-reservar-y-pagar` ([como-reservar-y-pagar.astro](file:///c:/Users/pablo/pablo/Documents/Coding/flor-villeneuve-web/src/pages/como-reservar-y-pagar.astro)).
 - **Estructura y Componentes:**
-  - `src/data/bookingGuide.ts`: Modelo de datos tipado con pasos del 01 al 06, notas importantes, opciones de pago explicadas, presentación de montos en EUR, equivalencias en USD y la nota de equivalente en la moneda del usuario al momento de la conversión.
-  - `src/components/sections/BookingStepsList.astro`: Componente modular para el renderizado del paso a paso visual y responsive con capturas de Cal.com, callout para destacar la opción de tarjeta y bloque de aclaración de moneda en el Paso 05.
-  - Capturas responsive alojadas en `public/img/guia/` (`pantalla-pago-metodos.png`, `pantalla-datos-reserva.png`, `pantalla-seleccion-horario.png`).
+  - `src/data/bookingGuide.ts`: Modelo de datos tipado con pasos del 01 al 06, notas importantes, opciones de pago explicadas y la nota de montos en USD y EUR. Pide revisar el importe en la pantalla de pago antes de confirmar.
+  - `src/components/sections/BookingStepsList.astro`: Componente modular del paso a paso. Las capturas no se muestran mientras `screenshotsVisible` sea `false`: la de pago indica US$ 125 y el calendario US$ 110, y no coinciden con el cobro actual de Cal.com en euros. El Paso 05 conserva el callout de tarjeta y la nota de moneda.
+  - Capturas conservadas en `public/img/guia/` (`pantalla-pago-metodos.png`, `pantalla-datos-reserva.png`, `pantalla-seleccion-horario.png`). No editarlas para cambiar importes ni símbolos.
 - **Puntos de Integración Contextual:**
   - Menú Header: Sub-ítem accesible dentro del dropdown de "Servicios".
   - Footer: Enlace directo en la columna de "Navegación".
   - Páginas de servicios (`/servicios`, `/servicios/pareja`, `/servicios/crianza-familia`, `/servicios/proceso-vincular`): Enlace contextual *"¿Es tu primera reserva? Mirá cómo elegir tu horario y abonar con PayPal o tarjeta →"* al pie de los botones de reserva.
   - FAQ (`/preguntas` y `src/data/faqs.ts`): Dos preguntas en la categoría "Dinámica General":
     - *"¿Cómo se realiza el pago?"* (con enlace directo a la guía).
-    - *"¿En qué moneda se realizan los pagos?"* (los montos se muestran en USD y EUR, o su equivalente en la moneda del usuario al momento de la conversión).
+    - *"¿En qué moneda se realizan los pagos?"* (nota de montos en USD y EUR; el importe se revisa antes de confirmar).
 - **Validación y Tests:**
-  - `tests/booking-guide.test.ts` valida la presencia de la ruta, consistencia de textos, existencia de capturas, monedas EUR/USD y enlaces en FAQ, Servicios, Header y Footer.
+  - `tests/booking-guide.test.ts` valida la presencia de la ruta, consistencia de textos, existencia de capturas, la nota de moneda y los enlaces en FAQ, Servicios, Header y Footer.
   - `tests/page-metadata.test.ts` asegura la inclusión obligatoria de `keywords`.
 
-- **Precios de sesiones:** `src/config/sessionPricing.ts` centraliza los importes USD confirmados (pareja: US$ 110, crianza: US$ 125, individual: US$ 95) y mantiene `amountEur` en `null` hasta que Florencia confirme cada precio comercial en euros. No publicar mientras falte esa confirmación; no calcular conversiones automáticas. `SessionPricing.astro` presenta el valor EUR principal y, debajo de cada botón Cal.com, el equivalente en USD junto con la nota «Los montos se muestran en USD y EUR, o su equivalente en tu moneda al momento de la conversión» en `/servicios` y sus tres páginas de detalle. No cambiar precios ni enlaces de Cal.com, PayPal, ni el seguimiento de conversiones.
+- **Precios de sesiones:** `src/config/sessionPricing.ts` publica en las tarjetas los importes USD (pareja: US$ 110, crianza: US$ 125, individual: US$ 95). También guarda el cobro de PayPal en Cal.com (pareja: € 110, crianza: € 130, individual: € 95), que no se renderiza y no es una conversión de los dólares. `SessionPricing.astro` muestra el monto en USD y la nota acordada sobre USD y EUR en `/servicios` y sus tres páginas de detalle. No cambiar los dólares, los enlaces de Cal.com, PayPal, ni el seguimiento de conversiones.
 
 ---
 

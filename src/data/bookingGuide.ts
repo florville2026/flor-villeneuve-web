@@ -16,6 +16,7 @@ export interface PaymentOption {
 }
 
 export const bookingGuideData = {
+  screenshotsVisible: false,
   title: 'Cómo reservar y abonar tu sesión',
   subtitle: 'Guía paso a paso · Proceso claro y transparente',
   intro:
@@ -31,8 +32,8 @@ export const bookingGuideData = {
     ],
   },
   currencyNotice: {
-    title: 'Montos expresados en euros, con equivalencia en USD',
-    badge: 'EUR · equivalente en USD',
+    title: 'Montos en USD y EUR',
+    badge: 'USD · EUR',
     description:
       'Los montos se muestran en USD y EUR, o su equivalente en tu moneda al momento de la conversión. Antes de confirmar, revisá el importe que informa la pantalla de pago.',
   },
