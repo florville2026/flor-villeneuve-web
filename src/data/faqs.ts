@@ -99,14 +99,14 @@ export const faqCategories: FaqCategory[] = [
       {
         question: '¿Cómo se realiza el pago?',
         paragraphs: [
-          'El pago se realiza de forma online y segura al momento de reservar. Podés pagar con tu cuenta de PayPal o con tarjeta.',
+          'El pago se realiza de forma online y segura al momento de reservar. Podés abonar con tu cuenta de PayPal o con tarjeta.',
           'Si querés ver el paso a paso completo, <a href="/como-reservar-y-pagar" class="text-gold underline hover:text-goldLight transition-colors">consultá la guía de reserva y pago</a>.',
         ],
       },
       {
         question: '¿En qué moneda se realizan los pagos?',
         paragraphs: [
-          'Los precios están expresados en dólares estadounidenses (USD). Si tu tarjeta o medio de pago utiliza otra moneda, el importe puede convertirse a tu moneda local al momento del pago. El tipo de cambio y cualquier posible cargo por conversión dependen de PayPal o de la entidad emisora de tu medio de pago. Podrás revisar el importe antes de confirmar.',
+          'Los montos se muestran en USD y EUR, o su equivalente en tu moneda al momento de la conversión. Podrás revisar el importe antes de confirmar.',
         ],
       },
       {

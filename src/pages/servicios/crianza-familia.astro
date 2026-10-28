@@ -5,6 +5,7 @@ import Footer from '../../components/layout/Footer.astro';
 import SectionTitle from '../../components/ui/SectionTitle.astro';
 import Button from '../../components/ui/Button.astro';
 import CalEmbed from '../../components/ui/CalEmbed.astro';
+import SessionPricing from '../../components/ui/SessionPricing.astro';
 import { vincularServices } from '../../data/services';
 
 const service = vincularServices.find((s) => s.id === 'crianza-familia')!;
@@ -88,15 +89,19 @@ const whatsappUrl = `https://wa.me/59892497675?text=${encodeURIComponent(service
             Encuentros virtuales por videollamada para cualquier lugar del mundo.
           </p>
           <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <button
-              type="button"
-              class="cta-button w-full sm:w-auto text-center cursor-pointer inline-flex items-center justify-center gap-2"
-              data-cal-link={service.calLink}
-              data-cal-namespace={service.calNamespace}
-              data-cal-config='{"layout":"month_view","theme":"light"}'
-            >
-              Reservar lugar para tu primera sesión
-            </button>
+            <div class="w-full sm:w-auto flex flex-col items-center gap-2">
+              <SessionPricing serviceId={service.id} placement="primary" />
+              <button
+                type="button"
+                class="cta-button w-full sm:w-auto text-center cursor-pointer inline-flex items-center justify-center gap-2"
+                data-cal-link={service.calLink}
+                data-cal-namespace={service.calNamespace}
+                data-cal-config='{"layout":"month_view","theme":"light"}'
+              >
+                Reservar lugar para tu primera sesión
+              </button>
+              <SessionPricing serviceId={service.id} placement="after-booking" />
+            </div>
             <Button href={whatsappUrl} variant="primary" external class="w-full sm:w-auto text-center">
               Consultar por WhatsApp
             </Button>
@@ -106,7 +111,7 @@ const whatsappUrl = `https://wa.me/59892497675?text=${encodeURIComponent(service
               href="/como-reservar-y-pagar"
               class="inline-flex items-center gap-1.5 text-xs sm:text-sm font-body text-parchment/80 hover:text-gold transition-colors duration-200 group"
             >
-              <span>¿Es tu primera reserva? Mirá cómo elegir tu horario y pagar con PayPal o tarjeta</span>
+              <span>¿Es tu primera reserva? Mirá cómo elegir tu horario y abonar con PayPal o tarjeta</span>
               <span class="text-gold transition-transform duration-200 group-hover:translate-x-1">→</span>
             </a>
           </div>

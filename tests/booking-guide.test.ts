@@ -27,19 +27,20 @@ describe("Booking and Payment Guide", () => {
   });
 
   it("contains all required steps, payment options, and currency details in bookingGuideData", () => {
-    expect(bookingGuideData.title).toBe("Cómo reservar y pagar tu sesión");
+    expect(bookingGuideData.title).toBe("Cómo reservar y abonar tu sesión");
     expect(bookingGuideData.steps).toHaveLength(6);
     expect(bookingGuideData.importantNote.highlight.toLowerCase()).toContain(
       "sin necesidad de iniciar sesión en paypal",
     );
     expect(bookingGuideData.currencyNotice.description).toContain(
-      "dólares estadounidenses (USD)",
+      "Los montos se muestran en USD y EUR, o su equivalente en tu moneda al momento de la conversión.",
     );
+    expect(bookingGuideData.currencyNotice.title).toContain("Montos expresados en euros");
     expect(bookingGuideData.cardCallout.text).toContain(
-      "¿No tenés PayPal? Elegí esta opción para pagar con tarjeta.",
+      "¿No tenés PayPal? Elegí esta opción para abonar con tarjeta.",
     );
-    expect(bookingGuideData.paymentOptions[0].title).toContain("Opción 1: pagar con PayPal");
-    expect(bookingGuideData.paymentOptions[1].title).toContain("Opción 2: pagar con tarjeta");
+    expect(bookingGuideData.paymentOptions[0].title).toContain("Opción 1: abonar con PayPal");
+    expect(bookingGuideData.paymentOptions[1].title).toContain("Opción 2: abonar con tarjeta");
     expect(bookingGuideData.steps[5].description).toContain(
       "recibirás por email la confirmación de tu reserva",
     );
@@ -68,12 +69,15 @@ describe("Booking and Payment Guide", () => {
     expect(paymentFaq).toBeDefined();
     expect(paymentFaq?.paragraphs.join(" ")).toContain("/como-reservar-y-pagar");
     expect(paymentFaq?.paragraphs.join(" ")).toContain("PayPal o con tarjeta");
+    expect(paymentFaq?.paragraphs.join(" ")).toContain("Podés abonar");
 
     const currencyFaq = dinamicaCategory?.items.find((item) =>
       item.question.includes("¿En qué moneda se realizan los pagos?"),
     );
     expect(currencyFaq).toBeDefined();
-    expect(currencyFaq?.paragraphs.join(" ")).toContain("dólares estadounidenses (USD)");
+    expect(currencyFaq?.paragraphs.join(" ")).toContain(
+      "Los montos se muestran en USD y EUR, o su equivalente en tu moneda al momento de la conversión.",
+    );
   });
 
   it("includes updated guide link in service pages", async () => {

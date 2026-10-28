@@ -1,0 +1,32 @@
+---
+import { sessionPricing } from '../../config/sessionPricing';
+import type { SessionPricingId } from '../../types';
+
+interface Props {
+  serviceId: SessionPricingId;
+  placement: 'primary' | 'after-booking';
+}
+
+const { serviceId, placement } = Astro.props;
+const pricing = sessionPricing[serviceId];
+const euroAmount = pricing.amountEur === null
+  ? null
+  : new Intl.NumberFormat('es-ES', {
+      style: 'currency',
+      currency: 'EUR',
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 2,
+    }).format(pricing.amountEur);
+---
+
+{placement === 'primary' ? (
+  <p class="font-display text-center text-xl sm:text-2xl text-goldLight font-medium tracking-wide">
+    {euroAmount ?? 'Precio en euros pendiente de confirmar'}
+  </p>
+) : (
+  <div class="mt-2 max-w-[30rem] space-y-1 text-center font-body text-xs sm:text-sm leading-relaxed text-parchment/75">
+    <p><strong class="font-semibold text-parchment">Montos expresados en euros.</strong></p>
+    <p>Equivalente en USD: <strong class="font-semibold text-goldLight">US$ {pricing.amountUsd}</strong>.</p>
+    <p>Los montos se muestran en USD y EUR, o su equivalente en tu moneda al momento de la conversión.</p>
+  </div>
+)}
