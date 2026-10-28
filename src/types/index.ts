@@ -25,8 +25,16 @@ export interface ServiceTopic {
   desc: string;
 }
 
+export type SessionPricingId = 'pareja' | 'crianza-familia' | 'proceso-vincular';
+
+export interface SessionPrice {
+  sessionType: 'pareja' | 'crianza' | 'individual';
+  amountUsd: number;
+  amountEur: number | null;
+}
+
 export interface VincularService {
-  id: string;
+  id: SessionPricingId;
   title: string;
   subtitle: string;
   slug: string;

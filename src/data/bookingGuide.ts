@@ -16,14 +16,14 @@ export interface PaymentOption {
 }
 
 export const bookingGuideData = {
-  title: 'Cómo reservar y pagar tu sesión',
+  title: 'Cómo reservar y abonar tu sesión',
   subtitle: 'Guía paso a paso · Proceso claro y transparente',
   intro:
-    'Reservar tu sesión es muy simple. Elegí el tipo de sesión, seleccioná un horario disponible, completá tus datos y realizá el pago de forma segura para confirmar tu reserva.',
+    'Reservar tu sesión es muy simple. Elegí el tipo de sesión, seleccioná un horario disponible, completá tus datos y aboná de forma segura para confirmar tu reserva.',
   importantNote: {
     title: 'Aclaración sobre el pago con tarjeta',
     highlight:
-      'También podés pagar con tarjeta desde la opción disponible en la pantalla de pago, sin necesidad de iniciar sesión en PayPal.',
+      'También podés abonar con tarjeta desde la opción disponible en la pantalla de pago, sin necesidad de iniciar sesión en PayPal.',
     details: [
       'Acepta tarjetas de crédito y débito internacionales (Visa, Mastercard, American Express, entre otras).',
       'No es necesario registrarse previamente ni contar con saldo en PayPal.',
@@ -31,10 +31,10 @@ export const bookingGuideData = {
     ],
   },
   currencyNotice: {
-    title: 'Valores expresados en dólares estadounidenses (USD)',
-    badge: 'Precios en USD',
+    title: 'Montos expresados en euros, con equivalencia en USD',
+    badge: 'EUR · equivalente en USD',
     description:
-      'Los valores de las sesiones están expresados en dólares estadounidenses (USD). Si pagás con una tarjeta o medio de pago en otra moneda, PayPal o la entidad emisora de tu tarjeta puede realizar la conversión a tu moneda local. Antes de confirmar el pago podrás revisar el importe correspondiente y las condiciones de conversión aplicables.',
+      'Los montos se muestran en USD y EUR, o su equivalente en tu moneda al momento de la conversión. Antes de confirmar, revisá el importe que informa la pantalla de pago.',
   },
   steps: [
     {
@@ -89,18 +89,18 @@ export const bookingGuideData = {
     },
   ] as GuideStep[],
   cardCallout: {
-    text: '¿No tenés PayPal? Elegí esta opción para pagar con tarjeta.',
+    text: '¿No tenés PayPal? Elegí esta opción para abonar con tarjeta.',
   },
   paymentOptions: [
     {
-      title: 'Opción 1: pagar con PayPal',
+      title: 'Opción 1: abonar con PayPal',
       subtitle: 'Botón amarillo',
       description:
         'Ideal si ya disponés de una cuenta en PayPal y preferís abonar con tus fondos disponibles o tarjetas guardadas.',
       badge: 'Cuenta PayPal',
     },
     {
-      title: 'Opción 2: pagar con tarjeta',
+      title: 'Opción 2: abonar con tarjeta',
       subtitle: 'Botón oscuro con ícono de tarjeta',
       description:
         'Hacé clic en el botón con ícono de tarjeta para abonar directamente con tu tarjeta de crédito o débito, sin necesidad de iniciar sesión en PayPal.',
